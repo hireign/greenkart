@@ -97,3 +97,6 @@ Website is will be accessed by largely non-technical people.
 follows conventions.
 7. Typography plays a powerfull role, "Roboto" by google is used as font due to its clarity.
 8. Invalid routes are taken to HomePage.
+
+## W3c compliant
+[medium article](https://medium.com/@matwankarmalay/create-react-app-ie11-script1002-syntax-error-how-to-get-rid-of-it-d70000c53ddf) for adding pollyfill to deliver intended experience in all browsers.
