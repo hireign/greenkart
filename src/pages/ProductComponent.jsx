@@ -69,7 +69,7 @@ export default function () {
           Product is added to cart! next page is currently unavailable!
         </MuiAlert>
       </Snackbar>
-      <Grid item xs={12}><Card><Typography variant="h5" in>Similar Items</Typography></Card></Grid>
+      <Grid item xs={12}><Typography variant="h5" in>Similar Items</Typography></Grid>
       {similarItem(classes)}
       {similarItem(classes)}
       {similarItem(classes)}

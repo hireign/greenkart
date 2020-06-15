@@ -6,17 +6,22 @@ import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import "react-app-polyfill/ie11";
 import "react-app-polyfill/stable";
-// import { ThemeProvider } from '@material-ui/core';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core';
+import green from '@material-ui/core/colors/green';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: green,
+  }
+});
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <ThemeProvider
-        theme={{
-          primaryColor: 'green',
-        }}> */}
+      <ThemeProvider
+        theme={theme}>
         <App />
-      {/* </ThemeProvider> */}
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

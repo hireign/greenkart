@@ -1,9 +1,7 @@
 # Assignment 2
 
-
-
 * *Date Created*: 09 JUN 2020
-* *Last Modification Date*: 14 JUN 2020
+* *Last Modification Date*: 15 JUN 2020
 
 ## Authors
 [Shubham Suri](sh385209@dal.ca) - Maintainer
@@ -62,10 +60,42 @@ Each component's example page was refered to for syntax, attributes and common p
 Components usage and attributes have a standard way.
 UI components are used throughout the application(almost all files in src folder), there are css customizations for some components and are done through classes attribute.
 * Hirarchy and combination of these components has been done independently.
+* Author attributes not available
+```
+        <TextField
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <SearchIcon color="inherit" />
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
+``` 
+
+```
+ <Snackbar open={open} autoHideDuration={10000} onClose={handleClose}>
+        <MuiAlert elevation={6} variant="filled" onClose={handleClose} severity="success">
+          Product is added to cart! next page is currently unavailable!
+        </MuiAlert>
+      </Snackbar>
+```
 
 ### https://reacttraining.com/react-router/web/guides/quick-start
 This website has refered to implement router routes in "App.js" file.
-
+```
+  <Switch>
+          <Route path="/product">
+            <Product />
+          </Route>
+          <Route path="/rating">
+            <Review />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+```
 ## Acknowledgments
 
 * Hat tip to developers of react-create-app
@@ -97,6 +127,11 @@ Website is will be accessed by largely non-technical people.
 follows conventions.
 7. Typography plays a powerfull role, "Roboto" by google is used as font due to its clarity.
 8. Invalid routes are taken to HomePage.
+9. Whole website can be navigated using only keyboard (tab to shift focus).
 
 ## W3c compliant
 [medium article](https://medium.com/@matwankarmalay/create-react-app-ie11-script1002-syntax-error-how-to-get-rid-of-it-d70000c53ddf) for adding pollyfill to deliver intended experience in all browsers.
+
+## Images
+1. [Background](https://www.pexels.com/photo/background-blade-blur-bokeh-352096/)
+2. [Plant in cards](https://www.pinterest.ca/pin/352125264596695635/)
