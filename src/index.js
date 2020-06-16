@@ -8,11 +8,13 @@ import "react-app-polyfill/ie11";
 import "react-app-polyfill/stable";
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import green from '@material-ui/core/colors/green';
+import { purple } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
   palette: {
     primary: green,
-  }
+    third: purple
+  },
 });
 
 ReactDOM.render(

@@ -16,16 +16,9 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     paddingLeft: theme.spacing(2),
-    maxWidth: "80%",
+    paddingRight: theme.spacing(2),
+    width: "90%",
     height: "auto",
-    align: 'right',
-    color: theme.palette.text.secondary,
-  },
-  imageProduct: {
-    paddingLeft: theme.spacing(2),
-    maxWidth: "80%",
-    height: "auto",
-    align: 'right',
     color: theme.palette.text.secondary,
   }
 }));
@@ -33,13 +26,13 @@ const useStyles = makeStyles((theme) => ({
 function Home({ history }) {
   const classes = useStyles()
   return <React.Fragment>
-    <Card classes={classes} spacing={5}>
+    <Card classes={{ root: classes.root }} spacing={5}>
       <CardContent>
-        <Grid container spacing={3} alignItems="center">
-          <Grid item xs={12} md={5}>
+        <Grid container spacing={3} alignItems="center" alignContent="center" justify="center">
+          <Grid item xs={6} md={4}>
             <img className={classes.image} src={PlantImage} alt="Plant"></img>
           </Grid>
-          <Grid item xs={12} md={7}>
+          <Grid item xs={8} md={8}>
             <Typography variant="h4" color="primary"> Promo </Typography>
             <Typography variant="body2">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non faucibus odio, vel finibus elit. Nunc convallis est maximus sollicitudin cursus. Curabitur sed dolor velit. Nulla augue libero, pulvinar Integer at commodo metus. Fusce pharetra sit amet justo.
@@ -48,31 +41,30 @@ function Home({ history }) {
         </Grid>
       </CardContent>
     </Card>
-    <Card classes={classes} spacing={5}>
+    <Card classes={{ root: classes.root }} spacing={5}>
       <CardContent>
-        <Grid container spacing={3} alignItems="center">
-          <Grid item xs={12} md={7}>
+        <Grid container spacing={3} alignItems="center" alignContent="center" justify="center">
+          <Grid item xs={8} md={8}>
             <Typography variant="h4" color="primary"> Promo </Typography>
             <Typography variant="body2">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non faucibus odio, vel finibus elit. Nunc convallis est maximus sollicitudin cursus. Curabitur sed dolor velit. Nulla augue libero, pulvinar Integer at commodo metus. Fusce pharetra sit amet justo.
                     </Typography>
           </Grid>
-          <Grid item xs={12} md={5}>
+          <Grid item xs={6} md={4}>
             <img className={classes.image} src={PlantImage} alt="Plant"></img>
           </Grid>
         </Grid>
       </CardContent>
     </Card>
-    <Grid container justify="space-around" spacing={5}>
+    <Grid container justify="space-around" spacing={3}>
       {recommenededItems(classes, history)}
     </Grid>
-
   </React.Fragment>
 }
 
 function recommenededItems(classes, history) {
   return <React.Fragment>
-    <Grid item xs={11} ><Typography variant="h5" in>Recommended products</Typography></Grid>
+    <Grid item xs={11} ><div padding="20px"><Typography variant="h5" >Recommended products</Typography></div></Grid>
     {similarItem(classes, history)}
     {similarItem(classes, history)}
     {similarItem(classes, history)}
@@ -81,17 +73,25 @@ function recommenededItems(classes, history) {
 }
 
 function similarItem(classes, history) {
-  return <Grid item xs={5} md={3}>
-    <Paper classes={classes.paper}>
-      <Grid container justify="center" direction="column" alignItems="center" spacing={1}>
-        <img className={classes.image} src={PlantImage} alt="Plant"></img>
-        <Box>Product Name</Box>
-        <Box> $Price</Box>
+  return <Grid item xs={8} sm={5} md={3}>
+    <Paper classes={{ root: classes.paper }}>
+      <Grid container justify="center" direction="column" alignItems="center" spacing={2}>
+        <Grid item>
+          <img className={classes.image} src={PlantImage} alt="Plant"></img>
+        </Grid>
+        <Grid item>
+          <Box>Product Name</Box>
+        </Grid>
+        <Grid item>
+          <Box> $Price</Box>
+        </Grid>
+        <Grid item>
           <Box>
-            <Button color="primary" onClick={() => history.push('/product')}>
+            <Button color="primary" variant="contained" onClick={() => history.push('/product')}>
               Quick checkout
         </Button>
           </Box>
+        </Grid>
       </Grid>
     </Paper>
   </Grid>

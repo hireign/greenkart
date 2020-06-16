@@ -17,9 +17,14 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'left',
   },
+  subPaper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+  },
   image: {
     paddingLeft: theme.spacing(2),
-    maxWidth: "80%",
+    paddingRight: theme.spacing(2),
+    maxWidth: "90%",
     height: "auto",
     align: 'right',
   },
@@ -48,8 +53,10 @@ export default function () {
           <Typography variant="h4" color="primary"> Product Name </Typography>
           <Link to="/rating">
             <Box component="div" mb={3} borderColor="transparent">
+              <Grid alignItem="center" container justify="flex-start">
               <Rating name="read-only" value={4} readOnly />
               <Typography variant="body1" component="span" className={classes.ratingText}>20 ratings and 12 reviews</Typography>
+              </Grid>
             </Box>
           </Link>
           <Typography variant="h5"> Price: 10$</Typography>
@@ -69,7 +76,7 @@ export default function () {
           Product is added to cart! next page is currently unavailable!
         </MuiAlert>
       </Snackbar>
-      <Grid item xs={12}><Typography variant="h5" in>Similar Items</Typography></Grid>
+      <Grid item xs={12}><Typography variant="h5">Similar Items</Typography></Grid>
       {similarItem(classes)}
       {similarItem(classes)}
       {similarItem(classes)}
@@ -79,11 +86,18 @@ export default function () {
 }
 
 function similarItem(classes) {
-  return <Grid item xs={6} md={3}>
-    <Paper classes={classes.paper}>
-      <Grid container justify="center" direction="column" alignItems="center">
-        <img className={classes.image} src={PlantImage} alt="Plant"></img>
-        <Box>Product Name</Box>
+  return <Grid item xs={8} sm={5} md={3}>
+    <Paper classes={{ root: classes.subPaper }}>
+      <Grid container justify="center" direction="column" alignItems="center" spacing={2}>
+        <Grid item>
+          <img className={classes.image} src={PlantImage} alt="Plant"></img>
+        </Grid>
+        <Grid item>
+          <Box>Product Name</Box>
+        </Grid>
+        <Grid item>
+          <Box> $25</Box>
+        </Grid>
       </Grid>
     </Paper>
   </Grid>

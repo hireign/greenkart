@@ -61,6 +61,8 @@ Components usage and attributes have a standard way.
 UI components are used throughout the application(almost all files in src folder), there are css customizations for some components and are done through classes attribute.
 * Hirarchy and combination of these components has been done independently.
 * Author attributes not available
+  
+Following snippets of code was used from material-ui documentaion, these snippets are basic working of components and have been modified according to need in application.
 ```
         <TextField
                         InputProps={{
@@ -77,6 +79,23 @@ UI components are used throughout the application(almost all files in src folder
  <Snackbar open={open} autoHideDuration={10000} onClose={handleClose}>
         <MuiAlert elevation={6} variant="filled" onClose={handleClose} severity="success">
           Product is added to cart! next page is currently unavailable!
+        </MuiAlert>
+      </Snackbar>
+```
+
+```
+      const [open, setOpen] = React.useState(false);
+    const handleClick = () => {
+      setOpen(true);
+    };
+    const handleClose = (event, reason) => {
+  
+      setOpen(false);
+    };
+
+    <Snackbar open={open} autoHideDuration={10000} onClose={handleClose}>
+        <MuiAlert elevation={6} variant="filled" onClose={handleClose} severity="success">
+          Next page is currently unavailable!
         </MuiAlert>
       </Snackbar>
 ```
