@@ -36,7 +36,7 @@ function reviewCard(classes, name = "Lilly", rating = 4) {
         <Hidden xsDown>
             <Grid item xs={4} sm={2}>
                 <Paper>
-                    <Grid container item direction="column" justify="space-around" alignItems="center" spacing={1}>
+                    <Grid container item direction="column" justify="space-around" alignItems="center">
                         <Grid item>
                             <IconButton >
                                 <ThumbUp color="primary"></ThumbUp>
