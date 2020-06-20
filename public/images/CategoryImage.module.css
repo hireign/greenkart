@@ -1,0 +1,45 @@
+.CategoryImage{
+    width: 300px;
+    height: 300px;
+    align-items: center;
+    color: white;
+    text-align: center;
+    margin: 30px;
+    box-shadow: 0 5px 8px black;
+    border-radius: 20px;
+}
+
+.CategoryImage:hover {
+    transform: scale(1.1);
+    transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+}
+.CategoryImage button {
+    display: inherit;
+    margin: 32%;
+    padding: 20px 30px;
+    background-color: black;
+    color: white;
+    opacity: 0.7;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.CategoryImage button:hover {
+
+    background-color: white;
+    color: black;
+    font-size: large;
+    border-radius: 2px solid black;
+
+}
+
+
+@media (max-width:500px){
+    .CategoryImage{
+        width: 400px;
+        height: 300px;
+        margin: 20px 10px;
+        box-shadow: 0 5px 8px black;
+        border-radius: 20px;
+    }
+}

@@ -1,0 +1,14 @@
+.categoryList{
+  width: 99%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+@media (min-width:500px){
+  .categoryList{
+    width: 100%;
+
+    margin: 10px;
+  }
+}

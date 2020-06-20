@@ -7,10 +7,15 @@ import Review from './pages/ReviewsComponent'
 import { Route } from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 import AppBarSearch from "./components/NavbarComponent";
+<<<<<<< Updated upstream
 import BImage from "./assets/background2.jpg"
 import UserProfile from "./pages/UserProfile/UserProfile";
 import Payment from "./pages/Payment/Payment";
 import OrderSummary from "./pages/OrderSummary/OrderSummary";
+=======
+import BImage from "./assets/background2.jpg";
+import HomePage from './pages/HomePage/homePage';
+>>>>>>> Stashed changes
 
 class App extends React.Component {
 
@@ -20,7 +25,7 @@ class App extends React.Component {
       this.state = {
         loggedIn: false
       }
-      sessionStorage.setItem("loggedIn", false);
+      sessionStorage.setItem("loggedIn", true);
     }
     else {
       this.state = {
@@ -40,23 +45,21 @@ class App extends React.Component {
         <img src={BImage} className="imageBackground" alt="background"></img>
         <AppBarSearch />
         <Switch>
-          <Route path="/user">
-            <UserProfile />
-          </Route>
-          <Route path="/payment">
-            <Payment />
-          </Route>
-          <Route path="/quick-buy/:productId">
-            <OrderSummary />
-          </Route>
+        <Route>
+        <Route exact path='/' component={HomePage} />
+        <Route path="/user">
+        <UserProfile />
+      </Route>
+      
+      <Route path="/quick-buy/:productId">
+        <OrderSummary />
+      </Route>
           <Route path="/product">
             <Product />
           </Route>
           <Route path="/rating">
             <Review />
-          </Route>
-          <Route path="/">
-            <Home />
+            </Route>
           </Route>
         </Switch>
       </div>

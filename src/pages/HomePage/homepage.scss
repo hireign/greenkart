@@ -1,0 +1,13 @@
+.HomePage {
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 80px;
+}
+
+@media (max-width:500px){
+    .HomePage{
+        padding: 10px;
+        margin-right: 25px;
+
+    }
+}
