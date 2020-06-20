@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Grid } from '@material-ui/core'
 import { getAllOrders } from "../../services/OrderService";
-import { getAddressById, getAllAddresses } from "../../service/AddressService";
+import { getAddressById, getAllAddresses } from "../../services/AddressService";
 import PastOrders from '../../components/PastOrders';
 import UserGreetingsCard from "../../components/UserGreetingsCard";
 import UserNavSection from "../../components/UserNavSection";

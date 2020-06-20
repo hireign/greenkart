@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import PlantImage from '../assets/plant.jpg';
 import Rating from '@material-ui/lab/Rating';
-import { Box, Typography, Button, Snackbar, Card } from '@material-ui/core';
+import { Box, Typography, Button, Snackbar } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import MuiAlert from '@material-ui/lab/Alert';
 

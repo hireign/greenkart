@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Grid, Typography } from "@material-ui/core";
 import AddressCard from "./AddressCard";
 import PropTypes from 'prop-types'
-import { saveOrUpdateAddress, deleteAddressById } from "../service/AddressService";
+import { saveOrUpdateAddress, deleteAddressById } from "../services/AddressService";
 import UpdateAddressDialog from "./UpdateAddressDialog";
 import ConfirmationDialog from './ConfirmationDialog';
 

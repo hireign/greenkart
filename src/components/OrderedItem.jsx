@@ -5,7 +5,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Grid from "@material-ui/core/Grid";
 import PropTypes from 'prop-types'
-import { getProductById } from '../service/ProductService'
+import { getProductById } from '../services/ProductService'
 
 function OrderedItem(props) {
 
