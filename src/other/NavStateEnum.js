@@ -1,0 +1,9 @@
+const PAST_ORDERS = "PAST_ORDERS"
+const LOGOUT = "LOGOUT"
+const MANAGE_ADDRESS = "MANAGE_ADDRESS"
+
+export {
+    PAST_ORDERS,
+    LOGOUT,
+    MANAGE_ADDRESS
+}
