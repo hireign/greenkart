@@ -1,0 +1,10 @@
+.navbar .form-inline button{
+    margin-right: 0;
+}
+.navbar .form-inline input{
+    margin-right: 0;
+}
+
+.navbar .collapse{
+    margin: 0;
+}
