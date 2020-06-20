@@ -34,7 +34,7 @@ class HomePage extends React.Component {
                     heading:'PLANTS'
                 },
                 {
-                    id: 5,
+                    id: 6,
                     img:'/images/Pest_control.jpg',
                     heading:'PEST CONTROL'
                 }
@@ -43,7 +43,6 @@ class HomePage extends React.Component {
     }
     render(){
 
-        console.log('Categories:'+this.state.categories);
         return( 
             <div className="HomePage">
                 <CategoryCardComponentList data = {this.state.categories }></CategoryCardComponentList>

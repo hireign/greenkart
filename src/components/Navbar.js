@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../images/GreenKartLogo_transparent.png';
+import logo from '../assets/GreenKartLogo_transparent.png';
 import './Navbar.css'
 
 function Navbar(){
@@ -53,7 +53,7 @@ function Navbar(){
             </div>
           </li>
         </ul>
-        <a href="#" style={{color: "black"}}><i class="fas fa-shopping-cart fa-2x" style={{width:200}}></i></a>
+        <a href="#" style={{color: "black"}}><i className="fas fa-shopping-cart fa-2x" style={{width:200}}></i></a>
       </div>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>

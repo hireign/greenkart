@@ -3,7 +3,6 @@ import './CategoryCardComponentList.scss';
 import  CategoryImage  from '../CategoryComponent/CategoryImage';
 
 function CategoryCardComponentList(props) {
-    console.log('CategoryCardComponentList :'+ JSON.stringify(props.data));
     return  (
         <div  className='categoryList '>
             {
