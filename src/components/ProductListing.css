@@ -1,0 +1,8 @@
+.checked {
+    color: orange;
+  }
+
+  .productlisting:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+  }
