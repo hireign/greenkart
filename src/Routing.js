@@ -1,7 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import React from 'react';
-import Login from "./pages/LoginComponent";
-import Home from './pages/HomeComponent';
+import LoginComponent from "./components/SignInComponent/LoginComponent";
 import Product from './pages/ProductComponent'
 import Payment from "./pages/Payment/Payment";
 import Review from './pages/ReviewsComponent'
