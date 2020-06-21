@@ -8,11 +8,11 @@ import UserProfile from "./pages/UserProfile/UserProfile";
 import OrderSummary from "./pages/OrderSummary/OrderSummary";
 import SearchPage from './pages/SearchLandingPage';
 import HomePage from './pages/HomePage/homePage';
+import ContactDetails from './pages/ContactDetail';
 
 export default function () {
 
   return <Switch>
-    <Route>
       <Route exact path='/' component={HomePage} />
       <Route exact path='/signin' component={LoginComponent} />
       <Route path="/user">
@@ -33,7 +33,9 @@ export default function () {
       <Route path="/search">
         <SearchPage />
       </Route>
-    </Route>
+      <Route path="/contact">
+        <ContactDetails />
+      </Route>
   </Switch>
 
 }

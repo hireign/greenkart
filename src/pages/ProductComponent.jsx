@@ -2,12 +2,12 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import PlantImage from '../assets/plant.jpg';
+import PlantImage from '../assets/img2.jpg';
 import Rating from '@material-ui/lab/Rating';
 import { Box, Typography, Button, Snackbar } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import MuiAlert from '@material-ui/lab/Alert';
-
+import Comment from '../components/Comment';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,7 +49,6 @@ export default function () {
         <img className={classes.image} src={PlantImage} alt="Plant" />
       </Grid>
       <Grid item xs={12} md={7}>
-        <Paper className={classes.paper}>
           <Typography variant="h4" color="primary"> Product Name </Typography>
           <Link to="/rating">
             <Box component="div" mb={3} borderColor="transparent">
@@ -60,16 +59,17 @@ export default function () {
             </Box>
           </Link>
           <Typography variant="h5"> Price: 10$</Typography>
+          <Typography variant="h6"> Description</Typography>
           <Typography variant="body2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non faucibus odio, vel finibus elit. Nunc convallis est maximus sollicitudin cursus. Curabitur sed dolor velit. Nulla augue libero, pulvinar Integer at commodo metus. Fusce pharetra sit amet justo.
                     </Typography>
-          <Grid container spacing={2}>
+                    <br/>
+          <Grid container spacing={4}>
             <Grid item><Button variant="contained" color="primary" onClick={handleClick}>Add to cart</Button>
             </Grid>
             <Grid item><Button variant="contained" color="primary" onClick={handleClick}>Buy</Button>
             </Grid>
           </Grid>
-        </Paper>
       </Grid>
       <Snackbar open={open} autoHideDuration={10000} onClose={handleClose}>
         <MuiAlert elevation={6} variant="filled" onClose={handleClose} severity="success">
@@ -82,6 +82,7 @@ export default function () {
       {similarItem(classes)}
       {similarItem(classes)}
     </Grid>
+    <Comment/>
   </div>
 }
 
