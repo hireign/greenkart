@@ -1,0 +1,11 @@
+
+.login{
+   margin:auto;
+} 
+
+@media only screen and (max-width: 991px) {
+      .login{
+          margin-left: 70px;
+          margin-right: 20px; 
+      }  
+}
