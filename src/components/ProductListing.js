@@ -1,6 +1,6 @@
 import React from 'react';
 import './ProductListing.css';
-import productimg from '../images/img2.jpg';
+import productimg from '../assets/img2.jpg';
 
 
 function ProductListing(){

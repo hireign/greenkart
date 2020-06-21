@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ProductListing from '../components/ProductListing';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import './HomePage.css'
+import './SearchLandingPage.css'
 
 class SearchLandingPage extends Component{
    
