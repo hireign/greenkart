@@ -54,6 +54,7 @@ function Navbar() {
           </div>
         </li>
       </ul>
+      <Link to="/quick-buy/1"><button>Cart</button></Link>
       <a href="#" style={{ color: "black" }}><i className="fas fa-shopping-cart fa-2x" style={{ width: 200 }}></i></a>
     </div>
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
