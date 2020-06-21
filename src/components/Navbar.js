@@ -50,7 +50,7 @@ function Navbar() {
             My Account
             </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a className="dropdown-item" href="login">Login</a>
+          <Link className="dropdown-item" to='/signin'>LOGIN</Link>
           </div>
         </li>
       </ul>

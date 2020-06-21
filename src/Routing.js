@@ -15,6 +15,7 @@ export default function () {
   return <Switch>
     <Route>
       <Route exact path='/' component={HomePage} />
+      <Route exact path='/signin' component={LoginComponent} />
       <Route path="/user">
         <UserProfile />
       </Route>
