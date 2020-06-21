@@ -4,20 +4,27 @@ import RouteTracker from "./Routing";
 import NavBar from "./components/Navbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
+import { OrderContext } from "./contexts/OrderContext";
 
 class App extends React.Component {
+
+  setOrder = order => {
+    this.setState(prevState => ({ order }));
+  }
 
   constructor() {
     super();
     if (sessionStorage.getItem("loggedIn") == null || sessionStorage.getItem("loggedIn") === "false") {
       this.state = {
-        loggedIn: false
+        loggedIn: false,
+        order: {}
       }
       sessionStorage.setItem("loggedIn", true);
     }
     else {
       this.state = {
-        loggedIn: true
+        loggedIn: true,
+        order: {}
       }
     }
   }
@@ -28,10 +35,14 @@ class App extends React.Component {
   }
 
   render() {
+    let { order } = this.state;
+    let { setOrder } = this;
     return (<div>
-      <NavBar />
-      <RouteTracker/>
-          </div>
+      <OrderContext.Provider value={{order, setOrder}}>
+        <NavBar />
+        <RouteTracker />
+      </OrderContext.Provider>
+    </div>
     );
   }
 }

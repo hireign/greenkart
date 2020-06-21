@@ -14,7 +14,8 @@ const useStyles = makeStyles({
     },
     backDropButtons: {
         marginTop: "50px",
-        height: "40px"
+        height: "40px",
+        marginLeft: "25%"
     }
 })
 
