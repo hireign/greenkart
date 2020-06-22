@@ -21,7 +21,7 @@ export default function () {
       <Route path="/payment">
         <Payment />
       </Route>
-      <Route path="/quick-buy/:productId">
+      <Route path="/cart">
         <OrderSummary />
       </Route>
       <Route path="/product">

@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../assets/GreenKartLogo_transparent.png';
 import './Navbar.css'
+import  Cart from '../photos/supermarket.svg';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
@@ -45,7 +46,7 @@ function Navbar() {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
       <ul className="navbar-nav mr-auto">
-        <li className="nav-item dropdown">
+        <li className="nav-item dropdown ml-4 mt-3">
           <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             My Account
             </a>
@@ -53,9 +54,13 @@ function Navbar() {
           <Link className="dropdown-item" to='/signin'>LOGIN</Link>
           </div>
         </li>
+        <li className="nav-item">
+        <Link className="navbar-brand  ml-5 mt-2" to='/cart'><img src={Cart} alt="Cart" ></img></Link>
+      </li>
+      <li className="nav-item">
+      <Link className="nav-link  text-uppercase ml-3 mt-3  mr-2" to='/contact'>CONTACT US</Link>
+      </li>
       </ul>
-      <Link to="/quick-buy/1"><button>Cart</button></Link>
-      <a href="#" style={{ color: "black" }}><i className="fas fa-shopping-cart fa-2x" style={{ width: 200 }}></i></a>
     </div>
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>

@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 function OrderSummary(props) {
 
     let { productId } = useParams()
+    productId = 1;
     let history = useHistory();
 
     const [product, setProduct] = useState({

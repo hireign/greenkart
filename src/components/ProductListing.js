@@ -1,191 +1,26 @@
 import React from 'react';
 import './ProductListing.css';
 import productimg from '../assets/img2.jpg';
+import {Link} from 'react-router-dom';
 
-
-function ProductListing(){
-    return <div class="row row-cols-1 row-cols-md-4">
+function ProductListing(props){
+    return( 
   <div class="col mb-4 productlisting">
     <div class="card h-100">
       <img src={productimg} class="card-img-top" alt="..."/>
       <div class="card-body">
-        <h5 class="card-title">Moon Cactus</h5>
+        <h5 class="card-title">{props.productName}</h5>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star"></span>
         <span class="fa fa-star"></span>
         <br/>
-        <h3 class="">$9.99</h3>
+        <h3 class="">${props.productPrice}</h3>
       </div>
     </div>
   </div>
-  <div class="col mb-4 productlisting">
-    <div class="card h-100">
-      <img src={productimg} class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Moon Cactus</h5>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <br/>
-        <h3 class="">$9.99</h3>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4 productlisting">
-    <div class="card h-100">
-      <img src={productimg} class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Moon Cactus</h5>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <br/>
-        <h3 class="">$9.99</h3>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4 productlisting">
-    <div class="card h-100">
-      <img src={productimg} class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Moon Cactus</h5>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <br/>
-        <h3 class="">$9.99</h3>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4 productlisting">
-    <div class="card h-100">
-      <img src={productimg} class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Moon Cactus</h5>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <br/>
-        <h3 class="">$9.99</h3>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4 productlisting">
-    <div class="card h-100">
-      <img src={productimg} class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Moon Cactus</h5>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <br/>
-        <h3 class="">$9.99</h3>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4 productlisting">
-    <div class="card h-100">
-      <img src={productimg} class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Moon Cactus</h5>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <br/>
-        <h3 class="">$9.99</h3>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4 productlisting">
-    <div class="card h-100">
-      <img src={productimg} class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Moon Cactus</h5>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <br/>
-        <h3 class="">$9.99</h3>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4 productlisting">
-    <div class="card h-100">
-      <img src={productimg} class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Moon Cactus</h5>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <br/>
-        <h3 class="">$9.99</h3>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4 productlisting">
-    <div class="card h-100">
-      <img src={productimg} class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Moon Cactus</h5>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <br/>
-        <h3 class="">$9.99</h3>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4 productlisting">
-    <div class="card h-100">
-      <img src={productimg} class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Moon Cactus</h5>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <br/>
-        <h3 class="">$9.99</h3>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4 productlisting">
-    <div class="card h-100">
-      <img src={productimg} class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Moon Cactus</h5>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <br/>
-        <h3 class="">$9.99</h3>
-      </div>
-    </div>
-  </div>
-</div>
+)
 }
 
 export default ProductListing;
