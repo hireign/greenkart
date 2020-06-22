@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProductListing from '../components/ProductListing';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import './SearchLandingPage.css';
+import {Link} from 'react-router-dom';
 
 class SearchLandingPage extends Component{
    constructor(){
