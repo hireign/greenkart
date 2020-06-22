@@ -8,12 +8,12 @@ function UserGreetingsCard(props) {
             <Card>
                 <Grid container spacing={2} style={{ padding: "10px" }}>
                     <Grid item md={2} lg={1}>
-                        <Avatar src={props.image || "https://www.amanvishnani.com/images/forweb.jpg"} alt="Aman">A</Avatar>
+                        <Avatar src={props.image || "https://robohash.org/5"} alt="Aman">A</Avatar>
                     </Grid>
                     <Grid item md={1}></Grid>
                     <Grid item md={7} lg={8}>
                         <Typography variant="subtitle2" align="left">Hello,</Typography>
-                        <Typography variant="body1" align="left">{props.name || "Aman Vishnani"}</Typography>
+                        <Typography variant="body1" align="left">{props.name || "User Name"}</Typography>
                     </Grid>
                 </Grid>
             </Card>

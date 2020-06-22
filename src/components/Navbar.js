@@ -52,6 +52,7 @@ function Navbar() {
             </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
           <Link className="dropdown-item" to='/signin'>LOGIN</Link>
+          <Link className="dropdown-item" to='/user'>User Management</Link>
           </div>
         </li>
         <li className="nav-item">
