@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Rating from '@material-ui/lab/Rating';
-import { Typography, Hidden, IconButton } from '@material-ui/core';
+import { Typography, Hidden, IconButton, Button } from '@material-ui/core';
 import { AccountCircle, ThumbDown, ThumbUp } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) => ({
@@ -19,12 +19,17 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'left',
         color: theme.palette.text.secondary,
     },
+    button: {
+        marginLeft: "20px"
+    }
 }));
 
 export default function () {
     const classes = useStyles()
 
     return <div className={classes.root} >
+        <Button variant="contained" color="primary" classes={{ root: classes.button }}>Create a review</Button>
+        {reviewCard(classes)}
         {reviewCard(classes)}
         {reviewCard(classes)}
         {reviewCard(classes)}
