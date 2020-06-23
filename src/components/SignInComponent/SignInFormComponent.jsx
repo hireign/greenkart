@@ -4,7 +4,7 @@ import SignInInputComponent from './SignInInputComponent';
 const SignInFormComponent = (props) =>{
     return(
         <form onSubmit={props.onFormSubmit}>
-        <SignInInputComponent imgType="fa fa-user " inputType="email" placeholder="Email/Username" onInputChange={props.onEmailChange} ></SignInInputComponent>
+        <SignInInputComponent imgType="fa fa-user " inputType="email" placeholder="Email" onInputChange={props.onEmailChange} ></SignInInputComponent>
         <SignInInputComponent imgType="fa fa-lock " inputType="password" placeholder="Password" onInputChange={props.onPasswordChange}></SignInInputComponent>
         <div className="d-flex flex-row mt-2 ml-2">
         <button type='submit' className="btn btn-success ">LOGIN</button>

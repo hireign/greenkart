@@ -5,6 +5,7 @@ import NavBar from "./components/Navbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import { OrderContext } from "./contexts/OrderContext";
+import Footer from './components/FooterComponent/FooterComponent';
 
 
 class App extends React.Component {
@@ -42,6 +43,7 @@ class App extends React.Component {
       <OrderContext.Provider value={{order, setOrder}}>
         <NavBar />
         <RouteTracker />
+        <Footer></Footer>
       </OrderContext.Provider>
     </div>
     );

@@ -62,6 +62,8 @@ function UserProfile(props) {
                     {currentTab === LOGOUT && "Session Will be logged out"}
                 </Grid>
             </Grid>
+            <br></br>
+            <br></br><br></br><br></br><br></br>
         </div>
     )
 }
