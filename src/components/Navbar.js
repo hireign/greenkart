@@ -11,28 +11,7 @@ function Navbar() {
       <ul className="navbar-nav mr-auto">
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Seeds
-          </a>
-          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-          </div>
-        </li>
-        <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Plants
-          </a>
-          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-          </div>
-        </li>
-        <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Tools
-          </a>
-          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-          </div>
-        </li>
-        <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Supplies
+            Products
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
           </div>
@@ -43,7 +22,7 @@ function Navbar() {
       <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
       <Link to="/search"><button className="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button></Link>
     </form>
-    <div className="collapse navbar-collapse"  id="navbarSupportedContent">
+    <div className="collapse navbar-collapse"  id="navbarSupportedContent" style={{justifyContent: "flex-end", marginTop: "-6px"}}>
       <ul className="navbar-nav ">
         <li className="nav-item">
           <Link className="navbar-brand  ml-5 mt-2" to='/cart'>
@@ -52,8 +31,8 @@ function Navbar() {
         </li>
         <li className="nav-item">
         </li>
-        <li className="nav-item dropdown ml-4 mt-3">
-          <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li className="nav-item dropdown ml-4 mt-3" >
+          <a className="nav-link dropdown-toggle text-white" style={{marginTop: "-5px"}} href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             My Account
             </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
