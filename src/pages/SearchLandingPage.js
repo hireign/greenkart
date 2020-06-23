@@ -39,6 +39,11 @@ class SearchLandingPage extends Component{
                 "productName": 'Moon Cactus',
                 "productPrice": '9.99',
                 "id":7
+             },
+             {
+                "productName": 'Moon Cactus',
+                "productPrice": '9.99',
+                "id":8
              }
            ]
        }
@@ -67,15 +72,14 @@ class SearchLandingPage extends Component{
                             </Formik>
                     </div>
                     <div className="productListing">
-                    <div class="row row-cols-1 row-cols-md-4">
-                        {
-                            this.state.products.map((product) => (
-                                <ProductListing productName={product.productName} productPrice = {product.productPrice}></ProductListing>
-                            ))
-                        }
-                        <ProductListing/>
+                        <div class="row row-cols-1 row-cols-md-4">
+                            {
+                                this.state.products.map((product) => (
+                                    <ProductListing productName={product.productName} productPrice = {product.productPrice}></ProductListing>
+                                ))
+                            }
+                            </div>
                         </div>
-                    </div>
                 </div>
             </>
         );
