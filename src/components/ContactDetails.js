@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import "bootstrap/dist/css/bootstrap.css";
 
 export default class ContactDetail extends Component {
@@ -62,7 +61,7 @@ export default class ContactDetail extends Component {
                   required
                   placeholder="Email Address"
                   style={{
-                    width: "47%",
+                    width: "50%",
                     backgroundColor: "#f4f7f9",
                     borderRadius: "2px",
                     padding: "10px",
@@ -181,7 +180,6 @@ export default class ContactDetail extends Component {
             <div class="col-lg-6 col-md-6 col-sm-12 col-xm-12">
               <div class="responsive">
                 <br />
-
                 <iframe
                   src="https://maps.google.com/maps?q=1645%20Barrington%20St%20Halifax%2C%20NS%20B3J%201Z9&t=&z=13&ie=UTF8&iwloc=&output=embed"
                   width="100%"
