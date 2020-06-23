@@ -7,9 +7,7 @@ const SignInFormComponent = (props) =>{
         <SignInInputComponent imgType="fa fa-user " inputType="email" placeholder="Email" onInputChange={props.onEmailChange} ></SignInInputComponent>
         <SignInInputComponent imgType="fa fa-lock " inputType="password" placeholder="Password" onInputChange={props.onPasswordChange}></SignInInputComponent>
         <div className="d-flex flex-row mt-2 ml-2">
-        <button type='submit' className="btn btn-success ">LOGIN</button>
-    
-        <button type='submit' className="btn btn-primary ml-4" text-right>GOOGLE SIGNIN</button>
+        <button type='submit' className="btn btn-light ">LOGIN</button>
         </div>
         <div  style={{"padding":"10px"}}>
         <span  onClick={()=>alert('Forgot Password Clicked')} style={{"color": "#e8226b",

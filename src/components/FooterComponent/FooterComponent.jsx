@@ -4,8 +4,8 @@ import FooterContentComponent from './FooterContentComponet';
 
 const Footer = () =>{
     return(
-        <div className="footer-middle mt-5 bg-dark" >
-        <div  style={{"height": "100%"}} className="container" >
+        <div className="footer-middle  bg-dark" >
+        <div   className="container" >
         <div className="row">
        <FooterContentComponent></FooterContentComponent>
             </div>

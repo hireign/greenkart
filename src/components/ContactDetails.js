@@ -9,11 +9,10 @@ export default class ContactDetail extends Component {
         <div
           class="container-fluid"
           style={{
-            paddingTop: " 10px",
+            paddingTop: " 25px",
 
-            paddingBottom: "20px",
-            backgroundColor: "#00979d",
-            color: "white",
+            paddingBottom: "10px",
+            color: "black",
           }}
         >
           <div class="row">
@@ -83,7 +82,6 @@ export default class ContactDetail extends Component {
                   title="Number"
                   required
                   class="from-control"
-                  placeholder="+1"
                   style={{
                     width: "50%",
                     backgroundColor: "#f4f7f9",
@@ -159,7 +157,7 @@ export default class ContactDetail extends Component {
                   class="from-control"
                   value="Submit"
                   style={{
-                    backgroundColor: " #00979d",
+                    backgroundColor: "black",
                     color: "white",
                     transition: "0.8s",
                     lineHeight: "50%",
@@ -187,7 +185,7 @@ export default class ContactDetail extends Component {
                 <iframe
                   src="https://maps.google.com/maps?q=1645%20Barrington%20St%20Halifax%2C%20NS%20B3J%201Z9&t=&z=13&ie=UTF8&iwloc=&output=embed"
                   width="100%"
-                  height="330px"
+                  height="350px"
                   frameborder="0"
                   style={{ border: "0" }}
                   allowfullscreen

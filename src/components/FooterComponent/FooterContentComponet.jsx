@@ -6,7 +6,6 @@ const FooterContentComponent = () =>{
 return(
     <div className="col-md-3 col-sm-6">
     <h4 className="text-white">GREENKART</h4>
-    <UnorderListComponent data={listData}></UnorderListComponent>
         </div>
 )
 };
