@@ -7,10 +7,10 @@ const Footer = () =>{
         <div className="footer-middle  bg-dark" >
         <div   className="container" >
         <div className="row">
-       <FooterContentComponent></FooterContentComponent>
+      
             </div>
             <div className=".footer-bottom ">
-                <p className="text-center text-white">
+                <p className="text-center text-white mt-2">
                     &copy; GreenKart - All Right Served
                 </p>
             </div>
