@@ -1,9 +1,15 @@
 .footer-middle{
     background: #B8B4B3;
     color: FEFBFA;
-    padding-top:8px;
-    padding-left:1px;
-    padding-bottom:8px;
+   
+    position: fixed;
+  left: 
+  0;
+  bottom: 0;
+  width: 100%;  
+  background-color: red;
+  color: white;
+  text-align: center;
 }
 
 .footer-bottom{
