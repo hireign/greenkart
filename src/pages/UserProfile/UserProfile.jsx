@@ -63,7 +63,7 @@ function UserProfile(props) {
                 </Grid>
             </Grid>
             <br></br>
-            <br></br><br></br><br></br><br></br>
+            <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
         </div>
     )
 }
