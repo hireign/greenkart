@@ -40,10 +40,12 @@ class App extends React.Component {
     let { order } = this.state;
     let { setOrder } = this;
     return (<div>
-      <OrderContext.Provider value={{order, setOrder}}>
-        <NavBar />
-        <RouteTracker />
-        <Footer></Footer>
+      <OrderContext.Provider value={{ order, setOrder }}>
+        <Grid row>
+          <NavBar />
+          <RouteTracker />
+          <Footer></Footer>
+        </Grid>
       </OrderContext.Provider>
     </div>
     );

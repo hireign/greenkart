@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-
+import FAQ from './FAQ'
+import { Grid } from "@material-ui/core";
 export default class ContactDetail extends Component {
   render() {
     return (
@@ -191,6 +192,27 @@ export default class ContactDetail extends Component {
                 <br />
               </div>
             </div>
+            <h1>FAQ</h1>
+            <br/>
+            <br/>
+            <Grid container direction="column" style={{root: {width: "100%"}}} spacing={1}>
+              <Grid item xs-12>
+              <FAQ></FAQ>
+                </Grid>
+                <Grid item xs-12>
+              <FAQ></FAQ>
+                </Grid>
+                <Grid item xs-12>
+              <FAQ></FAQ>
+                </Grid>
+                <Grid item xs-12>
+              <FAQ></FAQ>
+                </Grid>
+                <Grid item xs-12>
+              <FAQ></FAQ>
+                </Grid>
+                
+            </Grid>
           </div>
         </div>
       </div>
