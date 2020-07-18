@@ -1,17 +1,17 @@
-const express = require('express');
-const cors = require('cors')
-require('./db') // Connect DB
 
-const errorHanlingController = require('./controllers/errorHanlingController');
-const userRouter = require('./routes/usersRouter');
+
+const express = require('express');
+const bodyParser = require('body-parser');
+
+
 
 const app = express();
 
+const shopRoutes = require('./routes/shop');
 
-app.use(express.json());
-app.use(cors())
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(userRouter.routes);
 
-app.use(errorHanlingController.urlNotFound);
-module.exports = app
+app.use(shopRoutes);
+
+
