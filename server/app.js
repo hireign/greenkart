@@ -12,4 +12,4 @@ app.use(shopRoutes);
 app.use(commentRoutes);
 app.use(productRoutes);
 
-app.listen(4000)
+module.exports = app

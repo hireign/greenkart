@@ -18,7 +18,11 @@
         "react-app-polyfill": "^1.0.6",
         "react-dom": "^16.13.1",
         "react-router-dom": "^5.2.0",
-        "react-scripts": "3.4.1"
+        "react-scripts": "3.4.1",
+        "body-parser": "^1.18.3",
+        "express": "^4.16.3",
+        "mysql2": "^1.6.1",
+        "sequelize": "^5.0.0-beta.11"
     },
     "scripts": {
         "start": "react-scripts start",
@@ -41,5 +45,6 @@
             "last 1 safari version",
             "ie 11"
         ]
-    }
+    },
+    "proxy": "http://localhost:4000"
 }
