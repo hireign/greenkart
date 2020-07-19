@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import { OrderContext } from "./contexts/OrderContext";
 import Footer from './components/FooterComponent/FooterComponent';
+import { Grid } from '@material-ui/core';
 
 
 class App extends React.Component {

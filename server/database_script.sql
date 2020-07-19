@@ -148,7 +148,7 @@ DROP TABLE IF EXISTS `mydb2`.`product_review` ;
 CREATE TABLE IF NOT EXISTS `mydb2`.`product_review` (
   `product_review_id` INT NOT NULL AUTO_INCREMENT,
   `product_id` VARCHAR(45) NOT NULL,
-  `rating` VARCHAR(45) NOT NULL,
+  `rating` INT NOT NULL,
   `comment` VARCHAR(45) NOT NULL,
   `number_of_likes` INT DEFAULT 0,
   `number_of_dislikes` INT DEFAULT 0,
