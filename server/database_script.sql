@@ -23,13 +23,14 @@ USE `mydb2` ;
 DROP TABLE IF EXISTS `mydb2`.`product` ;
 
 CREATE TABLE IF NOT EXISTS `mydb2`.`product` (
-  `product_id` INT NOT NULL,
+  `product_id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NULL,
+  `category` VARCHAR(45) ,
   `description` VARCHAR(45) NULL,
   `image` VARCHAR(45) NULL,
-  `sale_price` INT NULL,
-  `actual_price` INT NULL,
-  `seller_id` INT NULL,
+  `sale_price` FLOAT NOT NULL,
+  `actual_price` FLOAT NOT NULL,
+  `seller_id` INT NOT NULL,
   PRIMARY KEY (`product_id`))
 ENGINE = InnoDB;
 
@@ -147,7 +148,7 @@ DROP TABLE IF EXISTS `mydb2`.`product_review` ;
 
 CREATE TABLE IF NOT EXISTS `mydb2`.`product_review` (
   `product_review_id` INT NOT NULL AUTO_INCREMENT,
-  `product_id` VARCHAR(45) NOT NULL,
+  `product_id` INT NOT NULL,
   `rating` INT NOT NULL,
   `comment` VARCHAR(45) NOT NULL,
   `number_of_likes` INT DEFAULT 0,

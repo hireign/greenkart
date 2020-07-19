@@ -10,6 +10,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Routes config
 app.use(shopRoutes);
 app.use(commentRoutes);
-// app.use(productRoutes);
+app.use(productRoutes);
 
 app.listen(4000)
