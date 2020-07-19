@@ -4,5 +4,6 @@ version: 2.1
 workflows:
   heroku_deploy:
     jobs:
-      - heroku/deploy-via-git
-          only-branch: master
+      filters:
+        branches:
+          only: master
