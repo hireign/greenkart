@@ -1,5 +1,10 @@
 const Sequelize = require('sequelize');
 
+const SCHEMA = process.env.DATABASE || 'mydb2'
+const DB_USER = process.env.DB_USER || 'root'
+const DB_PASSWORD = process.env.DB_PASSWORD || 'password'
+const DB_HOST = process.env.DB_HOST || 'localhost'
+
 
 const options = {
   define: {
@@ -9,9 +14,9 @@ const options = {
   }
 }
 
-const sequelize = new Sequelize('mydb2', 'root', 'password', {
+const sequelize = new Sequelize(SCHEMA, DB_USER, DB_PASSWORD, {
   dialect: 'mysql',
-  host: 'localhost'
+  host: DB_HOST
 }, options);
 
 

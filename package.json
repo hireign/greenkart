@@ -2,6 +2,10 @@
     "name": "greenkart",
     "version": "0.1.0",
     "private": true,
+    "engines": {
+        "node": "12.x",
+        "npm": "6.x"
+    },
     "dependencies": {
         "@material-ui/core": "^4.10.1",
         "@material-ui/icons": "^4.9.1",
@@ -25,7 +29,8 @@
         "sequelize": "^5.0.0-beta.11"
     },
     "scripts": {
-        "start": "react-scripts start",
+        "start": "node index.js",
+        "dev": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
