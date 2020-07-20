@@ -40,14 +40,15 @@ CREATE TABLE IF NOT EXISTS `address` (
 -- -----------------------------------------------------
 -- Table `order`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `order` ;
+DROP TABLE IF EXISTS `orders` ;
 
-CREATE TABLE IF NOT EXISTS `order` (
-  `order_id` INT NOT NULL,
-  `address_id` INT NULL,
-  `delivery_status` VARCHAR(45) NULL,
-  `user_id` INT NULL,
-  PRIMARY KEY (`order_id`));
+CREATE TABLE `orders` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `address_id` int(11) DEFAULT NULL,
+  `delivery_status` varchar(45) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`order_id`)
+);
 
 
 -- -----------------------------------------------------
@@ -81,38 +82,52 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- -----------------------------------------------------
 -- Table `cart`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `cart` ;
+CREATE TABLE `carts` (
+  `cart_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  PRIMARY KEY (`cart_id`),
+  KEY `user_id_idx` (`user_id`),
+  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+);
 
-CREATE TABLE IF NOT EXISTS `cart` (
-  `cart_id` INT NOT NULL,
-  `user_id` VARCHAR(45) NULL,
-  `cart_product_mapping_id` INT NULL,
-  `quantity` INT NULL,
-  PRIMARY KEY (`cart_id`));
 
-
--- -----------------------------------------------------
--- Table `cart_product_mapping`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `cart_product_mapping` ;
-
-CREATE TABLE IF NOT EXISTS `cart_product_mapping` (
-  `cart_product_id` INT NOT NULL AUTO_INCREMENT,
-  `product_id` VARCHAR(45) NULL,
-  `quantity` INT NULL,
-  PRIMARY KEY (`cart_product_id`));
 
 
 -- -----------------------------------------------------
--- Table `payment_details`
+-- Table `cart_product_lists`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `payment_details` ;
+CREATE TABLE `cart_product_lists` (
+  `cart_product_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cart_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  PRIMARY KEY (`cart_product_id`),
+  KEY `cart_id_idx` (`cart_id`),
+  KEY `product_id_idx` (`product_id`),
+  CONSTRAINT `cart_id` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`cart_id`),
+  CONSTRAINT `product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`)
+);
 
-CREATE TABLE IF NOT EXISTS `payment_details` (
-  `payment_id` INT NOT NULL,
-  `order_id` INT NULL,
-  `user_id` VARCHAR(45) NULL,
-  PRIMARY KEY (`payment_id`));
+
+-- -----------------------------------------------------
+-- Table `payments`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `payments` ;
+
+CREATE TABLE `payments` (
+  `payment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `card_number` int(11) DEFAULT NULL,
+  `payment_date` datetime DEFAULT NULL,
+  `payment_amount` float DEFAULT NULL,
+  PRIMARY KEY (`payment_id`),
+  KEY `order_id` (`order_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `payments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
 
 
 -- -----------------------------------------------------
