@@ -1,8 +1,11 @@
 const Sequelize = require('sequelize');
+const Model = Sequelize.Model;
 
 const sequelize = require('../util/database');
 
-const PRODUCTS = sequelize.define('product', {
+class Product extends Model {}
+
+Product.init({
   product_id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -27,21 +30,21 @@ const PRODUCTS = sequelize.define('product', {
   },
   sale_price: {
     type: Sequelize.FLOAT,
-    allowNull: false  
+    allowNull: false
   },
   actual_price: {
     type: Sequelize.FLOAT,
-    allowNull: false  
+    allowNull: false
   },
   seller_id: {
     type: Sequelize.INTEGER,
-    allowNull: false  
+    allowNull: false
   }
 },
   {
+    sequelize,
     timestamps: false,
     freezeTableName: true,
-  }
-);
+  })
 
-module.exports = PRODUCTS;
+module.exports = Product;

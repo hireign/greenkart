@@ -14,10 +14,10 @@ DROP TABLE IF EXISTS `product` ;
 
 CREATE TABLE IF NOT EXISTS `product` (
   `product_id` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(45) NULL,
+  `title` MEDIUMTEXT NULL,
   `category` VARCHAR(45) ,
-  `description` VARCHAR(45) NULL,
-  `image` VARCHAR(45) NULL,
+  `description` MEDIUMTEXT NULL,
+  `image` MEDIUMTEXT NULL,
   `sale_price` FLOAT NOT NULL,
   `actual_price` FLOAT NOT NULL,
   `seller_id` INT NOT NULL,
@@ -31,18 +31,18 @@ DROP TABLE IF EXISTS `address` ;
 
 CREATE TABLE IF NOT EXISTS `address` (
   `address_id` INT NOT NULL,
-  `address_line_1` VARCHAR(45) NULL,
+  `address_line_1` MEDIUMTEXT NULL,
   `mobile_number` VARCHAR(45) NULL,
-  `street` VARCHAR(45) NULL,
+  `street` MEDIUMTEXT NULL,
   PRIMARY KEY (`address_id`));
 
 
 -- -----------------------------------------------------
--- Table `order`
+-- Table `orders`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `order` ;
+DROP TABLE IF EXISTS `orders` ;
 
-CREATE TABLE IF NOT EXISTS `order` (
+CREATE TABLE IF NOT EXISTS `orders` (
   `order_id` INT NOT NULL,
   `address_id` INT NULL,
   `delivery_status` VARCHAR(45) NULL,
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `order_detail` (
   `product_id` INT NULL,
   `order_id` INT NULL,
   `quantity` INT NULL,
-  `selling_price` INT NULL,
+  `selling_price` FLOAT NULL,
   PRIMARY KEY (`order_detail_id`));
 
 
@@ -71,10 +71,10 @@ DROP TABLE IF EXISTS `user` ;
 
 CREATE TABLE IF NOT EXISTS `user` (
   `user_id` INT NOT NULL,
-  `username` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
-  `is_seller` VARCHAR(45) NULL,
+  `username` VARCHAR(255) NULL,
+  `password` VARCHAR(255) NULL,
+  `email` VARCHAR(255) NULL,
+  `is_seller` TINYINT(1) NULL,
   PRIMARY KEY (`user_id`));
 
 
@@ -85,8 +85,8 @@ DROP TABLE IF EXISTS `cart` ;
 
 CREATE TABLE IF NOT EXISTS `cart` (
   `cart_id` INT NOT NULL,
-  `user_id` VARCHAR(45) NULL,
-  `cart_product_mapping_id` INT NULL,
+  `user_id` INT NOT NULL,
+  `cart_product_mapping_id` INT NOT NULL,
   `quantity` INT NULL,
   PRIMARY KEY (`cart_id`));
 
@@ -98,7 +98,7 @@ DROP TABLE IF EXISTS `cart_product_mapping` ;
 
 CREATE TABLE IF NOT EXISTS `cart_product_mapping` (
   `cart_product_id` INT NOT NULL AUTO_INCREMENT,
-  `product_id` VARCHAR(45) NULL,
+  `product_id` INT NULL,
   `quantity` INT NULL,
   PRIMARY KEY (`cart_product_id`));
 
@@ -111,7 +111,7 @@ DROP TABLE IF EXISTS `payment_details` ;
 CREATE TABLE IF NOT EXISTS `payment_details` (
   `payment_id` INT NOT NULL,
   `order_id` INT NULL,
-  `user_id` VARCHAR(45) NULL,
+  `user_id` INT NULL,
   PRIMARY KEY (`payment_id`));
 
 
