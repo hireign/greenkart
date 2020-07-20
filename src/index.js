@@ -12,7 +12,10 @@ import { purple } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
   palette: {
-    primary: green,
+    primary: {
+      ...green,
+      contrastText: "#FFFFFF"
+    },
     third: purple
   },
 });

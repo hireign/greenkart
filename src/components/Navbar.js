@@ -6,7 +6,9 @@ import { ShoppingBasket } from '@material-ui/icons'
 
 function Navbar() {
   return <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-    <a className="navbar-brand" href="/"><img src={logo} style={{ width: 170 }} /></a>
+    <a className="navbar-brand" href="/">
+      <img src={logo} style={{ width: 170 }} />
+    </a>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
         <li className="nav-item dropdown">
