@@ -6,11 +6,12 @@ const sequelize = require('../util/database');
 class Product extends Model {}
 
 Product.init({
-  product_id: {
+  productId: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
-    primaryKey: true
+    primaryKey: true,
+    field: 'product_id'
   },
   title: {
     type: Sequelize.STRING,
@@ -28,17 +29,20 @@ Product.init({
     type: Sequelize.STRING,
     defaultValue: "default"
   },
-  sale_price: {
+  salePrice: {
     type: Sequelize.FLOAT,
-    allowNull: false
+    allowNull: false,
+    field: 'sale_price'
   },
-  actual_price: {
+  actualPrice: {
     type: Sequelize.FLOAT,
-    allowNull: false
+    allowNull: false,
+    field: 'actual_price'
   },
-  seller_id: {
+  sellerId: {
     type: Sequelize.INTEGER,
-    allowNull: false
+    allowNull: false,
+    field: 'seller_id'
   }
 },
   {

@@ -4,6 +4,10 @@ const sequelize = require('../util/database');
 const Order = require('./order')
 const Product = require('./product');
 
+/**
+ * Author: Aman Vishnani (aman.vishnani@dal.ca)
+ */
+
 class OrderDetails extends Model {}
 
 OrderDetails.init({

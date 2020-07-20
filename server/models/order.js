@@ -2,7 +2,10 @@ const Sequelize = require('sequelize');
 const Model = Sequelize.Model;
 
 const sequelize = require('../util/database');
-
+/**
+ * Author: Aman Vishnani (aman.vishnani@dal.ca)
+ * 
+ */
 class Order extends Model {}
 
 Order.init({
