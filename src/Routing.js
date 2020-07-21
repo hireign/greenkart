@@ -1,6 +1,8 @@
 import { Route, Switch } from "react-router-dom";
 import React from 'react';
 import LoginComponent from "./components/SignInComponent/LoginComponent";
+import SignUpComponent from "./components/SignInComponent/SignUpComponent";
+import ForgotPaswordComponent from "./components/SignInComponent/ForgotPaswordComponent";
 import Product from './pages/ProductComponent'
 import Payment from "./pages/Payment/Payment";
 import Review from './pages/ReviewsComponent'
@@ -10,11 +12,13 @@ import SearchPage from './pages/SearchLandingPage';
 import HomePage from './pages/HomePage/homePage';
 import ContactDetails from './pages/ContactDetail';
 
-export default function () {
+export default function (props) {
 
   return <Switch>
       <Route exact path='/' component={HomePage} />
-      <Route exact path='/signin' component={LoginComponent} />
+      <Route exact path='/signin' render={()=> <LoginComponent userLoggedIn={props.userLoggedIn} />}/>
+      <Route exact path='/signup' render={()=> <SignUpComponent />}/>
+      <Route exact path='/forgotpassword' render={()=> <ForgotPaswordComponent />}/>
       <Route path="/user">
         <UserProfile />
       </Route>

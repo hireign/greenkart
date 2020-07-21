@@ -68,15 +68,16 @@ CREATE TABLE IF NOT EXISTS `order_detail` (
 -- -----------------------------------------------------
 -- Table `user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `user` ;
+DROP TABLE IF EXISTS `users` ;
 
-CREATE TABLE IF NOT EXISTS `user` (
-  `user_id` INT NOT NULL,
-  `username` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
-  `is_seller` VARCHAR(45) NULL,
-  PRIMARY KEY (`user_id`));
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `is_seller` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+)
 
 
 -- -----------------------------------------------------

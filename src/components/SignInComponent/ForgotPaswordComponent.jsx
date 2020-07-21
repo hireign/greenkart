@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import "./LoginComponent.scss";
 import ProfileComponent from "./ProfileComponent";
 import Axios from 'axios';
-import SignInFormComponent from "./SignInFormComponent";
+import ForgotPasswordFormComponent from "./ForgotPasswordFormComponent";
 import { withRouter } from 'react-router-dom';
 
-class LoginComponent extends Component {
+class ForgotPaswordComponent extends Component {
   constructor(props) {
     super();
     this.state = {
       userEmailId: "",
-      userPassword: ""
     };
   }
 
@@ -18,19 +17,10 @@ class LoginComponent extends Component {
     this.setState({ userEmailId: e.target.value });
   };
 
-  onPasswordChange = e => {
-    this.setState({ userPassword: e.target.value });
-  };
 
   onFormSubmit = e => {
     e.preventDefault();
-    console.log("Password length" + this.state.userPassword);
-    if (this.state.userPassword.length < 5) {
-      alert("Password should be of at least 5 characters");
-    } else { 
-      this.loginApi();
-      
-    }
+      this.onForgotPassword();
   };
 
   loginApi = (e) => {
@@ -49,6 +39,7 @@ class LoginComponent extends Component {
          else
          {
            alert("Invalid User")
+           this.props.history.push(`/`);
          }
     })
     .catch(err => {
@@ -58,25 +49,19 @@ class LoginComponent extends Component {
 
 onForgotPassword = e => {
   console.log("iNSIDE fORGOR password 1")
-  this.logoutApi();
+  this.forgotPasswordApi();
 };
 
-logoutApi = (e) => {
+forgotPasswordApi = (e) => {
   console.log("iNSIDE fORGOR password 2")
-  Axios.post('/forgotpassward', {})
+  
+  Axios.post('/forgotpassward', {email: this.state.userEmailId})
   .then(res => {
     console.log(res)
-       if(res.data === true)
-       {
-        this.props.userLoggedIn("true");
-        this.props.history.push(`/`);
-        //this.props.history.push(`/confirmOrder/${this.state.param2}/${this.state.param1}/${this.state.param3}/${this.state.userEmailId}`)
-       }
-       else
-       {
-         alert("Invalid User")
-         this.props.history.push(`/`);
-       }
+       
+         alert(res.data)
+         this.props.history.push(`/signin`);
+       
   })
   .catch(err => {
       console.log(err);
@@ -92,13 +77,12 @@ logoutApi = (e) => {
           <div className="login col-lg-4" style={{ "padding-right": "40px" }}>
             <div className="card mr-1 mt-5 bg-dark  ">
               <div className="card-body bg-dark">
-                <SignInFormComponent
+              <h3  style={{color:"white", textDecoration: "bold", textAlign:"center"}}>Forgot Password</h3>
+                <ForgotPasswordFormComponent
                   onFormSubmit={this.onFormSubmit}
                   onEmailChange={this.onEmailChange}
-                  onPasswordChange={this.onPasswordChange}
-                  onForgotPassword = {this.onForgotPassword}
                   {...this.state}
-                ></SignInFormComponent>
+                ></ForgotPasswordFormComponent>
               </div>
             </div>
           </div>
@@ -109,4 +93,4 @@ logoutApi = (e) => {
   }
 }
 
-export default withRouter(LoginComponent);
+export default withRouter(ForgotPaswordComponent);

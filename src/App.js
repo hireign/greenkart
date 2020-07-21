@@ -17,19 +17,19 @@ class App extends React.Component {
 
   constructor() {
     super();
-    if (sessionStorage.getItem("loggedIn") == null || sessionStorage.getItem("loggedIn") === "false") {
+    //if (sessionStorage.getItem("loggedIn") == null || sessionStorage.getItem("loggedIn") === "false") {
       this.state = {
         loggedIn: false,
         order: {}
       }
       sessionStorage.setItem("loggedIn", true);
-    }
-    else {
-      this.state = {
-        loggedIn: true,
-        order: {}
-      }
-    }
+   // }
+    // else {
+    //   this.state = {
+    //     loggedIn: true,
+    //     order: {}
+    //   }
+    // }
   }
 
   loginHandler() {
@@ -37,14 +37,19 @@ class App extends React.Component {
     this.setState({ loggedIn: true });
   }
 
+  loggedInEvent = (userLoggedIn) => {
+    this.setState({ loggedIn: userLoggedIn });
+}
+
   render() {
     let { order } = this.state;
     let { setOrder } = this;
+    console.log("Appjs In value"+this.state.loggedIn)
     return (<div>
       <OrderContext.Provider value={{ order, setOrder }}>
         <Grid row>
-          <NavBar />
-          <RouteTracker />
+          <NavBar userLoggedIn={this.loggedInEvent} isLoggedIn = {this.state.loggedIn} />
+          <RouteTracker userLoggedIn={this.loggedInEvent} />
           <Footer></Footer>
         </Grid>
       </OrderContext.Provider>
@@ -54,3 +59,7 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+
+

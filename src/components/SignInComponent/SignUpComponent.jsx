@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import "./LoginComponent.scss";
-import ProfileComponent from "./ProfileComponent";
 import Axios from 'axios';
-import SignInFormComponent from "./SignInFormComponent";
+import SignUpFormComponent from "./SignUpFormComponent";
 import { withRouter } from 'react-router-dom';
 
-class LoginComponent extends Component {
+class SignUpComponent extends Component {
   constructor(props) {
     super();
     this.state = {
       userEmailId: "",
-      userPassword: ""
+      userPassword: "",
+      userName:""
     };
   }
 
@@ -22,33 +22,40 @@ class LoginComponent extends Component {
     this.setState({ userPassword: e.target.value });
   };
 
+  onUsernameChange = e => {
+    this.setState({ userName: e.target.value });
+  };
+
   onFormSubmit = e => {
     e.preventDefault();
     console.log("Password length" + this.state.userPassword);
     if (this.state.userPassword.length < 5) {
       alert("Password should be of at least 5 characters");
-    } else { 
-      this.loginApi();
-      
+    }
+    if (this.state.userName.length < 5) {
+      alert("Username should be of at least 5 characters");
+    }
+     else { 
+      this.createAccountApi();
     }
   };
 
-  loginApi = (e) => {
-    Axios.post('/login', {
+  createAccountApi = (e) => {
+    Axios.post('/createAccount', {
       email: this.state.userEmailId,
-      password: this.state.userPassword
+      password: this.state.userPassword,
+      userName: this.state.userName
     })
     .then(res => {
       console.log(res)
          if(res.data === true)
          {
-          this.props.userLoggedIn("true");
-          this.props.history.push(`/`);
+          this.props.history.push(`/signin`);
           //this.props.history.push(`/confirmOrder/${this.state.param2}/${this.state.param1}/${this.state.param3}/${this.state.userEmailId}`)
          }
          else
          {
-           alert("Invalid User")
+           alert(res.data)
          }
     })
     .catch(err => {
@@ -56,32 +63,6 @@ class LoginComponent extends Component {
     })
 }
 
-onForgotPassword = e => {
-  console.log("iNSIDE fORGOR password 1")
-  this.logoutApi();
-};
-
-logoutApi = (e) => {
-  console.log("iNSIDE fORGOR password 2")
-  Axios.post('/forgotpassward', {})
-  .then(res => {
-    console.log(res)
-       if(res.data === true)
-       {
-        this.props.userLoggedIn("true");
-        this.props.history.push(`/`);
-        //this.props.history.push(`/confirmOrder/${this.state.param2}/${this.state.param1}/${this.state.param3}/${this.state.userEmailId}`)
-       }
-       else
-       {
-         alert("Invalid User")
-         this.props.history.push(`/`);
-       }
-  })
-  .catch(err => {
-      console.log(err);
-  })
-}
 
   render() {
     const { userEmailId } = this.state;
@@ -92,13 +73,14 @@ logoutApi = (e) => {
           <div className="login col-lg-4" style={{ "padding-right": "40px" }}>
             <div className="card mr-1 mt-5 bg-dark  ">
               <div className="card-body bg-dark">
-                <SignInFormComponent
-                  onFormSubmit={this.onFormSubmit}
-                  onEmailChange={this.onEmailChange}
-                  onPasswordChange={this.onPasswordChange}
-                  onForgotPassword = {this.onForgotPassword}
-                  {...this.state}
-                ></SignInFormComponent>
+              <h3  style={{color:"white", textDecoration: "bold", textAlign:"center"}}>Create Account</h3>
+                <SignUpFormComponent
+                onFormSubmit={this.onFormSubmit}
+                onEmailChange={this.onEmailChange}
+                onPasswordChange={this.onPasswordChange}
+                onUsernameChange = {this.onUsernameChange}
+                {...this.state}
+                ></SignUpFormComponent>
               </div>
             </div>
           </div>
@@ -109,4 +91,4 @@ logoutApi = (e) => {
   }
 }
 
-export default withRouter(LoginComponent);
+export default withRouter(SignUpComponent);

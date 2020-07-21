@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { Component } from "react";
 import logo from '../assets/GreenKartLogo_transparent.png';
 import './Navbar.css'
 import { Link } from 'react-router-dom';
-import { ShoppingBasket } from '@material-ui/icons'
+import { ShoppingBasket } from '@material-ui/icons';
+import Axios from 'axios';
 
-function Navbar() {
-  return <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-    <a className="navbar-brand" href="/"><img src={logo} style={{ width: 170 }} /></a>
+class Navbar extends Component {
+  constructor(props) {
+    super();
+  }
+
+  logoutApi = (e) => {
+    console.log("iNSIDE fORGOR password 2")
+    Axios.post('/logout', {})
+    .then(res => {
+      console.log(res)
+      this.props.userLoggedIn("false")
+    })
+    .catch(err => {
+        console.log(err);
+    })
+  }
+
+  render() {
+    return (
+   <nav className="navbar navbar-expand-lg navbar-light bg-dark">
+    
+    <Link className="navbar-brand" to="/"><img src={logo} style={{ width: 170 }} /></Link>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
         <li className="nav-item dropdown">
@@ -36,7 +56,15 @@ function Navbar() {
             My Account
             </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+          {this.props.isLoggedIn === "true" ? (
+            <div className='option' onClick={this.logoutApi}>
+              SIGN OUT
+            </div>
+          ) : (
+            <Link className='option' to='/signin'>
             <Link className="dropdown-item" to='/signin'>LOGIN</Link>
+            </Link>
+          )}
             <Link className="dropdown-item" to='/user'>User Management</Link>
             <Link className="dropdown-item "  to='/contact'>Contact us</Link>
 
@@ -49,6 +77,6 @@ function Navbar() {
       <span className="navbar-toggler-icon"></span>
     </button>
   </nav>
-}
+    )}}
 
 export default Navbar;

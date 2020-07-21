@@ -1,5 +1,6 @@
 import React from 'react';
 import SignInInputComponent from './SignInInputComponent';
+import {Link} from 'react-router-dom';
 
 const SignInFormComponent = (props) =>{
     return(
@@ -10,12 +11,16 @@ const SignInFormComponent = (props) =>{
         <button type='submit' className="btn btn-light ">LOGIN</button>
         </div>
         <div  style={{"padding":"10px"}}>
-        <span  onClick={()=>alert('Forgot Password Clicked')} style={{"color": "#e8226b",
+        <Link to='/forgotpassword'>
+        <span  onClick={props.onForgotPassword } style={{"color": "#e8226b",
         "outline": "medium none",
         "overflow": "hidden",
         "text-decoration": "none",
         "cursor": "pointer"}}>Forgot Password?</span>
-            <span onClick={()=>alert('Create Account Clicked')} style={{"float":"right", "color": "white"}}> Create Account</span>
+        </Link>
+        <Link to='/signup'>
+            <span style={{"float":"right", "color": "white"}}> Create Account</span>
+            </Link>
         </div>
         
     </form>
