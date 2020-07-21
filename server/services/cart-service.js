@@ -40,6 +40,6 @@ async function createProductItem(cartId, productId) {
 module.exports = {
     createProductItem,
     findCartByUserId,
-    findCartItemByUserIdAndProductId: findCartItemByCartIdAndProductId,
+    findCartItemByCartIdAndProductId,
     createCartByUserId
 }

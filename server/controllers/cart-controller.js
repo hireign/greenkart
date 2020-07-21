@@ -2,7 +2,7 @@ const User = require('../models/user');
 const Cart = require('../models/cart');
 const Product = require('../models/product');
 const CartProductList = require('../models/cart-product-list');
-const { createCartByUserId, createProductItem, findCartByUserId, findCartItemByUserIdAndProductId } = require('../services/cart-service')
+const { createCartByUserId, createProductItem, findCartByUserId, findCartItemByCartIdAndProductId } = require('../services/cart-service')
 
 exports.getUserCart = async (req, res, next) => {
   // @TODO: UserID
@@ -26,7 +26,7 @@ exports.updateCart = async (req, res, next) => {
   let cartData = cart.get();
   let cartId = cartData.id
 
-  let item = await findCartItemByUserIdAndProductId(userId, productId);
+  let item = await findCartItemByCartIdAndProductId(cartId, productId);
   if (null !== item) {
     await item.update({
       'quantity': quantity
