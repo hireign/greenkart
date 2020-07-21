@@ -1,18 +1,42 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const shopRoutes = require('./routes/shop');
 const commentRoutes = require('./routes/comments');
+const userRoute = require('./routes/userRoute');
 const productRoutes = require('./routes/products');
 const orderRoutes = require('./routes/order-routes');
+const User = require('./models/user');
+const session = require('express-session') 
+
 
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
 
-// Routes config
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    if(req.method === 'OPTIONS'){
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+        return res.status(200).json({});
+    }
+    next();
+});
+
+
+app.use(
+  session({
+    secret: 'my secret',
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+
 app.use(shopRoutes);
 app.use(commentRoutes);
 app.use(productRoutes);
 app.use("/orders", orderRoutes)
+app.use(userRoute);
 
 module.exports = app

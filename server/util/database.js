@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
 
-const SCHEMA = process.env.DATABASE || 'mydb2'
-const DB_USER = process.env.DB_USER || 'root'
-const DB_PASSWORD = process.env.DB_PASSWORD || 'password'
-const DB_HOST = process.env.DB_HOST || 'localhost'
+const SCHEMA = process.env.DATABASE || 'greenKart'
+const DB_USER = process.env.DB_USER || 'jrana'
+const DB_PASSWORD = process.env.DB_PASSWORD || 'jrana'
+const DB_HOST = process.env.DB_HOST || '54.86.125.185'
 
 
 const options = {
@@ -16,7 +16,8 @@ const options = {
 
 const sequelize = new Sequelize(SCHEMA, DB_USER, DB_PASSWORD, {
   dialect: 'mysql',
-  host: DB_HOST
+  host: DB_HOST,
+  port:3306,
 }, options);
 
 
