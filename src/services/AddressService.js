@@ -1,3 +1,4 @@
+import Axios from 'axios';
 let addresses = {
     1: {
         id: 1,
@@ -15,7 +16,10 @@ let addresses = {
 
 
 async function getAllAddresses() {
-    return Object.values(addresses)
+    console.log('Inside address');
+   let res=  await Axios.get('/getAddress');
+   console.log(res.data );
+    return res.data
 }
 
 async function getAddressById(id) {
@@ -33,14 +37,28 @@ function getNewId() {
 }
 
 async function saveOrUpdateAddress(address) {
-    if(!address.id) {
-        let id = getNewId()
-        address.id = getNewId();
-        addresses[id] = address;
-    } else {
-        addresses[address.id] = address;
-    }
-    return address;
+
+    console.log('Inside address updated');
+   let res=  await Axios.post('/saveEditAddress', {
+    id: address.id,
+    name: address.mobile,
+    mobile: address.name,
+    street: address.street
+  });
+   console.log(res.data );
+    return res.data
+
+
+    // console.log("saveupdate");
+    // console.log(address);
+    // if(!address.id) {
+    //     let id = getNewId()
+    //     address.id = getNewId();
+    //     addresses[id] = address;
+    // } else {
+    //     addresses[address.id] = address;
+    // }
+    // return address;
 }
 
 async function deleteAddressById(addressId) {

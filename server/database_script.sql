@@ -29,12 +29,16 @@ CREATE TABLE IF NOT EXISTS `product` (
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `address` ;
 
-CREATE TABLE IF NOT EXISTS `address` (
-  `address_id` INT NOT NULL,
-  `address_line_1` VARCHAR(45) NULL,
-  `mobile_number` VARCHAR(45) NULL,
-  `street` VARCHAR(45) NULL,
-  PRIMARY KEY (`address_id`));
+CREATE TABLE `address` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `mobile` varchar(45) DEFAULT NULL,
+  `street` varchar(45) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id_idx` (`user_id`),
+  CONSTRAINT `address_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) 
+)
 
 
 -- -----------------------------------------------------

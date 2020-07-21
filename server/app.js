@@ -2,6 +2,7 @@ const express = require('express');
 const shopRoutes = require('./routes/shop');
 const commentRoutes = require('./routes/comments');
 const userRoute = require('./routes/userRoute');
+const addressRoute = require('./routes/addressRoute');
 const productRoutes = require('./routes/products');
 const User = require('./models/user');
 const session = require('express-session') 
@@ -36,5 +37,5 @@ app.use(shopRoutes);
 app.use(commentRoutes);
 app.use(productRoutes);
 app.use(userRoute);
-
+app.use(addressRoute);
 module.exports = app
