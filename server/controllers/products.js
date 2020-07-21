@@ -1,9 +1,9 @@
-const PRODUCTS = require('../models/product');
+const Product = require('../models/product');
 const utils = require("../util/cleanData");
 // const Sequelize = require('sequelize');
 
 async function productDetails(req, res, next) {
-    let x = await PRODUCTS.findByPk(req.query.id)
+    let x = await Product.findByPk(req.query.id)
     x = x == null? "wrong id": utils.parseSQLResponse(x);
     res.send(x);
 };

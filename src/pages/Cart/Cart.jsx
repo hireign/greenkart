@@ -10,7 +10,7 @@ import AddressCard from "../../components/AddressCard";
 import { OrderContext } from "../../contexts/OrderContext";
 import { useHistory } from "react-router-dom";
 
-function OrderSummary(props) {
+function Cart(props) {
 
     let { productId } = useParams()
     productId = 1;
@@ -115,4 +115,4 @@ function OrderSummary(props) {
     );
 }
 
-export default OrderSummary;
+export default Cart;
