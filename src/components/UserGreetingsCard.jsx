@@ -13,7 +13,6 @@ function UserGreetingsCard(props) {
                     <Grid item md={1}></Grid>
                     <Grid item md={7} lg={8}>
                         <Typography variant="subtitle2" align="left">Hello,</Typography>
-                        <Typography variant="body1" align="left">{props.name || "User Name"}</Typography>
                     </Grid>
                 </Grid>
             </Card>
