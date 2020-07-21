@@ -4,6 +4,7 @@ const commentRoutes = require('./routes/comments');
 const userRoute = require('./routes/userRoute');
 const productRoutes = require('./routes/products');
 const orderRoutes = require('./routes/order-routes');
+const cartRoutes = require('./routes/cartRoute');
 const User = require('./models/user');
 const session = require('express-session') 
 
@@ -37,6 +38,7 @@ app.use(shopRoutes);
 app.use(commentRoutes);
 app.use(productRoutes);
 app.use("/orders", orderRoutes)
+app.use("/cart", cartRoutes)
 app.use(userRoute);
 
 module.exports = app
