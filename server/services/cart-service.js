@@ -37,9 +37,19 @@ async function createProductItem(cartId, productId) {
     return item;
 }
 
+async function findCartItemByCartId(cartId) {
+    let item = await CartProductList.findAll({
+        where: {
+          cartId
+        }
+    })
+    return item;
+}
+
 module.exports = {
     createProductItem,
     findCartByUserId,
     findCartItemByCartIdAndProductId,
-    createCartByUserId
+    createCartByUserId,
+    findCartItemByCartId
 }

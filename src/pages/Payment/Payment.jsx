@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 // import PropTypes from 'prop-types'
 import { OrderContext } from '../../contexts/OrderContext'
 import { getAddressById } from '../../services/AddressService';
+import Axios from 'axios';
 import { Stepper, Step, StepLabel, StepContent, Button, Grid, TableContainer, Table, Paper, TableHead, TableRow, TableCell, TableBody, Typography, Card, CardContent, TextField, CardMedia } from '@material-ui/core';
 import AddressCard from '../../components/AddressCard';
 
@@ -51,6 +52,18 @@ function Payment(props) {
             setFields(state)
         }
     }
+
+
+    function payment(){
+        console.log("Inside Payment Function")
+        Axios.post('/payment', {
+        }).then(res => console.log(res)) 
+        .catch(err => {
+            console.log(err);
+        })
+        setActiveStep(2)
+    }
+
 
     useEffect(() => {
         async function init() {
@@ -169,7 +182,7 @@ function Payment(props) {
                                             <Button color="secondary" variant="contained" onClick={() => setActiveStep(0)}>Back</Button>
                                         </Grid>
                                         <Grid item xs={6}>
-                                            <Button variant="contained" onClick={() => setActiveStep(2)}
+                                            <Button variant="contained" onClick={() => payment()}
                                                 disabled={!fields.creditCard.valid || !fields.cvv.valid || !fields.expiryDate.valid || !fields.creditCard || !fields.cvv.value || !fields.expiryDate.value}>
                                                 Pay Now
                                             </Button>

@@ -41,8 +41,8 @@ async function saveOrUpdateAddress(address) {
     console.log('Inside address updated');
    let res=  await Axios.post('/saveEditAddress', {
     id: address.id,
-    name: address.mobile,
-    mobile: address.name,
+    name: address.name,
+    mobile: address.mobile,
     street: address.street
   });
    console.log(res.data );

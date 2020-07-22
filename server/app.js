@@ -4,6 +4,7 @@ const commentRoutes = require('./routes/comments');
 const userRoute = require('./routes/userRoute');
 const addressRoute = require('./routes/addressRoute');
 const productRoutes = require('./routes/products');
+const paymentRoute = require('./routes/paymentRoute');
 const orderRoutes = require('./routes/order-routes');
 const cartRoutes = require('./routes/cartRoute');
 const User = require('./models/user');
@@ -42,4 +43,5 @@ app.use("/orders", orderRoutes)
 app.use("/cart", cartRoutes)
 app.use(userRoute);
 app.use(addressRoute);
+app.use(paymentRoute);
 module.exports = app

@@ -42,11 +42,11 @@ class App extends React.Component {
 }
 
   render() {
-    let { order } = this.state;
+    let { order, loggedIn } = this.state;
     let { setOrder } = this;
     console.log("Appjs In value"+this.state.loggedIn)
     return (<div>
-      <OrderContext.Provider value={{ order, setOrder }}>
+      <OrderContext.Provider value={{ order, setOrder, loggedIn }}>
         <Grid row>
           <NavBar userLoggedIn={this.loggedInEvent} isLoggedIn = {this.state.loggedIn} />
           <RouteTracker userLoggedIn={this.loggedInEvent} />

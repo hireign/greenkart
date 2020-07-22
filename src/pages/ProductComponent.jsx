@@ -1,4 +1,3 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -8,6 +7,8 @@ import { Box, Typography, Button, Snackbar } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import MuiAlert from '@material-ui/lab/Alert';
 import Comment from '../components/Comment';
+import { OrderContext } from '../contexts/OrderContext';
+import React, { useContext } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,14 +36,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function () {
   const classes = useStyles();
+  const { loggedIn } = useContext(OrderContext);
   const [open, setOpen] = React.useState(false);
   const handleClick = () => {
-    setOpen(true);
+    if(!loggedIn){
+      alert("Login First");
+    }else{
+      setOpen(true);
+    }
   };
-  const handleClose = (event, reason) => {
 
+
+  function handleClose() {
+    
     setOpen(false);
   };
+
   return <div className={classes.root}>
     <Grid container spacing={3} justify="center" alignItems="center">
       <Grid item xs={12} md={5}>
