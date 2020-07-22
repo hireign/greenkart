@@ -11,15 +11,9 @@ import Grid from "@material-ui/core/Grid";
 export default function SummaryItem(props) {
     let product = props.product;
     let [quantity, setQuantity] = useState(product.quantity);
-    const [total, setTotal] = useState(product.salePrice)
     function handleChange(quantity) {
         if(props.quantityChange) {
-            let price = parseFloat(product.salePrice)
-            let total = (quantity * price).toFixed(2)
-            setTotal(total)
             let productSummary = {
-                price: price,
-                orderTotal: total,
                 ...product,
                 quantity
             }
@@ -64,7 +58,7 @@ export default function SummaryItem(props) {
                         <div>
                             <CardContent>
                                 <Typography component="h4" variant="h4">
-                                    ${total}
+                                    ${product.totalCost}
                                 </Typography>
                             </CardContent>
                         </div>

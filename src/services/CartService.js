@@ -9,12 +9,19 @@ async function getUserCartItems() {
             quantity: prod.CartProductList.quantity
         }
     })
+    cartItem.Products = cartItem.Products
+        .map(item => {
+            return {
+                ...item,
+                totalCost: (item.salePrice * item.quantity).toFixed(2)
+            }
+        })
     let total = cartItem.Products
-                    .map(item => item.salePrice * item.quantity)
-                    .reduce((a,b) => a+b)
-                    .toFixed(2)
+        .map(item => parseFloat(item.totalCost))
+        .reduce((a, b) => a + b)
+        .toFixed(2)
 
-    cartItem = {...cartItem, total}
+    cartItem = { ...cartItem, total }
     return cartItem;
 }
 

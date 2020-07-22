@@ -100,8 +100,8 @@ function Payment(props) {
                                                     return <TableRow key={summary.id}>
                                                         <TableCell>{summary.title}</TableCell>
                                                         <TableCell>{summary.quantity}</TableCell>
-                                                        <TableCell>${summary.price}</TableCell>
-                                                        <TableCell>${summary.orderTotal}</TableCell>
+                                                        <TableCell>${summary.salePrice}</TableCell>
+                                                        <TableCell>${summary.totalCost}</TableCell>
                                                     </TableRow>
                                                 }
                                             )
