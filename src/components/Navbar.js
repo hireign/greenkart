@@ -45,9 +45,10 @@ class Navbar extends Component {
     <div className="collapse navbar-collapse"  id="navbarSupportedContent" style={{justifyContent: "flex-end", marginTop: "-6px"}}>
       <ul className="navbar-nav ">
         <li className="nav-item">
+        {this.props.isLoggedIn === "true" ?
           <Link className="navbar-brand  ml-5 mt-2" to='/cart'>
             <ShoppingBasket color="primary" fontSize="large" />
-          </Link>
+          </Link>:null}
         </li>
         <li className="nav-item">
         </li>
@@ -65,7 +66,8 @@ class Navbar extends Component {
             <Link className="dropdown-item" to='/signin'>LOGIN</Link>
             </Link>
           )}
-            <Link className="dropdown-item" to='/user'>User Management</Link>
+          {this.props.isLoggedIn === "true" ?
+            <Link className="dropdown-item" to='/user'>User Management</Link>:null}
             <Link className="dropdown-item "  to='/contact'>Contact us</Link>
 
           </div>
