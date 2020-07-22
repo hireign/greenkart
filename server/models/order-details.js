@@ -33,7 +33,6 @@ OrderDetails.init({
     },
     sellingPrice: {
         type: Sequelize.DOUBLE,
-        allowNull: false,
         field: 'selling_price'
     }
 }, {sequelize, tableName: 'order_detail', timestamps: false})

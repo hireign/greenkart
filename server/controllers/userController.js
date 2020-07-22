@@ -16,35 +16,26 @@ const sendMail = nodemailer.createTransport(sendGrid({
 exports.loginUser = (req, res, next) => {
   const userName = req.body.email.toString();
  
-  sequelize.query("select * from users where (username = ? or email = ?) and password=?", { replacements: [userName, userName, req.body.password], type: QueryTypes.SELECT }).then(
-    user=>{
-      if (!user) {
-        return res.status(200).send("User With Given Email is not found");
-      }
-        req.session.userSignIn = true;
-        req.session.user = user;
-        req.session.save(err => {
-            res.status(200).send(req.session.userSignIn);
-        })
-    })
-  .catch(err => console.log(err));
-
- 
-    // User.findOne({
-    //     where: {
-    //       username: email,
-    //       password:password
-    //     }}).then(user=>{
-    //       if (!user) {
-    //         return res.status(200).send("User With Given Email is not found");
-    //       }
-    //         req.session.userSignIn = true;
-    //         req.session.user = user;
-    //         req.session.save(err => {
-    //             res.status(200).send(req.session.userSignIn);
-    //         })
-    //     })
-    //   .catch(err => console.log(err));
+  User.findOne({
+    where: {
+      [Op.or]: [
+        { username: userName },
+        { email: userName }
+      ],
+      [Op.and]: [
+        { password: req.body.password }
+      ]
+    }
+  }).then( user=>{
+    if (!user) {
+      return res.status(200).send("User With Given Email is not found");
+    }
+      req.session.userSignIn = true;
+      req.session.user = user;
+      req.session.save(err => {
+          res.status(200).send(req.session.userSignIn);
+      })
+  }).catch(err => console.log(err));;
 };
 
 exports.registerAccount = (req, res, next) => {
