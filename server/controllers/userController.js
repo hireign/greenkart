@@ -77,6 +77,16 @@ exports.registerAccount = (req, res, next) => {
   
   };
 
+  exports.checkUserLogin = (req, res, next) => {
+    if(req.session.user){
+      res.status(200).send(true);
+    }
+    else{
+      res.status(200).send(false);
+    }
+  };
+
+
   exports.logout = (req, res, next) => {
     
     req.session.destroy(err => {

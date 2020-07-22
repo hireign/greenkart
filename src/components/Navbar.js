@@ -15,7 +15,7 @@ class Navbar extends Component {
     Axios.post('/logout', {})
     .then(res => {
       console.log(res)
-      this.props.userLoggedIn("false")
+      this.props.userLoggedIn(false)
     })
     .catch(err => {
         console.log(err);
@@ -58,13 +58,13 @@ class Navbar extends Component {
             </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
           {this.props.isLoggedIn === "true" ? (
-            <div className='option' onClick={this.logoutApi}>
-              SIGN OUT
+            <div className="dropdown-item ponter" onClick={this.logoutApi}>
+              Logout
             </div>
           ) : (
-            <Link className='option' to='/signin'>
-            <Link className="dropdown-item" to='/signin'>LOGIN</Link>
-            </Link>
+            
+            <Link className="dropdown-item" to='/signin'>Login</Link>
+            
           )}
           {this.props.isLoggedIn === "true" ?
             <Link className="dropdown-item" to='/user'>User Management</Link>:null}
