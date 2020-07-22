@@ -5,17 +5,20 @@ const CartProductList = require('../models/cart-product-list');
 const { createCartByUserId, createProductItem, findCartByUserId, findCartItemByCartIdAndProductId } = require('../services/cart-service')
 
 exports.getUserCart = async (req, res, next) => {
-  // @TODO: UserID
-
+  // @TODO: Requires Auth Middleware
+  let userId = req.session.user.user_id;
   let cartItems = await Cart.findOne({
-    include: [Product]
+    include: [Product],
+    where: {
+      userId
+    }
   })
   res.send(cartItems)
 };
 
 exports.updateCart = async (req, res, next) => {
-  // @TODO: UserID
-  let userId = 1;
+  // @TODO: Requires Auth Middleware
+  let userId = req.session.user.user_id;
   let { productId, quantity = 1 } = req.body;
   // @TODO: Check for productId
 
@@ -38,8 +41,8 @@ exports.updateCart = async (req, res, next) => {
 };
 
 exports.deleteProductFromCart = async (req, res, next) => {
-  // @TODO: UserID
-  let userId = 1;
+  // @TODO: Requires Auth Middleware
+  let userId = req.session.user.user_id;
   let { productId } = req.params;
   let cart = await findCartByUserId(userId);
   if (cart !== null) {
