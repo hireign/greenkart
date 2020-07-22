@@ -6,7 +6,7 @@ const sequelize = require('../util/database');
 const { QueryTypes } = require('sequelize');
 
 exports.getAddress = (req, res, next) => {
-  const userId = req.session.user[0].user_id;
+  const userId = req.session.user.user_id;
   sequelize.query("select * from address where user_id=?", { replacements: [userId], type: QueryTypes.SELECT }).then(
     address=>{
       if (!address) {
@@ -39,7 +39,7 @@ exports.saveAndUpdateAdress = (req, res, next) => {
           .catch(err => console.log(err));
     }
     else{
-        Address.create({ name: req.body.name, mobile:req.body.mobile, street:req.body.street, user_id:req.session.user[0].user_id }).then((address) => res.status(200).send(address));
+        Address.create({ name: req.body.name, mobile:req.body.mobile, street:req.body.street, user_id:req.session.user.user_id }).then((address) => res.status(200).send(address));
     }
   };
   
