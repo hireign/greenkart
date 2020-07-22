@@ -7,7 +7,7 @@ const { createCartByUserId, createProductItem, findCartByUserId, findCartItemByC
 exports.getUserCart = async (req, res, next) => {
   // @TODO: UserID
 
-  let cartItems = await Cart.findAll({
+  let cartItems = await Cart.findOne({
     include: [Product]
   })
   res.send(cartItems)
