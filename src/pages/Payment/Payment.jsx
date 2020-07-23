@@ -54,9 +54,11 @@ function Payment(props) {
     }
 
 
-    function payment(){
+    function payment(paymentAmount){
         console.log("Inside Payment Function")
         Axios.post('/payment', {
+            paymentAmount: paymentAmount,
+            cardNumber:fields.creditCard.value
         }).then(res => console.log(res)) 
         .catch(err => {
             console.log(err);
@@ -182,7 +184,7 @@ function Payment(props) {
                                             <Button color="secondary" variant="contained" onClick={() => setActiveStep(0)}>Back</Button>
                                         </Grid>
                                         <Grid item xs={6}>
-                                            <Button variant="contained" onClick={() => payment()}
+                                            <Button variant="contained" onClick={() => payment(order.orderSummary.total)}
                                                 disabled={!fields.creditCard.valid || !fields.cvv.valid || !fields.expiryDate.valid || !fields.creditCard || !fields.cvv.value || !fields.expiryDate.value}>
                                                 Pay Now
                                             </Button>
