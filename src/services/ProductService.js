@@ -23,9 +23,13 @@ async function getAllProducts() {
 }
 
 async function getProductById(id) {
-    return products[id]
+    return fetch("/productdetails?id=" + id)
+}
+
+async function getSimilarProductById(category) {
+    return fetch("/similarproducts?category=" + category)
 }
 
 export {
-    getAllProducts, getProductById
+    getAllProducts, getProductById, getSimilarProductById
 }

@@ -52,3 +52,9 @@ Product.init({
   })
 
 module.exports = Product;
+
+// insert into product (title, category, description, sale_price, actual_price, seller_id) 
+// values ("product1", "plants", "abcdef", 23.34, 25.00, 1);
+
+// insert into product (title, category, description, sale_price, actual_price, seller_id) 
+// values ("product2", "plants", "abcdef", 23.34, 27.00, 1);

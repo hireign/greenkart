@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 import MuiAlert from '@material-ui/lab/Alert';
 import Comment from '../components/Comment';
 import { OrderContext } from '../contexts/OrderContext';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { getProductById, getSimilarProductById } from "../services/ProductService"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,6 +39,12 @@ export default function () {
   const classes = useStyles();
   const { loggedIn } = useContext(OrderContext);
   const [open, setOpen] = React.useState(false);
+  const [productInfo, setProductInfo] = useState(null)
+  useEffect(() => {
+    // code to run on component mount
+    if(productInfo == null )
+      getProductById(1).then(data => data.json()).then(data => setProductInfo(data));
+  }, [productInfo])
   const handleClick = () => {
     if(!loggedIn){
       alert("Login First");
@@ -45,10 +52,8 @@ export default function () {
       setOpen(true);
     }
   };
-
-
+  // getProductById(1).then(data => console.log(data))
   function handleClose() {
-    
     setOpen(false);
   };
 
@@ -58,7 +63,7 @@ export default function () {
         <img className={classes.image} src={PlantImage} alt="Plant" />
       </Grid>
       <Grid item xs={12} md={7}>
-          <Typography variant="h4" color="primary"> Product Name </Typography>
+          <Typography variant="h4" color="primary"> {productInfo && productInfo.title} </Typography>
           <Link to="/rating">
             <Box component="div" mb={3} borderColor="transparent">
               <Grid alignItem="center" container justify="flex-start">
@@ -67,8 +72,8 @@ export default function () {
               </Grid>
             </Box>
           </Link>
-          <Typography variant="h5"> Price: 10$</Typography>
-          <Typography variant="h6"> Description</Typography>
+          <Typography variant="h5"> Price: {productInfo && productInfo.salePrice}$</Typography>
+          <Typography variant="h6">{productInfo && productInfo.description}</Typography>
           <Typography variant="body2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non faucibus odio, vel finibus elit. Nunc convallis est maximus sollicitudin cursus. Curabitur sed dolor velit. Nulla augue libero, pulvinar Integer at commodo metus. Fusce pharetra sit amet justo.
                     </Typography>
