@@ -1,10 +1,15 @@
+/**
+ * Sequelize Model for product table interaction 
+ *
+ * @author [Shubham Suri](https://github.com/ssuri013)
+ */
 const Sequelize = require('sequelize');
 const Model = Sequelize.Model;
 
 const sequelize = require('../util/database');
 
 class Product extends Model {}
-
+// Model based on product table
 Product.init({
   productId: {
     type: Sequelize.INTEGER,
@@ -52,9 +57,3 @@ Product.init({
   })
 
 module.exports = Product;
-
-// insert into product (title, category, description, sale_price, actual_price, seller_id) 
-// values ("product1", "plants", "abcdef", 23.34, 25.00, 1);
-
-// insert into product (title, category, description, sale_price, actual_price, seller_id) 
-// values ("product2", "plants", "abcdef", 23.34, 27.00, 1);
