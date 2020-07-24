@@ -44,9 +44,10 @@ exports.saveAndUpdateAdress = (req, res, next) => {
   };
   
 
-  exports.logout = (req, res, next) => {
-    
-    req.session.destroy(err => {
-      res.status(200).send("Session ended");
-    });
+  exports.deleteAddress = (req, res, next) => {
+    const addressId = req.body.id;
+    Address.destroy({
+      where: {
+        id: addressId
+      }}).then(res.status(200).send("Address deleted")).catch(res.status(200).send("Address not found"));
   };

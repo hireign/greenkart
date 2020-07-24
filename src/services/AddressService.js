@@ -62,11 +62,12 @@ async function saveOrUpdateAddress(address) {
 }
 
 async function deleteAddressById(addressId) {
-    if(!addressId) {
-        return
-    } else {
-        delete addresses[addressId];
-    }
+    
+    console.log('Inside address delete module');
+    let res=  await Axios.post('/deleteAddress', {
+     id: addressId,
+   });
+    console.log(res.data );
     return;
 }
 
