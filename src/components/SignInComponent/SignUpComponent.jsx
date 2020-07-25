@@ -3,7 +3,11 @@ import "./LoginComponent.scss";
 import Axios from 'axios';
 import SignUpFormComponent from "./SignUpFormComponent";
 import { withRouter } from 'react-router-dom';
-
+/**
+ * SignUpComponent handles the front end part for the Create Account Page
+ *
+ * @author [Jatin Partap Rana]
+ */
 class SignUpComponent extends Component {
   constructor(props) {
     super();
@@ -39,7 +43,9 @@ class SignUpComponent extends Component {
       this.createAccountApi();
     }
   };
-
+/**
+ * Calling create account API.
+ */
   createAccountApi = (e) => {
     Axios.post('/createAccount', {
       email: this.state.userEmailId,
@@ -51,7 +57,6 @@ class SignUpComponent extends Component {
          if(res.data === true)
          {
           this.props.history.push(`/signin`);
-          //this.props.history.push(`/confirmOrder/${this.state.param2}/${this.state.param1}/${this.state.param3}/${this.state.userEmailId}`)
          }
          else
          {

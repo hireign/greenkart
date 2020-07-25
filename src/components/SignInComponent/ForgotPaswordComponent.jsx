@@ -4,7 +4,11 @@ import ProfileComponent from "./ProfileComponent";
 import Axios from 'axios';
 import ForgotPasswordFormComponent from "./ForgotPasswordFormComponent";
 import { withRouter } from 'react-router-dom';
-
+/**
+ * ForgotPaswordComponent handles the front end part for the Forgot password Page
+ *
+ * @author [Jatin Partap Rana]
+ */
 class ForgotPaswordComponent extends Component {
   constructor(props) {
     super();
@@ -34,7 +38,6 @@ class ForgotPaswordComponent extends Component {
          {
           this.props.userLoggedIn("true");
           this.props.history.push(`/`);
-          //this.props.history.push(`/confirmOrder/${this.state.param2}/${this.state.param1}/${this.state.param3}/${this.state.userEmailId}`)
          }
          else
          {
@@ -51,7 +54,9 @@ onForgotPassword = e => {
   
   this.forgotPasswordApi();
 };
-
+/**
+ * Calling forgot passoword API.
+ */
 forgotPasswordApi = (e) => {
   
   

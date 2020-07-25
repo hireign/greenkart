@@ -4,7 +4,11 @@ import ProfileComponent from "./ProfileComponent";
 import Axios from 'axios';
 import SignInFormComponent from "./SignInFormComponent";
 import { withRouter } from 'react-router-dom';
-
+/**
+ * LoginComponent handles the front end part for the Login Page
+ *
+ * @author [Jatin Partap Rana]
+ */
 class LoginComponent extends Component {
   constructor(props) {
     super();
@@ -32,7 +36,9 @@ class LoginComponent extends Component {
       
     }
   };
-
+  /**
+   * Making Login API.
+   */
   loginApi = (e) => {
     Axios.post('/login', {
       email: this.state.userEmailId,
@@ -44,7 +50,6 @@ class LoginComponent extends Component {
          {
           this.props.userLoggedIn("true");
           this.props.history.push(`/`);
-          //this.props.history.push(`/confirmOrder/${this.state.param2}/${this.state.param1}/${this.state.param3}/${this.state.userEmailId}`)
          }
          else
          {
@@ -70,7 +75,6 @@ logoutApi = (e) => {
        {
         this.props.userLoggedIn("true");
         this.props.history.push(`/`);
-        //this.props.history.push(`/confirmOrder/${this.state.param2}/${this.state.param1}/${this.state.param3}/${this.state.userEmailId}`)
        }
        else
        {
