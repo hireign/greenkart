@@ -1,14 +1,16 @@
 import React from 'react';
 import './ProductListing.css';
-import productimg from '../assets/img2.jpg';
+
 import {Link} from 'react-router-dom';
 
 function ProductListing(props){
+  const productId = props.productId;
+    const productPage = "/product/"+productId+"";
     return( 
   <div className="col mb-4 productlisting">
     <div className="card h-100">
-    <Link to='/product'>
-      <img src={productimg} className="card-img-top" alt="..."/>
+    <Link to={productPage}>
+      <img src={props.productImage} className="card-img-top" alt="..."/>
       </Link>
       <div className="card-body">
         <h5 className="card-title">{props.productName}</h5>

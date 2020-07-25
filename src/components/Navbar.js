@@ -4,10 +4,23 @@ import './Navbar.css'
 import { Link, withRouter } from 'react-router-dom';
 import { ShoppingBasket } from '@material-ui/icons';
 import Axios from 'axios';
+import SearchLandingPage from '../pages/SearchLandingPage';
 
 class Navbar extends Component {
-  constructor(props) {
-    super();
+    constructor(props) {
+    super(props);
+    this.state = {
+      value: ''
+    };
+    this.valueChanged = this.valueChanged.bind(this);
+  }
+
+  valueChanged(e) {
+    this.setState({value: e.target.value});
+  }
+
+  passValue(){
+    console.log("passValue called")
   }
 
   logoutApi = (e) => {
@@ -24,7 +37,11 @@ class Navbar extends Component {
   }
 
   render() {
+    const {value} = this.state;
+    const searchString = "/search/"+value+""
+    console.log(value);
     return (
+    <>
    <nav className="navbar navbar-expand-lg navbar-light bg-dark">
     
     <Link className="navbar-brand" to="/"><img src={logo} style={{ width: 170 }} /></Link>
@@ -40,8 +57,10 @@ class Navbar extends Component {
       </ul>
     </div>
     <form className="form-inline my-2 my-lg-0">
-      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-      <Link to="/search"><button className="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button></Link>
+      <input className="form-control mr-sm-2" type="input" name="search" id="search" onChange={this.valueChanged} placeholder="search" aria-label="Search" />
+      <Link to={searchString}>
+        <button className="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={this.passValue} >Search</button>
+      </Link>
     </form>
     <div className="collapse navbar-collapse"  id="navbarSupportedContent" style={{justifyContent: "flex-end", marginTop: "-6px"}}>
       <ul className="navbar-nav ">
@@ -80,6 +99,7 @@ class Navbar extends Component {
       <span className="navbar-toggler-icon"></span>
     </button>
   </nav>
+  </>
     )}}
 
 export default withRouter(Navbar);
