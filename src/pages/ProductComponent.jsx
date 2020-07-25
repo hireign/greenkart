@@ -1,14 +1,19 @@
+/**
+ * Service for product related API calls
+ *
+ * @author [Shubham Suri](https://github.com/ssuri013)
+ */
+import React, { useContext, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import PlantImage from '../assets/img2.jpg';
-import Rating from '@material-ui/lab/Rating';
-import { Box, Typography, Button, Snackbar } from '@material-ui/core';
+import { Paper, Grid, Box, Typography, Button, Snackbar, CircularProgress } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import MuiAlert from '@material-ui/lab/Alert';
-import Comment from '../components/Comment';
+import Rating from '@material-ui/lab/Rating';
+// import Comment from '../components/Comment';
 import { OrderContext } from '../contexts/OrderContext';
-import React, { useContext } from 'react';
+import ProductsService from "../services/ProductService"
+import { useParams } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,82 +36,138 @@ const useStyles = makeStyles((theme) => ({
   },
   ratingText: {
     paddingLeft: theme.spacing(2)
-  }
+  },
+  progressBar: {
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      marginTop: "-50px",
+      marginLeft: "-50px"
+    }
 }));
 
-export default function () {
+export default function (props) {
   const classes = useStyles();
   const { loggedIn } = useContext(OrderContext);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [productInfo, setProductInfo] = useState(null)
+  const [similarProductInfo, setSimilarProductInfo] = useState([])
+  let {id} = useParams()
+  const history = useHistory();
+
+  useEffect(() => {
+    // code to run on component mount
+    if (productInfo == null)
+      ProductsService.getProductById(id)
+        .then(data => data.json())
+        .then(data => {
+          setProductInfo(data);
+          setLoading(false)
+          return ProductsService.getSimilarProductById(data.productId)
+        })
+        .then(data => data.json())
+        .then(data => setSimilarProductInfo(data))
+        .catch(err => {
+          setOpen(true);
+          setLoading(false)
+          setProductInfo("incorrect")
+        });
+  }, [productInfo, similarProductInfo, id])
+  
   const handleClick = () => {
-    if(!loggedIn){
+    if (!loggedIn) {
       alert("Login First");
-    }else{
+    } else {
       setOpen(true);
     }
   };
 
-
   function handleClose() {
-    
     setOpen(false);
   };
+
+  if(loading) {
+    return  <div className={classes.progressBar}>
+      <CircularProgress />
+      </div>
+  }
+
+  if(productInfo === "incorrect") {
+    return <React.Fragment>
+      <div>
+        <Typography variant="h4" color="primary"> Incorrect Product ID </Typography> 
+       </div> <Grid container  spacing={3} justify="center" alignItems="center">
+        <Grid item xs={12}><Typography variant="h5">Some Popular Products</Typography></Grid>
+      {similarItem(classes)}
+      {similarItem(classes)}
+      {similarItem(classes)}
+      {similarItem(classes)}
+    </Grid>  
+      </React.Fragment>
+  }
 
   return <div className={classes.root}>
     <Grid container spacing={3} justify="center" alignItems="center">
       <Grid item xs={12} md={5}>
-        <img className={classes.image} src={PlantImage} alt="Plant" />
+        <img className={classes.image} src={productInfo && productInfo.image} alt="Plant" />
       </Grid>
       <Grid item xs={12} md={7}>
-          <Typography variant="h4" color="primary"> Product Name </Typography>
-          <Link to="/rating">
-            <Box component="div" mb={3} borderColor="transparent">
-              <Grid alignItem="center" container justify="flex-start">
+        <Typography variant="h4" color="primary"> {productInfo && productInfo.title} </Typography>
+        <Link to="/rating">
+          <Box component="div" mb={2} borderColor="transparent">
+            <Grid alignItem="center" container justify="flex-start">
               <Rating name="read-only" value={4} readOnly />
               <Typography variant="body1" component="span" className={classes.ratingText}>20 ratings and 12 reviews</Typography>
-              </Grid>
-            </Box>
-          </Link>
-          <Typography variant="h5"> Price: 10$</Typography>
-          <Typography variant="h6"> Description</Typography>
-          <Typography variant="body2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non faucibus odio, vel finibus elit. Nunc convallis est maximus sollicitudin cursus. Curabitur sed dolor velit. Nulla augue libero, pulvinar Integer at commodo metus. Fusce pharetra sit amet justo.
-                    </Typography>
-                    <br/>
-          <Grid container spacing={4}>
-            <Grid item><Button variant="contained" color="primary" onClick={handleClick}>Add to cart</Button>
             </Grid>
-            <Grid item><Button variant="contained" color="primary" onClick={handleClick}>Buy</Button>
-            </Grid>
+          </Box>
+        </Link>
+        <Typography variant="h5"> Price: ${productInfo && productInfo.salePrice}</Typography>
+        <Typography variant="h6"></Typography>
+        <Typography variant="body2">
+          {productInfo && productInfo.description}
+        </Typography>
+        <br />
+        <Grid container spacing={4}>
+          <Grid item><Button variant="contained" color="primary" onClick={handleClick}>Add to cart</Button>
           </Grid>
+          <Grid item><Button variant="contained" color="primary" onClick={handleClick}>Buy</Button>
+          </Grid>
+        </Grid>
       </Grid>
       <Snackbar open={open} autoHideDuration={10000} onClose={handleClose}>
         <MuiAlert elevation={6} variant="filled" onClose={handleClose} severity="success">
           Product is added to cart! next page is currently unavailable!
         </MuiAlert>
       </Snackbar>
-      <Grid item xs={12}><Typography variant="h5">Similar Items</Typography></Grid>
-      {similarItem(classes)}
-      {similarItem(classes)}
-      {similarItem(classes)}
-      {similarItem(classes)}
+      {
+        similarProductInfo.length > 0 && 
+        <React.Fragment>
+        <Grid item xs={12}><Typography variant="h5">Similar Items</Typography></Grid>
+          {similarProductInfo.map(e => similarItem(classes, e, history))}
+        </React.Fragment>
+      }
     </Grid>
-    <Comment/>
+    {/* <Comment/> */}
   </div>
 }
 
-function similarItem(classes) {
-  return <Grid item xs={8} sm={5} md={3}>
+function similarItem(classes, product, history) {
+  function handleClick() {
+    history.push("/product/" + product.productId);
+  }
+
+  return <Grid item xs={8} sm={5} md={3} onClick={handleClick}>
     <Paper classes={{ root: classes.subPaper }}>
       <Grid container justify="center" direction="column" alignItems="center" spacing={2}>
         <Grid item>
-          <img className={classes.image} src={PlantImage} alt="Plant"></img>
+          <img className={classes.image} src={(product && product.image) || "https://photos.imageevent.com/livingartreptiles/livingartreptilesballpythonsmorphs/No%20image%20available%20Living%20Art%20Reptiles_34.jpeg"} alt="Plant"></img>
         </Grid>
         <Grid item>
-          <Box>Product Name</Box>
+          <Box>{ product.title}</Box>
         </Grid>
         <Grid item>
-          <Box> $25</Box>
+          <Box> {product.salePrice}</Box>
         </Grid>
       </Grid>
     </Paper>

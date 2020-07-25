@@ -1,10 +1,15 @@
+/**
+ * Sequelize Model for product table interaction 
+ *
+ * @author [Shubham Suri](https://github.com/ssuri013)
+ */
 const Sequelize = require('sequelize');
 const Model = Sequelize.Model;
 
 const sequelize = require('../util/database');
 
 class Product extends Model {}
-
+// Model based on product table
 Product.init({
   productId: {
     type: Sequelize.INTEGER,

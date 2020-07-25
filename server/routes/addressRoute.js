@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/getAddress', addressController.getAddress);
 router.post('/saveEditAddress', addressController.saveAndUpdateAdress);
-router.delete('/editAddress', addressController.getAddress);
+router.post('/deleteAddress', addressController.deleteAddress);
 
 
 module.exports = router;

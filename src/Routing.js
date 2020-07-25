@@ -28,7 +28,7 @@ export default function (props) {
       <Route path="/cart">
         <Cart />
       </Route>
-      <Route path="/product">
+      <Route path="/product/:id">
         <Product />
       </Route>
       <Route path="/rating">
