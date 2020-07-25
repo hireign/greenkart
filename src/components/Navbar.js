@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import logo from '../assets/GreenKartLogo_transparent.png';
 import './Navbar.css'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { ShoppingBasket } from '@material-ui/icons';
 import Axios from 'axios';
 
@@ -16,6 +16,7 @@ class Navbar extends Component {
     .then(res => {
       console.log(res)
       this.props.userLoggedIn(false)
+      this.props.history.push("/");
     })
     .catch(err => {
         console.log(err);
@@ -81,4 +82,4 @@ class Navbar extends Component {
   </nav>
     )}}
 
-export default Navbar;
+export default withRouter(Navbar);
