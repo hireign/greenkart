@@ -13,6 +13,9 @@ exports.getUserCart = async (req, res, next) => {
       userId
     }
   })
+  if(cartItems == null) {
+    cartItems = await createCartByUserId(userId)
+  }
   res.send(cartItems)
 };
 
