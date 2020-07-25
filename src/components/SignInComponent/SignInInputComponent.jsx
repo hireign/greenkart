@@ -2,7 +2,7 @@ import React from "react";
 import LoginImageTypeComponent from './LoginImageTypeComponent';
 
 const SignInInputComponent = (props) => {
-  console.log('Inside image'+ props.imgType)
+  
   const imgType = props.imgType
   return (
     <div className="input-group mb-3">
@@ -11,7 +11,7 @@ const SignInInputComponent = (props) => {
     </div>
       <input
         type={props.inputType}
-        class="form-control py-4 "
+        className="form-control py-4 "
         placeholder={props.placeholder}
         required
         onChange={props.onInputChange}

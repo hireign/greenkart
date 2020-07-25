@@ -11,10 +11,10 @@ class Navbar extends Component {
   }
 
   logoutApi = (e) => {
-    console.log("iNSIDE fORGOR password 2")
+    
     Axios.post('/logout', {})
     .then(res => {
-      console.log(res)
+      
       this.props.userLoggedIn(false)
       this.props.history.push("/");
     })

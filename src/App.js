@@ -63,7 +63,7 @@ class App extends React.Component {
   render() {
     let { order, loggedIn } = this.state;
     let { setOrder, setLoggedIn } = this;
-    console.log("Appjs In value"+this.state.loggedIn)
+    
     return (<div>
       <OrderContext.Provider value={{ order, setOrder, loggedIn, setLoggedIn }}>
         <Grid row>

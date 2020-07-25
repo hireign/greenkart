@@ -28,7 +28,7 @@ class SignUpComponent extends Component {
 
   onFormSubmit = e => {
     e.preventDefault();
-    console.log("Password length" + this.state.userPassword);
+    
     if (this.state.userPassword.length < 5) {
       alert("Password should be of at least 5 characters");
     }
@@ -47,7 +47,7 @@ class SignUpComponent extends Component {
       userName: this.state.userName
     })
     .then(res => {
-      console.log(res)
+      
          if(res.data === true)
          {
           this.props.history.push(`/signin`);
@@ -66,11 +66,11 @@ class SignUpComponent extends Component {
 
   render() {
     const { userEmailId } = this.state;
-    console.log("Email: " + userEmailId);
+    
     return (
       <div style={{margin:"80px auto"}}>
         <div className="row mb-4">
-          <div className="login col-lg-4" style={{ "padding-right": "40px" }}>
+          <div className="login col-lg-4" >
             <div className="card mr-1 mt-5 bg-dark  ">
               <div className="card-body bg-dark">
               <h3  style={{color:"white", textDecoration: "bold", textAlign:"center"}}>Create Account</h3>

@@ -16,9 +16,9 @@ let addresses = {
 
 
 async function getAllAddresses() {
-    console.log('Inside address');
+    
    let res=  await Axios.get('/getAddress');
-   console.log(res.data );
+   
     return res.data
 }
 
@@ -38,14 +38,14 @@ function getNewId() {
 
 async function saveOrUpdateAddress(address) {
 
-    console.log('Inside address updated');
+    
    let res=  await Axios.post('/saveEditAddress', {
     id: address.id,
     name: address.name,
     mobile: address.mobile,
     street: address.street
   });
-   console.log(res.data );
+   
     return res.data
 
 
@@ -63,11 +63,11 @@ async function saveOrUpdateAddress(address) {
 
 async function deleteAddressById(addressId) {
     
-    console.log('Inside address delete module');
+    
     let res=  await Axios.post('/deleteAddress', {
      id: addressId,
    });
-    console.log(res.data );
+    
     return;
 }
 

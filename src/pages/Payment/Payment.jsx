@@ -55,11 +55,11 @@ function Payment(props) {
 
 
     function payment(paymentAmount){
-        console.log("Inside Payment Function")
+        
         Axios.post('/payment', {
             paymentAmount: paymentAmount,
             cardNumber:fields.creditCard.value
-        }).then(res => console.log(res)) 
+        }).then() 
         .catch(err => {
             console.log(err);
         })

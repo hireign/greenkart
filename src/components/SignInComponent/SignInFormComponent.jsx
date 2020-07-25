@@ -15,7 +15,6 @@ const SignInFormComponent = (props) =>{
         <span  onClick={props.onForgotPassword } style={{"color": "#e8226b",
         "outline": "medium none",
         "overflow": "hidden",
-        "text-decoration": "none",
         "cursor": "pointer"}}>Forgot Password?</span>
         </Link>
         <Link to='/signup'>

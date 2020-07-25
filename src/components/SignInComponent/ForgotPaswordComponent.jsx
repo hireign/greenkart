@@ -29,7 +29,7 @@ class ForgotPaswordComponent extends Component {
       password: this.state.userPassword
     })
     .then(res => {
-      console.log(res)
+      
          if(res.data === true)
          {
           this.props.userLoggedIn("true");
@@ -48,16 +48,16 @@ class ForgotPaswordComponent extends Component {
 }
 
 onForgotPassword = e => {
-  console.log("iNSIDE fORGOR password 1")
+  
   this.forgotPasswordApi();
 };
 
 forgotPasswordApi = (e) => {
-  console.log("iNSIDE fORGOR password 2")
+  
   
   Axios.post('/forgotpassward', {email: this.state.userEmailId})
   .then(res => {
-    console.log(res)
+    
        
          alert(res.data)
          this.props.history.push(`/signin`);
@@ -70,11 +70,11 @@ forgotPasswordApi = (e) => {
 
   render() {
     const { userEmailId } = this.state;
-    console.log("Email: " + userEmailId);
+    
     return (
       <div style={{margin:"80px auto"}}>
         <div className="row mb-4">
-          <div className="login col-lg-4" style={{ "padding-right": "40px" }}>
+          <div className="login col-lg-4" >
             <div className="card mr-1 mt-5 bg-dark  ">
               <div className="card-body bg-dark">
               <h3  style={{color:"white", textDecoration: "bold", textAlign:"center"}}>Forgot Password</h3>
