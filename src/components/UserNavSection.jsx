@@ -31,12 +31,6 @@ function UserNavSection(props) {
                             <ListItemText>Manage Addresses</ListItemText>
                         </ListItem>
                         <Divider />
-                        <ListItem button  onClick={() => handleChange("LOGOUT")} selected={props.selectedItem==="LOGOUT"}>
-                            <ListItemIcon>
-                                <PowerSettingsNewIcon />
-                            </ListItemIcon>
-                            <ListItemText>Logout</ListItemText>
-                        </ListItem>
                     </List>
                 </Hidden>
                 <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
@@ -57,7 +51,6 @@ function UserNavSection(props) {
                             <Grid item xs={4}>
                                 <CardActionArea button  onClick={() => handleChange("LOGOUT")} selected={props.selectedItem==="LOGOUT"}>
                                     <PowerSettingsNewIcon />
-                                    <Typography variant="body1">Logout</Typography>
                                 </CardActionArea>
                             </Grid>
                         </Grid>
