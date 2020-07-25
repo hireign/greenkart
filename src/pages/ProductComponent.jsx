@@ -1,15 +1,18 @@
+/**
+ * Service for product related API calls
+ *
+ * @author [Shubham Suri](https://github.com/ssuri013)
+ */
+import React, { useContext, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import PlantImage from '../assets/img2.jpg';
-import Rating from '@material-ui/lab/Rating';
-import { Box, Typography, Button, Snackbar } from '@material-ui/core';
+import { Paper, Grid, Box, Typography, Button, Snackbar, CircularProgress } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import MuiAlert from '@material-ui/lab/Alert';
-import Comment from '../components/Comment';
+import Rating from '@material-ui/lab/Rating';
+// import Comment from '../components/Comment';
 import { OrderContext } from '../contexts/OrderContext';
-import React, { useContext, useEffect, useState } from 'react';
-import { getProductById, getSimilarProductById } from "../services/ProductService"
+import ProductsService from "../services/ProductService"
+import { useParams } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,55 +38,80 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function () {
+export default function (props) {
   const classes = useStyles();
   const { loggedIn } = useContext(OrderContext);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [productInfo, setProductInfo] = useState(null)
+  const [similarProductInfo, setSimilarProductInfo] = useState([])
+  let {id} = useParams()
+  console.log(id)
   useEffect(() => {
     // code to run on component mount
-    if(productInfo == null )
-      getProductById(1).then(data => data.json()).then(data => setProductInfo(data));
-  }, [productInfo])
+    if (productInfo == null)
+      ProductsService.getProductById(1)
+        .then(data => data.json())
+        .then(data => {
+          setProductInfo(data);
+          setLoading(false)
+          return ProductsService.getSimilarProductById(data.productId)
+        })
+        .then(data => data.json())
+        .then(data => setSimilarProductInfo(data));
+  }, [productInfo, similarProductInfo])
+  
   const handleClick = () => {
-    if(!loggedIn){
+    if (!loggedIn) {
       alert("Login First");
-    }else{
+    } else {
       setOpen(true);
     }
   };
-  // getProductById(1).then(data => console.log(data))
+
   function handleClose() {
     setOpen(false);
   };
 
+  if(loading) {
+    return  <div className={classes.root}>
+      <CircularProgress />
+      </div>
+  }
+
+  if(productInfo === "incorrect") {
+    return  <div className={classes.root}>
+      error
+      </div>
+  }
+
   return <div className={classes.root}>
     <Grid container spacing={3} justify="center" alignItems="center">
       <Grid item xs={12} md={5}>
-        <img className={classes.image} src={PlantImage} alt="Plant" />
+        <img className={classes.image} src={productInfo && productInfo.image} alt="Plant" />
       </Grid>
       <Grid item xs={12} md={7}>
-          <Typography variant="h4" color="primary"> {productInfo && productInfo.title} </Typography>
-          <Link to="/rating">
-            <Box component="div" mb={3} borderColor="transparent">
-              <Grid alignItem="center" container justify="flex-start">
+        <Typography variant="h4" color="primary"> {productInfo && productInfo.title} </Typography>
+        <Link to="/rating">
+          <Box component="div" mb={3} borderColor="transparent">
+            <Grid alignItem="center" container justify="flex-start">
               <Rating name="read-only" value={4} readOnly />
               <Typography variant="body1" component="span" className={classes.ratingText}>20 ratings and 12 reviews</Typography>
-              </Grid>
-            </Box>
-          </Link>
-          <Typography variant="h5"> Price: {productInfo && productInfo.salePrice}$</Typography>
-          <Typography variant="h6">{productInfo && productInfo.description}</Typography>
-          <Typography variant="body2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non faucibus odio, vel finibus elit. Nunc convallis est maximus sollicitudin cursus. Curabitur sed dolor velit. Nulla augue libero, pulvinar Integer at commodo metus. Fusce pharetra sit amet justo.
-                    </Typography>
-                    <br/>
-          <Grid container spacing={4}>
-            <Grid item><Button variant="contained" color="primary" onClick={handleClick}>Add to cart</Button>
             </Grid>
-            <Grid item><Button variant="contained" color="primary" onClick={handleClick}>Buy</Button>
-            </Grid>
+          </Box>
+        </Link>
+        <Typography variant="h5"> Price: {productInfo && productInfo.salePrice}$</Typography>
+        <Typography variant="h6"></Typography>
+        <Typography variant="body2">
+          {productInfo && productInfo.description}
+        </Typography>
+        <br />
+        <Grid container spacing={4}>
+          <Grid item><Button variant="contained" color="primary" onClick={handleClick}>Add to cart</Button>
           </Grid>
+          <Grid item><Button variant="contained" color="primary" onClick={handleClick}>Buy</Button>
+          </Grid>
+        </Grid>
       </Grid>
       <Snackbar open={open} autoHideDuration={10000} onClose={handleClose}>
         <MuiAlert elevation={6} variant="filled" onClose={handleClose} severity="success">
@@ -96,16 +124,16 @@ export default function () {
       {similarItem(classes)}
       {similarItem(classes)}
     </Grid>
-    <Comment/>
+    {/* <Comment/> */}
   </div>
 }
 
-function similarItem(classes) {
+function similarItem(classes, product) {
   return <Grid item xs={8} sm={5} md={3}>
     <Paper classes={{ root: classes.subPaper }}>
       <Grid container justify="center" direction="column" alignItems="center" spacing={2}>
         <Grid item>
-          <img className={classes.image} src={PlantImage} alt="Plant"></img>
+          <img className={classes.image} src={product && product.image} alt="Plant"></img>
         </Grid>
         <Grid item>
           <Box>Product Name</Box>
