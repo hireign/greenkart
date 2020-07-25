@@ -8,7 +8,8 @@ const paymentRoute = require('./routes/paymentRoute');
 const orderRoutes = require('./routes/order-routes');
 const cartRoutes = require('./routes/cartRoute');
 const User = require('./models/user');
-const session = require('express-session') 
+const session = require('express-session');
+const searchRoute = require('./routes/searchRoute');
 
 
 
@@ -44,4 +45,5 @@ app.use("/cart", cartRoutes)
 app.use(userRoute);
 app.use(addressRoute);
 app.use(paymentRoute);
+app.use(searchRoute);
 module.exports = app

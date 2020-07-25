@@ -15,11 +15,29 @@ let products = {
         image: "https://images-na.ssl-images-amazon.com/images/I/81OBOfUWZ-L._AC_SL1500_.jpg",
         salePrice: "$19.99",
         actualPrice: "$49.99"
+    },
+    3: {
+        id: 3,
+        title: "Bond Tools Mini D Handle Shovel",
+        description: `Strong, lightweight steel handle, Comfortable soft non-slip grip, Durable heat-treated heads,
+         Rust resistant powder coated paint, 5 Year guarantee. Material: -Metal. Dimensions: Overall Height - Top to Bottom: -7.48". Overall Width - Side to Side: -13.58". Overall Depth - Front to Back: -27.56".`,
+        image: "https://images-na.ssl-images-amazon.com/images/I/81OBOfUWZ-L._AC_SL1500_.jpg",
+        salePrice: "$19.99",
+        actualPrice: "$49.99"
+    },
+    4: {
+        id: 4,
+        title: "Bond Tools Mini D Handle Shovel",
+        description: `Strong, lightweight steel handle, Comfortable soft non-slip grip, Durable heat-treated heads,
+         Rust resistant powder coated paint, 5 Year guarantee. Material: -Metal. Dimensions: Overall Height - Top to Bottom: -7.48". Overall Width - Side to Side: -13.58". Overall Depth - Front to Back: -27.56".`,
+        image: "https://images-na.ssl-images-amazon.com/images/I/81OBOfUWZ-L._AC_SL1500_.jpg",
+        salePrice: "$19.99",
+        actualPrice: "$49.99"
     }
 }
 
 async function getAllProducts() {
-    return Object.values(products);
+    return Promise.resolve(Object.values(products));
 }
 
 async function getProductById(id) {

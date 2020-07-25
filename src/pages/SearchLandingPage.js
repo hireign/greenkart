@@ -2,52 +2,47 @@ import React, { Component } from 'react';
 import ProductListing from '../components/ProductListing';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import './SearchLandingPage.css';
-import {Link} from 'react-router-dom';
+import {searchProduct} from '../services/SearchService';
+import { useParams } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+
 
 class SearchLandingPage extends Component{
-   constructor(){
-       super();
+   constructor(props){
+       super(props);
        this.state = {
-           products:[
-               {
-                  "productName": 'Moon Cactus',
-                  "productPrice": '9.99',
-                  "id":1
-               },
-               {
-                "productName": 'Moon Cactus',
-                "productPrice": '9.99',
-                "id":2
-             }, {
-                "productName": 'Moon Cactus',
-                "productPrice": '9.99',
-                "id":3
-             }, {
-                "productName": 'Moon Cactus',
-                "productPrice": '9.99',
-                "id":4
-             }, {
-                "productName": 'Moon Cactus',
-                "productPrice": '9.99',
-                "id":5
-             }, {
-                "productName": 'Moon Cactus',
-                "productPrice": '9.99',
-                "id":6
-             },
-             {
-                "productName": 'Moon Cactus',
-                "productPrice": '9.99',
-                "id":7
-             },
-             {
-                "productName": 'Moon Cactus',
-                "productPrice": '9.99',
-                "id":8
-             }
-           ]
+           products: [],
+           count: '',
+           value: this.props.match.params.queryterm
        }
    }
+
+   componentDidMount(){
+       console.log("calling search")
+       this.searchNow();
+    }
+
+    searchNow(){
+        this.state.value = this.props.match.params.queryterm;
+        searchProduct(this.state.value).then(result => this.setState({
+            products: result
+        }))
+        this.print();
+    }
+
+    componentDidUpdate(){
+        if(this.state.value != this.props.match.params.queryterm){
+            console.log("value changed")
+            this.searchNow();
+        }
+    }
+
+    print(){
+        console.log("product data: ")
+        console.log(this.state.products);
+        console.log("passed value from search: "+this.state.value)
+    }
+    
     render(){
         return(
             <>
@@ -75,7 +70,10 @@ class SearchLandingPage extends Component{
                         <div class="row row-cols-1 row-cols-md-4">
                             {
                                 this.state.products.map((product) => (
-                                    <ProductListing productName={product.productName} productPrice = {product.productPrice}></ProductListing>
+                                    <ProductListing 
+                                        productName={product.title} 
+                                        productPrice = {product.salePrice}>                                        
+                                    </ProductListing>
                                 ))
                             }
                             </div>
@@ -86,4 +84,6 @@ class SearchLandingPage extends Component{
     }
 }
 
-export default SearchLandingPage;
+export default withRouter(SearchLandingPage);
+
+// export default SearchLandingPage;
