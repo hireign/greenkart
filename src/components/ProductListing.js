@@ -4,10 +4,12 @@ import './ProductListing.css';
 import {Link} from 'react-router-dom';
 
 function ProductListing(props){
+  const productId = props.productId;
+    const productPage = "/product/"+productId+"";
     return( 
   <div class="col mb-4 productlisting">
     <div class="card h-100">
-    <Link to='/product'>
+    <Link to={productPage}>
       <img src={props.productImage} class="card-img-top" alt="..."/>
       </Link>
       <div class="card-body">

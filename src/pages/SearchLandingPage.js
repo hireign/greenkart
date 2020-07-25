@@ -137,6 +137,7 @@ class SearchLandingPage extends Component {
                   productName={product.title}
                   productPrice={product.salePrice}
                   productImage={product.image}
+                  productId={product.productId}
                 ></ProductListing>
               ))}
             </div>
