@@ -1,7 +1,8 @@
 /**
- * Service for product related API calls
- *
  * @author [Shubham Suri](https://github.com/ssuri013)
+ *
+ *  Product Details page
+ *  @param {number} productID
  */
 import React, { useContext, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,9 +13,11 @@ import Rating from '@material-ui/lab/Rating';
 // import Comment from '../components/Comment';
 import { OrderContext } from '../contexts/OrderContext';
 import ProductsService from "../services/ProductService"
-import { useParams } from 'react-router-dom'
-import { useHistory } from "react-router-dom";
+import { updateCart } from "../services/CartService"
 
+import { useParams, useHistory } from 'react-router-dom';
+
+// Styles 
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(5),
@@ -26,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
   subPaper: {
     padding: theme.spacing(2),
     textAlign: 'center',
+    cursor: "pointer"
   },
   image: {
     paddingLeft: theme.spacing(2),
@@ -43,13 +47,14 @@ const useStyles = makeStyles((theme) => ({
       left: "50%",
       marginTop: "-50px",
       marginLeft: "-50px"
-    }
+  }
 }));
 
 export default function (props) {
   const classes = useStyles();
   const { loggedIn } = useContext(OrderContext);
   const [open, setOpen] = useState(false);
+  const [openText, setOpenText] = useState("");
   const [loading, setLoading] = useState(true);
   const [productInfo, setProductInfo] = useState(null)
   const [similarProductInfo, setSimilarProductInfo] = useState([])
@@ -69,6 +74,7 @@ export default function (props) {
         .then(data => data.json())
         .then(data => setSimilarProductInfo(data))
         .catch(err => {
+          setOpenText("Error during network call")
           setOpen(true);
           setLoading(false)
           setProductInfo("incorrect")
@@ -77,8 +83,11 @@ export default function (props) {
   
   const handleClick = () => {
     if (!loggedIn) {
-      alert("Login First");
+      setOpenText("Login to add to cart")
+      setOpen(true);
     } else {
+      updateCart(productInfo.productId, 1)
+      setOpenText("added to cart")
       setOpen(true);
     }
   };
@@ -97,13 +106,7 @@ export default function (props) {
     return <React.Fragment>
       <div>
         <Typography variant="h4" color="primary"> Incorrect Product ID </Typography> 
-       </div> <Grid container  spacing={3} justify="center" alignItems="center">
-        <Grid item xs={12}><Typography variant="h5">Some Popular Products</Typography></Grid>
-      {similarItem(classes)}
-      {similarItem(classes)}
-      {similarItem(classes)}
-      {similarItem(classes)}
-    </Grid>  
+       </div>
       </React.Fragment>
   }
 
@@ -137,14 +140,14 @@ export default function (props) {
       </Grid>
       <Snackbar open={open} autoHideDuration={10000} onClose={handleClose}>
         <MuiAlert elevation={6} variant="filled" onClose={handleClose} severity="success">
-          Product is added to cart! next page is currently unavailable!
+          {openText}
         </MuiAlert>
       </Snackbar>
       {
         similarProductInfo.length > 0 && 
         <React.Fragment>
         <Grid item xs={12}><Typography variant="h5">Similar Items</Typography></Grid>
-          {similarProductInfo.map(e => similarItem(classes, e, history))}
+          {similarProductInfo.map(item => similarItem(classes, item, history))}
         </React.Fragment>
       }
     </Grid>
@@ -152,16 +155,23 @@ export default function (props) {
   </div>
 }
 
+/**
+ *  Create thumbnail for product item
+ *  @param {CSS styles} classes
+ *  @param {Product} productInfo
+ *  @param {react-router-dom useHistory} history
+ */
 function similarItem(classes, product, history) {
-  function handleClick() {
+  const handleClick = () => {
     history.push("/product/" + product.productId);
+    history.go()
   }
-
   return <Grid item xs={8} sm={5} md={3} onClick={handleClick}>
     <Paper classes={{ root: classes.subPaper }}>
       <Grid container justify="center" direction="column" alignItems="center" spacing={2}>
         <Grid item>
-          <img className={classes.image} src={(product && product.image) || "https://photos.imageevent.com/livingartreptiles/livingartreptilesballpythonsmorphs/No%20image%20available%20Living%20Art%20Reptiles_34.jpeg"} alt="Plant"></img>
+          <img className={classes.image} src={(product && product.image) ||
+             "https://photos.imageevent.com/livingartreptiles/livingartreptilesballpythonsmorphs/No%20image%20available%20Living%20Art%20Reptiles_34.jpeg"} alt="Plant"></img>
         </Grid>
         <Grid item>
           <Box>{ product.title}</Box>
