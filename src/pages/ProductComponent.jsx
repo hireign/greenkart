@@ -13,6 +13,7 @@ import Rating from '@material-ui/lab/Rating';
 import { OrderContext } from '../contexts/OrderContext';
 import ProductsService from "../services/ProductService"
 import { useParams } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,7 +36,14 @@ const useStyles = makeStyles((theme) => ({
   },
   ratingText: {
     paddingLeft: theme.spacing(2)
-  }
+  },
+  progressBar: {
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      marginTop: "-50px",
+      marginLeft: "-50px"
+    }
 }));
 
 export default function (props) {
@@ -46,11 +54,12 @@ export default function (props) {
   const [productInfo, setProductInfo] = useState(null)
   const [similarProductInfo, setSimilarProductInfo] = useState([])
   let {id} = useParams()
-  console.log(id)
+  const history = useHistory();
+
   useEffect(() => {
     // code to run on component mount
     if (productInfo == null)
-      ProductsService.getProductById(1)
+      ProductsService.getProductById(id)
         .then(data => data.json())
         .then(data => {
           setProductInfo(data);
@@ -58,8 +67,13 @@ export default function (props) {
           return ProductsService.getSimilarProductById(data.productId)
         })
         .then(data => data.json())
-        .then(data => setSimilarProductInfo(data));
-  }, [productInfo, similarProductInfo])
+        .then(data => setSimilarProductInfo(data))
+        .catch(err => {
+          setOpen(true);
+          setLoading(false)
+          setProductInfo("incorrect")
+        });
+  }, [productInfo, similarProductInfo, id])
   
   const handleClick = () => {
     if (!loggedIn) {
@@ -74,15 +88,23 @@ export default function (props) {
   };
 
   if(loading) {
-    return  <div className={classes.root}>
+    return  <div className={classes.progressBar}>
       <CircularProgress />
       </div>
   }
 
   if(productInfo === "incorrect") {
-    return  <div className={classes.root}>
-      error
-      </div>
+    return <React.Fragment>
+      <div>
+        <Typography variant="h4" color="primary"> Incorrect Product ID </Typography> 
+       </div> <Grid container  spacing={3} justify="center" alignItems="center">
+        <Grid item xs={12}><Typography variant="h5">Some Popular Products</Typography></Grid>
+      {similarItem(classes)}
+      {similarItem(classes)}
+      {similarItem(classes)}
+      {similarItem(classes)}
+    </Grid>  
+      </React.Fragment>
   }
 
   return <div className={classes.root}>
@@ -93,14 +115,14 @@ export default function (props) {
       <Grid item xs={12} md={7}>
         <Typography variant="h4" color="primary"> {productInfo && productInfo.title} </Typography>
         <Link to="/rating">
-          <Box component="div" mb={3} borderColor="transparent">
+          <Box component="div" mb={2} borderColor="transparent">
             <Grid alignItem="center" container justify="flex-start">
               <Rating name="read-only" value={4} readOnly />
               <Typography variant="body1" component="span" className={classes.ratingText}>20 ratings and 12 reviews</Typography>
             </Grid>
           </Box>
         </Link>
-        <Typography variant="h5"> Price: {productInfo && productInfo.salePrice}$</Typography>
+        <Typography variant="h5"> Price: ${productInfo && productInfo.salePrice}</Typography>
         <Typography variant="h6"></Typography>
         <Typography variant="body2">
           {productInfo && productInfo.description}
@@ -118,28 +140,34 @@ export default function (props) {
           Product is added to cart! next page is currently unavailable!
         </MuiAlert>
       </Snackbar>
-      <Grid item xs={12}><Typography variant="h5">Similar Items</Typography></Grid>
-      {similarItem(classes)}
-      {similarItem(classes)}
-      {similarItem(classes)}
-      {similarItem(classes)}
+      {
+        similarProductInfo.length > 0 && 
+        <React.Fragment>
+        <Grid item xs={12}><Typography variant="h5">Similar Items</Typography></Grid>
+          {similarProductInfo.map(e => similarItem(classes, e, history))}
+        </React.Fragment>
+      }
     </Grid>
     {/* <Comment/> */}
   </div>
 }
 
-function similarItem(classes, product) {
-  return <Grid item xs={8} sm={5} md={3}>
+function similarItem(classes, product, history) {
+  function handleClick() {
+    history.push("/product/" + product.productId);
+  }
+
+  return <Grid item xs={8} sm={5} md={3} onClick={handleClick}>
     <Paper classes={{ root: classes.subPaper }}>
       <Grid container justify="center" direction="column" alignItems="center" spacing={2}>
         <Grid item>
-          <img className={classes.image} src={product && product.image} alt="Plant"></img>
+          <img className={classes.image} src={(product && product.image) || "https://photos.imageevent.com/livingartreptiles/livingartreptilesballpythonsmorphs/No%20image%20available%20Living%20Art%20Reptiles_34.jpeg"} alt="Plant"></img>
         </Grid>
         <Grid item>
-          <Box>Product Name</Box>
+          <Box>{ product.title}</Box>
         </Grid>
         <Grid item>
-          <Box> $25</Box>
+          <Box> {product.salePrice}</Box>
         </Grid>
       </Grid>
     </Paper>

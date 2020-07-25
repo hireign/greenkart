@@ -15,8 +15,8 @@ function getProductById(id) {
     return fetch("/productdetails?id=" + id)
 }
 
-function getSimilarProductById(category) {
-    return fetch("/similarproducts?category=" + category)
+function getSimilarProductById(id) {
+    return fetch("/similarproducts?id=" + id)
 }
 
 export default {
