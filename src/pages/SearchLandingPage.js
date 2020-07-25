@@ -95,10 +95,13 @@ class SearchLandingPage extends Component {
     return (
       <>
         <div id="mainDiv">
-          <div className="row">
-            <h4 style={{ margin: "6px", marginLeft: "100px" }}>
+          <div  id="my-row" className="row justify-content-right">
+              <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <h4>
               {this.state.count} results found for {this.state.value}
             </h4>
+            </div>
+            <div class="col-lg-3 offset-lg-5 col-md-4 offset-md-2 col-sm-4 offset-sm-2 col-xs-12">
             <select className="sort" onChange={this.sort}>
               <option value="none" selected disabled hidden>
                 Sort
@@ -116,15 +119,16 @@ class SearchLandingPage extends Component {
                 Price - high to low
               </option>
             </select>
-            <select className="filter" onChange={this.filter}>
-              <option value="none" selected disabled>
+            {/* <select className="filter" onChange={this.filter}>
+              <option value="none" selected disabled hidden>
                 Filters
               </option>
               <option value="Plants">Plants</option>
               <option value="Seeds">Seeds</option>
               <option value="Flowers">Flowers</option>
               <option value="Tools">Tools</option>
-            </select>
+            </select> */}
+            </div>
           </div>
           <div id="productListing" className="productListing">
             <div class="row row-cols-1 row-cols-md-4">
@@ -144,5 +148,3 @@ class SearchLandingPage extends Component {
 }
 
 export default withRouter(SearchLandingPage);
-
-// export default SearchLandingPage;

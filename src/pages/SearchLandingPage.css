@@ -7,11 +7,16 @@
 }
 .sort{
     width: 200px;
-    margin-left: 20px;
+    
     margin-top: 8px;
     margin-bottom: 8px;
 }
 
+#my-row{
+    padding-left:65px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
 .productListing{
     background-color: #eeeeee;
     padding: 50px;
