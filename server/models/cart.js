@@ -8,7 +8,8 @@ Cart.init({
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
-    field: 'cart_id'
+    field: 'cart_id',
+    autoIncrement: true
   },
   userId: {
     type: Sequelize.INTEGER,

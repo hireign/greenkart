@@ -119,7 +119,7 @@ export default function (props) {
         <Typography variant="h4" color="primary"> {productInfo && productInfo.title} </Typography>
         <Link to="/rating">
           <Box component="div" mb={2} borderColor="transparent">
-            <Grid alignItem="center" container justify="flex-start">
+            <Grid alignContent="center" container justify="flex-start">
               <Rating name="read-only" value={4} readOnly />
               <Typography variant="body1" component="span" className={classes.ratingText}>20 ratings and 12 reviews</Typography>
             </Grid>

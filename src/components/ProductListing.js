@@ -7,20 +7,20 @@ function ProductListing(props){
   const productId = props.productId;
     const productPage = "/product/"+productId+"";
     return( 
-  <div class="col mb-4 productlisting">
-    <div class="card h-100">
+  <div className="col mb-4 productlisting">
+    <div className="card h-100">
     <Link to={productPage}>
-      <img src={props.productImage} class="card-img-top" alt="..."/>
+      <img src={props.productImage} className="card-img-top" alt="..."/>
       </Link>
-      <div class="card-body">
-        <h5 class="card-title">{props.productName}</h5>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
+      <div className="card-body">
+        <h5 className="card-title">{props.productName}</h5>
+        <span className="fa fa-star checked"></span>
+        <span className="fa fa-star checked"></span>
+        <span className="fa fa-star checked"></span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
         <br/>
-        <h3 class="">${props.productPrice}</h3>
+        <h3 className="">${props.productPrice}</h3>
       </div>
     </div>
   </div>
