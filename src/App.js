@@ -21,11 +21,8 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    console.log("Inside App.js Login")
       Axios.get('/checkUser')
       .then(res => {
-        console.log("Inside App.js Login")
-        console.log(res)
            if(res.data === true)
            {
             this.setState({ loggedIn: "true" });
@@ -72,7 +69,6 @@ class App extends React.Component {
         <Grid row>
           <NavBar userLoggedIn={this.loggedInEvent} isLoggedIn = {this.state.loggedIn} />
           <RouteTracker userLoggedIn={this.loggedInEvent} />
-          <Footer></Footer>
         </Grid>
       </OrderContext.Provider>
     </div>

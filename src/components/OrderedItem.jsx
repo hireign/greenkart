@@ -5,7 +5,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Grid from "@material-ui/core/Grid";
 import PropTypes from 'prop-types'
-import { getProductById } from '../services/ProductService'
+import ProductService from '../services/ProductService'
 
 function OrderedItem(props) {
 
@@ -13,7 +13,7 @@ function OrderedItem(props) {
 
     useEffect(() => {
         async function init() {
-            let product = await getProductById(props.productId)
+            let product = await ProductService.getProductById(props.productId)
             setProductDetail(product);    
         }
         if( !productDetail ) {

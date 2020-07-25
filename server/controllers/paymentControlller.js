@@ -35,7 +35,7 @@ let order = await insertIntoOrders(address.id, "In Process", userId);
 
 await cartProducts.map(cartProduct => insertIntoOrderDetails(cartProduct.productId, order.id, cartProduct.quantity));
 await cartProducts.map(cartProduct => deleteCartProduts(cartProduct.id));
-let payment = await insertIntoPayment(order.id, userId, paymentAmount);
+let payment = await insertIntoPayment(order.id, userId, paymentAmount, cardNumber, dd);
 if(payment){
   res.status(200).send("Payment Mapped to order")
 }
@@ -94,12 +94,14 @@ async function deleteCartProduts(cartProductId) {
   }
 }
 
-async function insertIntoPayment(orderId, userId, amount) {
+async function insertIntoPayment(orderId, userId, amount, cardNumber, paymentDate) {
   try {
       let resp = await Payment.create({
         orderId: orderId,
         userId: userId,
-        payment_amount: amount
+        paymentAmount: amount,
+        cardNumber: cardNumber,
+        paymentDate: paymentDate
   })
       return resp;
   } catch (error) {

@@ -1,5 +1,4 @@
 const COMMENTS = require('../models/comments');
-const utils = require("../util/cleanData");
 const Sequelize = require('sequelize');
 
 async function getAllComments(req, res, next) {
@@ -8,7 +7,6 @@ async function getAllComments(req, res, next) {
             product_id: req.query.id
         }
     })
-    x = utils.parseSQLResponse(x);
     res.send(x);
 };
 
