@@ -17,9 +17,18 @@ async function searchProduct(req, res, next) {
   try {  
     let products = await Product.findAll({
       where: {
-        title: {
-          [Op.like]: `${queryterm}%`
-        }
+        [Op.or]: [
+          {
+            title: {
+              [Op.like]: `${queryterm}%`
+            }
+          },
+          {
+            title: {
+              [Op.like]: `%${' '+queryterm}%`
+            }
+          }
+        ]
        }
     });
     res.send(products);

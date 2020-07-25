@@ -25,7 +25,8 @@ class SearchLandingPage extends Component{
     searchNow(){
         this.state.value = this.props.match.params.queryterm;
         searchProduct(this.state.value).then(result => this.setState({
-            products: result
+            products: result,
+            count: result.length
         }))
         this.print();
     }
@@ -39,7 +40,7 @@ class SearchLandingPage extends Component{
 
     print(){
         console.log("product data: ")
-        console.log(this.state.products);
+        console.log(this.state.products.length);
         console.log("passed value from search: "+this.state.value)
     }
     
@@ -48,7 +49,7 @@ class SearchLandingPage extends Component{
             <>
             <div>
                     <div className="row">
-                        <h4 style={{margin:'6px', marginLeft: "100px"}}>12 results found for "search term"</h4>                
+        <h4 style={{margin:'6px', marginLeft: "100px"}}>{this.state.count} results found for {this.state.value}</h4>                
                             <Formik>
                                 <Field name="sort" as="select" style={{width:150, marginLeft:"100px", marginTop: "8px", marginBottom: '8px'}}>
                                     <option value="Featured">Featured</option>
@@ -72,7 +73,8 @@ class SearchLandingPage extends Component{
                                 this.state.products.map((product) => (
                                     <ProductListing 
                                         productName={product.title} 
-                                        productPrice = {product.salePrice}>                                        
+                                        productPrice = {product.salePrice} 
+                                        productImage = {product.image}    >                                 
                                     </ProductListing>
                                 ))
                             }
