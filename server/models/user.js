@@ -1,7 +1,11 @@
 const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
-
+/**
+ * Sequelize Model for User table  
+ *
+ * @author [Jatin Partap Rana]
+ */
 const User = sequelize.define('users', {
   user_id: {
     type: Sequelize.INTEGER,

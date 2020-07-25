@@ -112,15 +112,15 @@ CREATE TABLE `payments` (
   `payment_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `card_number` int(11) DEFAULT NULL,
+  `card_number` varchar(40) DEFAULT NULL,
   `payment_date` datetime DEFAULT NULL,
   `payment_amount` float DEFAULT NULL,
   PRIMARY KEY (`payment_id`),
   KEY `order_id` (`order_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `payments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-);
+  CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
+  CONSTRAINT `payments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+)
 
 
 -- -----------------------------------------------------

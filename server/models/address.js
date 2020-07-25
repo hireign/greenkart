@@ -2,7 +2,11 @@ const Sequelize = require('sequelize');
 const Model = Sequelize.Model;
 
 const sequelize = require('../util/database');
-
+/**
+ * Sequelize Model for Address table  
+ *
+ * @author [Jatin Partap Rana]
+ */
 class Address extends Model {}
 
 Address.init({

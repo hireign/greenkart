@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 
 app.use(
   session({
-    secret: 'my secret',
+    secret: 'greenKart secretKey',
     resave: false,
     saveUninitialized: true,
   })

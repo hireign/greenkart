@@ -1,7 +1,11 @@
 const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
-
+/**
+ * Sequelize Model for Payment table  
+ *
+ * @author [Jatin Partap Rana]
+ */
 const Payment = sequelize.define('payments', {
   id: {
     type: Sequelize.INTEGER,

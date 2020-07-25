@@ -1,17 +1,18 @@
-const User = require('../models/user');
-const Cart = require('../models/cart');
-const Product = require('../models/product');
 const Address = require('../models/address');
 const Payment = require('../models/payment');
 const Order = require('../models/order');
 const OrderDetails = require('../models/order-details');
 const CartProductList = require('../models/cart-product-list');
-const Sequelize = require('sequelize');
-const sequelize = require('../util/database');
-const { QueryTypes } = require('sequelize');
 const date = require("date-and-time");
 const { createCartByUserId, createProductItem, findCartByUserId, findCartItemByCartId } = require('../services/cart-service')
 
+ /**
+   * @author [Jatin Partap Rana]
+   * This API creates the payment by taking user object from the session
+   * and amount from the request body. This API inserts an entry in the order
+   * and order details table. It also removes the entry from the cart table.
+   * And inserts an entry in the payment table as well.
+   */
 exports.createPayment = async (req, res, next) => {
   const now = new Date();
   const dd = date.format(now, "YYYY/MM/DD");
@@ -28,10 +29,10 @@ exports.createPayment = async (req, res, next) => {
   let cartData = cart.get();
   let cartId = cartData.id
   let cartProducts = await findCartItemByCartId(cartId);
-//array
+
 let address = await getAddress(userId);
 
-let order = await insertIntoOrders(address.id, "In Process", userId);
+let order = await insertIntoOrders(address === null ? 1 : address.id, "In Process", userId);
 
 await cartProducts.map(cartProduct => insertIntoOrderDetails(cartProduct.productId, order.id, cartProduct.quantity));
 await cartProducts.map(cartProduct => deleteCartProduts(cartProduct.id));
@@ -42,7 +43,10 @@ if(payment){
 };
   
 
-
+/**
+ * Mehtod to get address from the userId
+ * @param {*} userId 
+ */
   async function getAddress(userId) {
     try {
         let resp = await Address.findOne({
@@ -55,7 +59,12 @@ if(payment){
         console.log(error);
     }
 }
-
+/**
+ * Method to insert data in orders table.
+ * @param {*} addressId 
+ * @param {*} status 
+ * @param {*} userId 
+ */
 async function insertIntoOrders(addressId, status, userId) {
   try {
       let resp = await Order.create({
@@ -68,7 +77,12 @@ async function insertIntoOrders(addressId, status, userId) {
       console.log(error);
   }
 }
-
+/**
+ * Method to insert data in order details table.
+ * @param {} productId 
+ * @param {*} orderId 
+ * @param {*} quantity 
+ */
 async function insertIntoOrderDetails(productId, orderId, quantity) {
   try {
       let resp =  await OrderDetails.create({
@@ -81,7 +95,10 @@ async function insertIntoOrderDetails(productId, orderId, quantity) {
       console.log(error);
   }
 }
-
+/**
+ * Method to delete entry from the carts table.
+ * @param {} cartProductId 
+ */
 async function deleteCartProduts(cartProductId) {
   try {
       let resp =  await CartProductList.destroy({
@@ -93,7 +110,14 @@ async function deleteCartProduts(cartProductId) {
       console.log(error);
   }
 }
-
+/**
+ * Method to insert entry in the payments table.
+ * @param {*} orderId 
+ * @param {*} userId 
+ * @param {*} amount 
+ * @param {*} cardNumber 
+ * @param {*} paymentDate 
+ */
 async function insertIntoPayment(orderId, userId, amount, cardNumber, paymentDate) {
   try {
       let resp = await Payment.create({
