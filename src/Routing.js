@@ -34,11 +34,14 @@ export default function (props) {
       <Route path="/rating">
         <Review />
       </Route>
-      <Route path="/search">
-        <SearchPage />
+      <Route exact path="/search"
+        component={HomePage}>
       </Route>
       <Route path="/contact">
         <ContactDetails />
+      </Route>
+      <Route path="/search/:queryterm">
+        <SearchPage />
       </Route>
   </Switch>
 
