@@ -6,7 +6,7 @@
  */
 const Sequelize = require('sequelize');
 
-const SCHEMA = process.env.DATABASE || 'mydb2'
+const SCHEMA = process.env.DATABASE || 'mydb'
 const DB_USER = process.env.DB_USER || 'root'
 const DB_PASSWORD = process.env.DB_PASSWORD || 'password'
 const DB_HOST = process.env.DB_HOST || 'localhost'
