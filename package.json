@@ -36,7 +36,7 @@
         "sequelize": "^5.0.0-beta.11"
     },
     "scripts": {
-        "start": "react-scripts start",
+        "start": "node index.js",
         "dev": "concurrently 'npm:dev-frontend' 'npm:dev-backend'",
         "dev-frontend": "react-scripts start",
         "dev-backend": "node index.js",
