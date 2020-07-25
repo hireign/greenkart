@@ -52,10 +52,10 @@ class SearchLandingPage extends Component{
         <h4 style={{margin:'6px', marginLeft: "100px"}}>{this.state.count} results found for {this.state.value}</h4>                
                             <Formik>
                                 <Field name="sort" as="select" style={{width:150, marginLeft:"100px", marginTop: "8px", marginBottom: '8px'}}>
-                                    <option value="Featured">Featured</option>
+                                    <option value="Ascending by Name">Ascending by Name</option>
+                                    <option value="Descending by Name">Descending by Name</option>
                                     <option value="Price low to high">Price low to high</option>
                                     <option value="Price high to low">Price high to low</option>
-                                    <option value="Recommended">Recommended</option>
                                 </Field>
                             </Formik>
                             <Formik>
