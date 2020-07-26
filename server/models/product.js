@@ -54,6 +54,7 @@ Product.init({
     sequelize,
     timestamps: false,
     freezeTableName: true,
+    tableName: "product"
   })
 
 module.exports = Product;

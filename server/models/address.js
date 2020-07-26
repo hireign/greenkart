@@ -32,8 +32,11 @@ Address.init({
     field: 'user_id'
   }
 }, {
-  sequelize, modelName: 'address',   timestamps: false,
+  sequelize, 
+  modelName: 'address',
+  timestamps: false,
   freezeTableName: true,
+  tableName: 'address'
 })
 
 module.exports = Address;

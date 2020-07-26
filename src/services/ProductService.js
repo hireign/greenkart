@@ -5,7 +5,7 @@
  */
 
 /**
- * Get product details fro  product id
+ * Get product details from product id
  *
  * @param {integer} id
  * @returns {Product} product details
