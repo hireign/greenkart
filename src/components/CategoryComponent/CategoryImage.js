@@ -6,7 +6,7 @@ const categoryImage = (props) => (
     <div 
         className={classes.CategoryImage}
         style = {{ backgroundImage: `url(${props.img})`, backgroundRepeat: 'no-repeat', backgroundSize: "cover"}}>
-        <Link to='/search'>
+        <Link to='/search/product'>
             <button>{props.heading}</button>
         </Link>
     </div>
