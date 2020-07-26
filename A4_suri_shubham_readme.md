@@ -21,18 +21,13 @@ Project uses MySQL for structured and related data.
 
 ## APIs utilised
 
-1. Request type: GET
-	URL: https://project-group16.herokuapp.com/surveyQuestions/question
-	Description: This GET request will fetch the survey questions from the surveyquestions collection present in the MongoDB database.
+1. Request : GET ProductDetails
+	URL: https://web-team-22.herokuapp.com/productdetails?id=4
+	Description: This GET request will fetch the details for product by product ID.
 
-[2]	Request type: POST
-	URL: https://project-group16.herokuapp.com/surveyAnswers/response
-	Sample body to test the API: 
-		{
-			"question": "This is a sample question",
-			"response": "This is a sample response"
-		}
-	Description: This POST request will record all the survey responses provided by a user and store them in the surveyresponse collection present in the MongoDB database.
+2. Request : GET SimilarProducts
+	URL: https://web-team-22.herokuapp.com/similarproducts?id=4
+	Description: This request has parm product id, it gets category for product id and then fetch top 4 products in that product category.
 
 
 ### Clone repository
