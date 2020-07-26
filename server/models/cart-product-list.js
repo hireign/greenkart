@@ -5,6 +5,10 @@ const sequelize = require('../util/database');
 const Cart = require('./cart');
 const Product = require('./product')
 
+/**
+ * @author Aman Vishnani
+ */
+
 class CartProductList extends Model { }
 
 CartProductList.init({

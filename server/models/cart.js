@@ -4,6 +4,10 @@ const Model = Sequelize.Model;
 const sequelize = require('../util/database');
 class Cart extends Model {}
 
+/**
+ * @author Aman Vishnani
+ */
+
 Cart.init({
   id: {
     type: Sequelize.INTEGER,

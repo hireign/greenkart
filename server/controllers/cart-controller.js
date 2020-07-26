@@ -4,8 +4,19 @@ const Product = require('../models/product');
 const CartProductList = require('../models/cart-product-list');
 const { createCartByUserId, createProductItem, findCartByUserId, findCartItemByCartIdAndProductId } = require('../services/cart-service')
 
+/**
+ * @author Aman Vishnani
+ * 
+ * Controller for REST APIs.
+ * Check cartRoute for more details
+ */
+
+ /**
+  * Returns User's cart details
+  *  
+  */
 exports.getUserCart = async (req, res, next) => {
-  // @TODO: Requires Auth Middleware
+  // @TODO: Requires Auth Middleware (User Module Dependency)
   let userId = req.session.user.user_id;
   let cartItems = await Cart.findOne({
     include: [Product],
@@ -19,8 +30,14 @@ exports.getUserCart = async (req, res, next) => {
   res.send(cartItems)
 };
 
+/**
+ * Sets the quantity of items for given product in user's cart
+ * 
+ * @param productId as Body Param 
+ * @param  quantity as Body Param 
+ */
 exports.updateCart = async (req, res, next) => {
-  // @TODO: Requires Auth Middleware
+  // @TODO: Requires Auth Middleware (User Module Dependency)
   let userId = req.session.user.user_id;
   let { productId, quantity = 1 } = req.body;
   // @TODO: Check for productId
@@ -43,8 +60,13 @@ exports.updateCart = async (req, res, next) => {
   res.send(item)
 };
 
+/**
+ * Remove product from User's cart
+ * 
+ * @param productId as body param.
+ */
 exports.deleteProductFromCart = async (req, res, next) => {
-  // @TODO: Requires Auth Middleware
+  // @TODO: Requires Auth Middleware (User Module Dependency)
   let userId = req.session.user.user_id;
   let { productId } = req.params;
   let cart = await findCartByUserId(userId);
