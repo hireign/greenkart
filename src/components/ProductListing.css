@@ -2,7 +2,25 @@
     color: orange;
   }
 
-  .productlisting:hover{
-    transform: scale(1.05);
-    cursor: pointer;
-  }
+.productlisting .hiddenCheckout{
+  display: none;
+}
+
+.productlisting:hover{
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.productlisting:hover .hiddenCheckout{
+  transform: scale(1.05);
+  cursor: pointer;
+  display:block;
+}
+
+.cardTitle{
+    white-space: nowrap; 
+    width: 250px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+ 

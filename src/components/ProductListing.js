@@ -1,5 +1,7 @@
 import React from 'react';
 import './ProductListing.css';
+import Grid from "@material-ui/core/Grid";
+import { Button } from "@material-ui/core";
 
 import {Link} from 'react-router-dom';
 
@@ -13,7 +15,7 @@ function ProductListing(props){
       <img src={props.productImage} className="card-img-top" alt="..."/>
       </Link>
       <div className="card-body">
-        <h5 className="card-title">{props.productName}</h5>
+        <h5 className="card-title cardTitle">{props.productName}</h5>
         <span className="fa fa-star checked"></span>
         <span className="fa fa-star checked"></span>
         <span className="fa fa-star checked"></span>
@@ -21,6 +23,13 @@ function ProductListing(props){
         <span className="fa fa-star"></span>
         <br/>
         <h3 className="">${props.productPrice}</h3>
+        <div className="hiddenCheckout" style={{textAlign: 'center'}}>
+          <Grid>
+              <Button variant="contained" color="primary" onClick="">
+                  Quick Checkout
+              </Button>
+          </Grid>
+        </div>
       </div>
     </div>
   </div>

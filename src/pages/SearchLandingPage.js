@@ -22,6 +22,22 @@ class SearchLandingPage extends Component {
     this.searchNow();
   }
 
+  componentDidUpdate() {
+    console.log("inside update");
+    if (this.state.value != this.props.match.params.queryterm) {
+      console.log("value changed");
+      this.searchNow();
+    } 
+    // else if (this.state.products.length < 1) {
+    //   console.log("No results found");
+    //   alert(
+    //     "No results found for " +
+    //       this.state.value +
+    //       ". Please try another search!"
+    //   );
+    // }
+  }
+
   searchNow() {
     this.state.value = this.props.match.params.queryterm;
     searchProduct(this.state.value).then((result) =>
@@ -76,21 +92,6 @@ class SearchLandingPage extends Component {
     }
   };
 
-  componentDidUpdate() {
-    console.log("inside updte");
-    if (this.state.value != this.props.match.params.queryterm) {
-      console.log("value changed");
-      this.searchNow();
-    } else if (this.state.products.length < 1) {
-      console.log("No results found");
-      alert(
-        "No results found for " +
-          this.state.value +
-          ". Please try another search!"
-      );
-    }
-  }
-
   render() {
     return (
       <>
@@ -130,7 +131,7 @@ class SearchLandingPage extends Component {
             </select> */}
             </div>
           </div>
-          <div id="productListing" className="productListing">
+          <div id="productListing" className="productListBody">
             <div class="row row-cols-1 row-cols-md-4">
               {this.state.products.map((product) => (
                 <ProductListing
