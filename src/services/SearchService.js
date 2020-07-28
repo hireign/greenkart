@@ -7,7 +7,7 @@ async function getAllProducts() {
 
 async function searchProduct(args) {
   console.log("called searchProduct api: " + args);
-  let res = await Axios.get(`/search/${args}`);
+  let res = await Axios.get(`/searched/${args}`);
   return res.data;
 }
 
