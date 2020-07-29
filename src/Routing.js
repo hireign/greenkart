@@ -10,7 +10,8 @@ import UserProfile from "./pages/UserProfile/UserProfile";
 import Cart from "./pages/Cart/Cart";
 import SearchPage from './pages/SearchLandingPage';
 import HomePage from './pages/HomePage/homePage';
-import ContactDetails from './pages/ContactDetail';
+import Contact from "./pages/Contact";
+import AdminFaq from "./pages/AdminFaq";
 
 export default function (props) {
 
@@ -37,11 +38,14 @@ export default function (props) {
       <Route exact path="/search"
         component={HomePage}>
       </Route>
-      <Route path="/contact">
-        <ContactDetails />
-      </Route>
       <Route path="/search/:queryterm">
         <SearchPage />
+      </Route>
+      <Route path="/contact">
+        <Contact />
+      </Route>
+      <Route path="/adminfaq">
+        <AdminFaq />
       </Route>
   </Switch>
 

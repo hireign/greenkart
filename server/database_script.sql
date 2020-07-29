@@ -171,3 +171,32 @@ CREATE TABLE `user_address`(
   `user_id` INT NOT NULL REFERENCES user(`user_id`),
   `address_id` INT NOT NULL REFERENCES address(`address_id`)
 );
+
+-- -----------------------------------------------------
+-- Table `complaint`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `complaint`;
+
+CREATE TABLE `complaint` (
+  `complaint_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `email_id` varchar(100) DEFAULT NULL,
+  `contact_no` int(10) DEFAULT NULL,
+  `message` varchar(2000) DEFAULT NULL,
+  `state` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`complaint_id`)
+);
+
+-- -----------------------------------------------------
+-- Table `faq`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `faq`;
+
+CREATE TABLE `faq` (
+  `faq_id` int(11) NOT NULL AUTO_INCREMENT,
+  `question` varchar(1000) DEFAULT NULL,
+  `answer` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`faq_id`)
+);
