@@ -6,11 +6,11 @@
 const express = require("express");
 
 const faqController = require("../controllers/faqController");
-const adminFaqController = require("../controllers/adminFaqController");
+// const adminFaqController = require("../controllers/adminFaqController");
 
 const router = express.Router();
 
-router.post("/contact/submitfaq", adminFaqController.addFaq);
+// router.post("/contact/submitfaq", adminFaqController.addFaq);
 router.get("/contact", faqController.getFaqs);
 
 
