@@ -8,7 +8,7 @@ const Products = require('../models/product');
  */
 
 async function getAllOrders(req, res, next) {
-    let userId = req.session.user.user_id;
+    let userId = req.session.user.user_id || -1;
     try {
         let resp = await Order.findAll({
             include: [Products],
@@ -23,7 +23,7 @@ async function getAllOrders(req, res, next) {
 }
 
 async function getOrderByOrderId(req, res, next) {
-    let userId = req.session.user.user_id;
+    let userId = req.session.user.user_id || -1;
     try {
         let orderId = req.params['orderId']
         let existingOrder = await Order.findByPk(orderId, {
@@ -50,6 +50,7 @@ async function getOrderByOrderId(req, res, next) {
 }
 
 async function deleteByOrderId(req, res, next) {
+    let userId = req.session.user.user_id || -1;
     try {
         let orderId = req.params['orderId']
         let existingOrder = await Order.findByPk(orderId)

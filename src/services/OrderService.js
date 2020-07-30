@@ -16,6 +16,11 @@ async function getAllOrders() {
     return orders;
 }
 
+function cancelOrder(ordId) {
+    return Axios.delete(`/orders/${ordId}`)
+}
+
 export {
-    getAllOrders
+    getAllOrders,
+    cancelOrder
 }

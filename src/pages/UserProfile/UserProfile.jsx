@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Grid } from '@material-ui/core'
-import { getAllOrders } from "../../services/OrderService";
+import { getAllOrders, cancelOrder } from "../../services/OrderService";
 import { getAddressById, getAllAddresses } from "../../services/AddressService";
 import PastOrders from '../../components/PastOrders';
 import UserGreetingsCard from "../../components/UserGreetingsCard";
@@ -16,9 +16,17 @@ function UserProfile(props) {
     const [currentTab, setCurrentTab] = useState(null)
     const [addressUpdated, setAddressUpdated] = useState(false)
 
+    function handleCancelOrder(oid) {
+        let res = window.confirm("Are you sure?");
+        if (res) {
+            cancelOrder(oid).then(_ => {
+                InitOrders()
+            })
+        }
+    }
+
     async function InitOrders() {
         let orders1 = await getAllOrders()
-        debugger;
         setOrders(orders1);
     }
 
@@ -27,7 +35,7 @@ function UserProfile(props) {
     }, []) // Component Did Mount
 
     useEffect(() => {
-        if(!orders && currentTab===PAST_ORDERS) {
+        if (!orders && currentTab === PAST_ORDERS) {
             InitOrders()
         }
     }, [currentTab, orders])
@@ -37,7 +45,7 @@ function UserProfile(props) {
             let addresses = await getAllAddresses()
             setAddresses(addresses);
         }
-        if(addressUpdated || (!addresses && currentTab===MANAGE_ADDRESS)) {
+        if (addressUpdated || (!addresses && currentTab === MANAGE_ADDRESS)) {
             InitAddresses();
             setAddressUpdated(false)
         }
@@ -49,12 +57,12 @@ function UserProfile(props) {
                 <Grid item xs={12} md={3}>
                     <UserGreetingsCard />
                     <div style={{ marginTop: "20px" }}>
-                        <UserNavSection selectedItem={currentTab} navChange={(e)=>setCurrentTab(e)}/>
+                        <UserNavSection selectedItem={currentTab} navChange={(e) => setCurrentTab(e)} />
                     </div>
                 </Grid>
                 <Grid item xs={12} md={8}>
-                    {currentTab === PAST_ORDERS && <PastOrders orders={orders} />}
-                    {currentTab === MANAGE_ADDRESS && <ManageAddress onAddressUpdate={()=>setAddressUpdated(true)} addresses={addresses} />}
+                    {currentTab === PAST_ORDERS && <PastOrders orders={orders} onCancelOrder={oid => handleCancelOrder(oid)} />}
+                    {currentTab === MANAGE_ADDRESS && <ManageAddress onAddressUpdate={() => setAddressUpdated(true)} addresses={addresses} />}
                     {currentTab === LOGOUT && "Session Will be logged out"}
                 </Grid>
             </Grid>
