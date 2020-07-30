@@ -13,23 +13,22 @@ function UserProfile(props) {
 
     const [orders, setOrders] = useState(null);
     const [addresses, setAddresses] = useState(null)
-    const [currentTab, setCurrentTab] = useState(PAST_ORDERS)
+    const [currentTab, setCurrentTab] = useState(null)
     const [addressUpdated, setAddressUpdated] = useState(false)
 
+    async function InitOrders() {
+        let orders1 = await getAllOrders()
+        debugger;
+        setOrders(orders1);
+    }
+
     useEffect(() => {
-        async function InitOrders() {
-            let orders1 = await getAllOrders()
-            for (const order of orders1) {
-                let addr = await getAddressById(order.addressId)
-                order.address = addr;
-            }
-            setOrders(orders1);
-        }
+        setCurrentTab(PAST_ORDERS)
+    }, []) // Component Did Mount
+
+    useEffect(() => {
         if(!orders && currentTab===PAST_ORDERS) {
             InitOrders()
-        }
-        return () => {
-
         }
     }, [currentTab, orders])
 
@@ -41,9 +40,6 @@ function UserProfile(props) {
         if(addressUpdated || (!addresses && currentTab===MANAGE_ADDRESS)) {
             InitAddresses();
             setAddressUpdated(false)
-        }
-        return () => {
-            
         }
     }, [currentTab, addresses, addressUpdated])
 

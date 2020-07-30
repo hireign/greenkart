@@ -7,12 +7,14 @@ import PropTypes from 'prop-types'
 
 function PastOrders(props) {
     let orders = props.orders || [];
-
+    // debugger
     return (
         <div>
             <Typography variant="h5" align="left" style={{
                 marginBottom: "40px"
-            }}>Manage Past Orders</Typography>
+            }}>
+                Manage Past Orders
+            </Typography>
             {orders.map(
                 (order, idx) => {
                     return <ExpansionPanel key={order.id} TransitionProps={{ unmountOnExit: true }}>
@@ -20,15 +22,14 @@ function PastOrders(props) {
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls="order-content"
                         >
-                            <Typography>Order ID: {order.id} {order.deliveryStatus} |  Total: ${order.orderSummary.totalCost}</Typography>
+                            <Typography>Order ID: {order.id} {order.deliveryStatus} |  Total: ${order.totalCost}</Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             <Grid container>
                                 {
-                                    order.orderSummary.productSummary.map((product) => {
+                                    order.Products.map((product) => {
                                         return <Grid item xs={12} key={product.productId}>
-                                            <OrderedItem productId={product.productId}
-                                                quantity={product.quantity} price={product.price} />
+                                            <OrderedItem product={product} />
                                         </Grid>
                                     })
                                 }

@@ -1,57 +1,19 @@
-let orders = {
-    1: {
-        id: 1,
-        addressId: 1,
-        orderSummary: {
-            productSummary: [
-                {
-                    productId: 1,
-                    quantity: 5,
-                    price: 19.99
-                }, {
-                    productId: 2,
-                    quantity: 1,
-                    price: 12.99
-                }
-            ],
-            totalCost: 112.94
-        },
-        deliveryStatus: "SHIPPED"
-    },
-    2: {
-        id: 2,
-        addressId: 1,
-        orderSummary: {
-            productSummary: [
-                {
-                    productId: 2,
-                    quantity: 2,
-                    price: 12.99
-                }
-            ],
-            totalCost: 25.98
-        },
-        deliveryStatus: "ORDERED"
-    },
-    3: {
-        id: 3,
-        addressId: 1,
-        orderSummary: {
-            productSummary: [
-                {
-                    productId: 2,
-                    quantity: 2,
-                    price: 12.99
-                }
-            ],
-            totalCost: 25.98
-        },
-        deliveryStatus: "DELIVERED"
-    }
-}
+import Axios from "axios"
 
 async function getAllOrders() {
-    return Object.values(orders)
+    let ordersR = await Axios.get(`/orders`);
+    let orders = ordersR.data || [];
+    for (const ord of orders) {
+        let totalCost = 0;
+        for (const prd of ord.Products) {
+            let { salePrice } = prd;
+            let { quantity } = prd.OrderDetails;
+            let prdTotal = salePrice * quantity;
+            totalCost = totalCost + prdTotal;
+        }
+        ord.totalCost = totalCost;
+    }
+    return orders;
 }
 
 export {
