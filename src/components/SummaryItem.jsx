@@ -24,7 +24,7 @@ export default function SummaryItem(props) {
     }
 
     function deleteProduct() {
-        if(props.onDelete) {
+        if (props.onDelete) {
             props.onDelete()
         }
     }
@@ -51,14 +51,14 @@ export default function SummaryItem(props) {
                             </Typography>
                         </CardContent>
                         <div>
-                            <div style={{ width: "190px", margin: 'auto'}}>
-                                    <IconButton aria-label="remove" disabled={quantity === 1} onClick={() => handleChange(quantity - 1)}>
-                                        <Remove />
-                                    </IconButton>
-                                    {quantity} Item(s)
+                            <div style={{ width: "190px", margin: 'auto' }}>
+                                <IconButton aria-label="remove" disabled={quantity === 1} onClick={() => handleChange(quantity - 1)}>
+                                    <Remove />
+                                </IconButton>
+                                {quantity} Item(s)
                                 <IconButton aria-label="Add" onClick={() => handleChange(quantity + 1)}>
-                                        <Add />
-                                    </IconButton>
+                                    <Add />
+                                </IconButton>
                             </div>
                         </div>
                     </Grid>
@@ -69,8 +69,8 @@ export default function SummaryItem(props) {
                             </Typography>
                         </CardContent>
                     </Grid>
-                    <Grid item xs={12} sm={12} md={1}>
-                        <IconButton onClick={_=>deleteProduct()} color="primary" aria-label="upload picture" component="span">
+                    <Grid item style={{display:"grid", placeItems: "center"}} xs={12} sm={12} md={1}>
+                        <IconButton onClick={_ => deleteProduct()} color="primary" aria-label="upload picture" component="span">
                             <Delete />
                         </IconButton>
                     </Grid>
