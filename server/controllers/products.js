@@ -5,7 +5,7 @@
  */
 const Product = require('../models/product');
 const sequelize = require('sequelize')
-
+const COMMENTS = require('../models/comments');
 /**
  * Fetch details for a particular product using product_id
  *
@@ -15,6 +15,15 @@ const sequelize = require('sequelize')
 async function productDetails(req, res) {
     //get product information by Primary Key
     let productInfo = await Product.findByPk(req.query.id)
+    // productInfo.review = {}
+    // productInfo.review.count = await COMMENTS.findAll({
+    //     where: {
+    //         product_id: req.query.id
+    //     }
+    // }).then(data => {
+    //     return data
+    // })
+
     res.send(productInfo || "incorrect");
 };
 

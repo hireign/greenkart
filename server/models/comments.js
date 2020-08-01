@@ -29,6 +29,10 @@ const COMMENTS = sequelize.define('product_review', {
     type: Sequelize.INTEGER,
     defaultValue: 0
   },
+  user_id: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  }
 },
   {
     timestamps: false,

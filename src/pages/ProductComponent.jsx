@@ -117,7 +117,7 @@ export default function (props) {
       </Grid>
       <Grid item xs={12} md={7}>
         <Typography variant="h4" color="primary"> {productInfo && productInfo.title} </Typography>
-        <Link to="/rating">
+        <Link to={"/rating/" + productInfo.productId} >
           <Box component="div" mb={2} borderColor="transparent">
             <Grid alignContent="center" container justify="flex-start">
               <Rating name="read-only" value={4} readOnly />

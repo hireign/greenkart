@@ -32,7 +32,7 @@ export default function (props) {
       <Route path="/product/:id">
         <Product />
       </Route>
-      <Route path="/rating">
+      <Route path="/rating/:id">
         <Review />
       </Route>
       <Route exact path="/search"

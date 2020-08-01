@@ -135,6 +135,7 @@ CREATE TABLE IF NOT EXISTS `product_review` (
   `comment` VARCHAR(45) NOT NULL,
   `number_of_likes` INT DEFAULT 0,
   `number_of_dislikes` INT DEFAULT 0,
+  `user_id` INT NOT NULL REFERENCES user(`user_id`)
   PRIMARY KEY (`product_review_id`));
 
 
