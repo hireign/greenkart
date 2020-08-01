@@ -39,7 +39,6 @@ class Navbar extends Component {
   render() {
     const {value} = this.state;
     const searchString = "/search/"+value+""
-    console.log(value);
     return (
     <>
    <nav className="navbar navbar-expand-lg navbar-light bg-dark">

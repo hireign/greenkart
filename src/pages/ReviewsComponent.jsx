@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Rating from '@material-ui/lab/Rating';
-import { Typography, Hidden, IconButton, Button, Dialog, DialogTitle, Snackbar, TextField, FormControl, Input } from '@material-ui/core';
+import { Typography, Hidden, IconButton, Button, Snackbar, FormControl, Input } from '@material-ui/core';
 import { AccountCircle, ThumbDown, ThumbUp } from '@material-ui/icons'
 import { useParams } from 'react-router-dom';
 import CommentService from "../services/CommentService";
@@ -57,7 +57,6 @@ export default function () {
     }, [reviews])
 
     const createReview = () => {
-        console.log(values)
         CommentService.createComment(id, values.comment, values.rating, 1)
     }
     const [values, setValues] = React.useState({
@@ -113,7 +112,7 @@ export default function () {
 function reviewCard(classes, data, handleClick, handleClose) {
 
 
-    return <Grid container spacing={5} alignItems="center">
+    return <Grid container spacing={5} alignItems="center" key={data.product_review_id}>
         <Hidden xsDown>
             <Grid item xs={4} sm={2}>
                 <Paper>
@@ -124,7 +123,10 @@ function reviewCard(classes, data, handleClick, handleClose) {
                             </IconButton> </Grid>
                         <Grid item>Review</Grid>
                         <Grid item>
-                            <IconButton > <ThumbDown color="primary" onClick={() => handleClick(data.product_review_id, "decrease")}></ThumbDown></IconButton> </Grid>
+                            <IconButton onClick={() => handleClick(data.product_review_id, "decrease")}>
+                                <ThumbDown color="primary"></ThumbDown>
+                            </IconButton>
+                         </Grid>
                     </Grid>
                 </Paper>
             </Grid>

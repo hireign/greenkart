@@ -1,8 +1,10 @@
 const COMMENTS = require('../models/comments');
 const Sequelize = require('sequelize');
+// const Users = require("../models/user");
 
 async function getAllComments(req, res, next) {
     let x = await COMMENTS.findAll({
+        // include: [Users],
         where: {
             product_id: req.query.id
         }

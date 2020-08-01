@@ -65,7 +65,7 @@ class App extends React.Component {
     
     return (<div>
       <OrderContext.Provider value={{ order, setOrder, loggedIn, setLoggedIn }}>
-        <Grid row>
+        <Grid row="true">
           <NavBar userLoggedIn={this.loggedInEvent} isLoggedIn = {this.state.loggedIn} />
           <RouteTracker userLoggedIn={this.loggedInEvent} />
         </Grid>

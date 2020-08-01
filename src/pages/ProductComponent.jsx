@@ -166,12 +166,11 @@ function similarItem(classes, product, history) {
     history.push("/product/" + product.productId);
     history.go()
   }
-  return <Grid item xs={8} sm={5} md={3} onClick={handleClick}>
+  return <Grid item xs={8} sm={5} md={3} onClick={handleClick} key={product.productId}>
     <Paper classes={{ root: classes.subPaper }}>
       <Grid container justify="center" direction="column" alignItems="center" spacing={2}>
         <Grid item>
-          <img className={classes.image} src={(product && product.image) ||
-             "https://photos.imageevent.com/livingartreptiles/livingartreptilesballpythonsmorphs/No%20image%20available%20Living%20Art%20Reptiles_34.jpeg"} alt="Plant"></img>
+          <img className={classes.image} src={(product && product.image)} alt="Plant"></img>
         </Grid>
         <Grid item>
           <Box>{ product.title}</Box>
