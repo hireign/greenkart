@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import ProductListing from "../components/ProductListing";
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./SearchLandingPage.css";
 import { searchProduct } from "../services/SearchService";
-import { useParams, Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
 class SearchLandingPage extends Component {
@@ -24,7 +22,7 @@ class SearchLandingPage extends Component {
 
   componentDidUpdate() {
     console.log("inside update");
-    if (this.state.value != this.props.match.params.queryterm) {
+    if (this.state.value !== this.props.match.params.queryterm) {
       console.log("value changed");
       this.searchNow();
     } 
@@ -39,7 +37,7 @@ class SearchLandingPage extends Component {
   }
 
   searchNow() {
-    this.state.value = this.props.match.params.queryterm;
+    this.setState({value: this.props.match.params.queryterm});
     searchProduct(this.state.value).then((result) =>
       this.setState({
         products: result,
@@ -51,7 +49,7 @@ class SearchLandingPage extends Component {
   sort = (e) => {
     console.log("Selected value:", e.target.value);
     let sortValue = e.target.value;
-    if (sortValue == "Ascending by Name") {
+    if (sortValue === "Ascending by Name") {
       this.state.products = this.state.products.sort((a, b) => {
         var x = a.title.toLowerCase();
         var y = b.title.toLowerCase();
@@ -64,7 +62,7 @@ class SearchLandingPage extends Component {
         return 0;
       });
       this.forceUpdate();
-    } else if (sortValue == "Descending by Name") {
+    } else if (sortValue === "Descending by Name") {
       this.state.products = this.state.products.sort((a, b) => {
         var x = a.title.toLowerCase();
         var y = b.title.toLowerCase();
@@ -77,13 +75,13 @@ class SearchLandingPage extends Component {
         return 0;
       });
       this.forceUpdate();
-    } else if (sortValue == "Price low to high") {
+    } else if (sortValue === "Price low to high") {
       this.state.products = this.state.products.sort((a, b) => {
         return parseInt(a.salePrice) - parseInt(b.salePrice);
       });
       console.log(this.state.products);
       this.forceUpdate();
-    } else if (sortValue == "Price high to low") {
+    } else if (sortValue === "Price high to low") {
       this.state.products = this.state.products.sort((a, b) => {
         return parseInt(b.salePrice) - parseInt(a.salePrice);
       });

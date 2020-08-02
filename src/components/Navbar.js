@@ -42,7 +42,7 @@ class Navbar extends Component {
     <>
    <nav className="navbar navbar-expand-lg navbar-light bg-dark">
     
-    <Link className="navbar-brand" to="/"><img src={logo} style={{ width: 170 }} /></Link>
+    <Link className="navbar-brand" to="/"><img src={logo} style={{ width: 170 }} alt="logo"/></Link>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
         <li className="nav-item dropdown">
