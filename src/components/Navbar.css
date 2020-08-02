@@ -12,3 +12,8 @@
 .ponter{
     cursor: pointer;
 }
+
+.dropdown-item.listItem:hover{
+    background-color: #343a40;
+    color: white;
+}

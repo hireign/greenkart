@@ -27,6 +27,9 @@ async function searchProduct(req, res, next) {
               [Op.like]: `%${" " + queryterm}%`,
             },
           },
+          {
+            category: queryterm
+          },
         ],
       },
     });
