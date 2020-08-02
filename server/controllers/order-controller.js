@@ -1,5 +1,5 @@
 const Order = require('../models/order');
-const Products = require('../models/product');
+const Products = require('../models/product-details');
 
 /**
  * Author: Aman Vishnani (aman.vishnani@dal.ca)

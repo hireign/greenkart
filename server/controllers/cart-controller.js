@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const Cart = require('../models/cart');
-const Product = require('../models/product');
+const Product = require('../models/product-details');
 const CartProductList = require('../models/cart-product-list');
 const { createCartByUserId, createProductItem, findCartByUserId, findCartItemByCartIdAndProductId } = require('../services/cart-service')
 

@@ -3,7 +3,7 @@ const Model = Sequelize.Model;
 
 const sequelize = require('../util/database');
 const Cart = require('./cart');
-const Product = require('./product')
+const Product = require('./product-details')
 
 /**
  * @author Aman Vishnani

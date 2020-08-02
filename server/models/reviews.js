@@ -1,15 +1,22 @@
-const Sequelize = require('sequelize');
+/**
+ * Sequelize Model for product_review table interaction 
+ *
+ * @author [Shubham Suri](https://github.com/ssuri013)
+ */
 
+const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
-const COMMENTS = sequelize.define('product_review', {
-  product_review_id: {
+const Reviews = sequelize.define('product_review', {
+  id: {
+    field: 'product_review_id',
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
     primaryKey: true
   },
-  product_id: {
+  productID: {
+    field: 'product_id',
     type: Sequelize.STRING,
     allowNull: false
   },
@@ -21,17 +28,22 @@ const COMMENTS = sequelize.define('product_review', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  number_of_likes: {
+  numberOfLikes: {
+    field: 'number_of_likes',
     type: Sequelize.INTEGER,
     defaultValue: 0
   },
-  number_of_dislikes: {
+  numberOfDislikes: {
+    field: 'number_of_dislikes',
     type: Sequelize.INTEGER,
     defaultValue: 0
   },
-  user_id: {
+  userID: {
+    field: 'user_id',
     type: Sequelize.INTEGER,
-    allowNull: false
+    allowNull: false,
+    references: "user",
+    referncesKey: 'user_id'
   }
 },
   {
@@ -40,4 +52,4 @@ const COMMENTS = sequelize.define('product_review', {
   }
 );
 
-module.exports = COMMENTS;
+module.exports = Reviews;

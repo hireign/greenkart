@@ -58,12 +58,18 @@ export default function () {
 
     const createReview = () => {
         CommentService.createComment(id, values.comment, values.rating, 1)
+        setValues({
+            comment: '',
+            rating: 0    
+        })
     }
     const [values, setValues] = React.useState({
         comment: '',
         rating: 0
       });
+
       const handleChange = (prop) => (event) => {
+          console.log()
         setValues({ ...values, [prop]: event.target.value });
       };
     
@@ -74,15 +80,17 @@ export default function () {
                     disabled={!loggedIn} hint={loggedIn ? "create review" : "Please login to write review"}>Create a review</Button>
             </Grid>
             <Grid item xs={12} md={6}>
-                <Rating name="rating"  onChange={handleChange('rating')}/>
-                <FormControl fullWidth >
+                <Rating 
+                    name="rating"
+                    value={values.rating}
+                    onChange={handleChange('rating')}/>
                     <Input
+                    fullWidth
                         id="standard-adornment-amount"
                         value={values.comment}
-                        hint="write comment"
+                        placeholder="write a comment"
                         onChange={handleChange('comment')}
                     />
-                </FormControl>   
             </Grid>
         </Grid>
         <br />
@@ -100,7 +108,7 @@ export default function () {
             </Typography>
                 )
         }
-        <Snackbar open={open} autoHideDuration={10000} onClose={handleClose}>
+        <Snackbar open={open} autoHideDuration={7000} onClose={handleClose}>
             <MuiAlert elevation={6} variant="filled" onClose={handleClose} severity="success">
                 Thank you! this would help us better organise reviews.
             </MuiAlert>
@@ -118,12 +126,12 @@ function reviewCard(classes, data, handleClick, handleClose) {
                 <Paper>
                     <Grid container item direction="column" justify="space-around" alignItems="center">
                         <Grid item>
-                            <IconButton onClick={() => handleClick(data.product_review_id, "increase")}>
+                            <IconButton onClick={() => handleClick(data.id, "increase")}>
                                 <ThumbUp color="primary"></ThumbUp>
                             </IconButton> </Grid>
                         <Grid item>Review</Grid>
                         <Grid item>
-                            <IconButton onClick={() => handleClick(data.product_review_id, "decrease")}>
+                            <IconButton onClick={() => handleClick(data.id, "decrease")}>
                                 <ThumbDown color="primary"></ThumbDown>
                             </IconButton>
                          </Grid>

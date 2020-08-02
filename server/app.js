@@ -1,6 +1,6 @@
 const express = require('express');
 const shopRoutes = require('./routes/shop');
-const commentRoutes = require('./routes/comments');
+const commentRoutes = require('./routes/reviews');
 const userRoute = require('./routes/userRoute');
 const addressRoute = require('./routes/addressRoute');
 const productRoutes = require('./routes/products');

@@ -25,8 +25,7 @@ const DB_HOST = process.env.DB_HOST || '54.86.125.185'
 const sequelize = new Sequelize(SCHEMA, DB_USER, DB_PASSWORD, {
   dialect: 'mysql',
   host: DB_HOST,
-  port:3306,
-  logging: false
+  port:3306
 });
 
 module.exports = sequelize;

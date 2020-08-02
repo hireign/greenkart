@@ -11,7 +11,7 @@ const sequelize = require('../util/database');
 class Product extends Model {}
 // Model based on product table
 Product.init({
-  productId: {
+  productID: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,

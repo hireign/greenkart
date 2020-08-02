@@ -4,7 +4,7 @@
  * @author [Shubham Suri](https://github.com/ssuri013)
  */
 const express = require('express');
-const productsController = require('../controllers/products');
+const productsController = require('../controllers/product-details');
 
 const router = express.Router();
 /**

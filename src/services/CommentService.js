@@ -29,12 +29,12 @@ function createComment(productID, comment, rating, userID) {
 }
 
 // type: "increase" || "decrease"
-function rateComment(commentID, type) {
+function rateComment(reviewID, type) {
     const requestOptionsPut = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            commentID,
+            reviewID,
             type
         })
     };
