@@ -1,3 +1,4 @@
+import Axios from "axios";
 /**
  * Service for comment related API calls
  *
@@ -40,6 +41,18 @@ function rateComment(commentID, type) {
     };
     fetch("/review", requestOptionsPut)
 }
+
+/**
+ * API to fetch ratings based on product id
+ *
+ * @author [Hiren Khant](hr266981@dal.ca)
+ */
+export async function getRatingByID(args) {
+    console.log("get rating called for id: " + args);
+    let res = await Axios.get(`/productrating/${args}`);
+    return res.data;
+  }
+
 export default {
-    getComments, createComment, rateComment    
+    getComments, createComment, rateComment
 }

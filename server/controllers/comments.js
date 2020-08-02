@@ -32,8 +32,28 @@ async function createComment(req, res, next) {
     res.send(commentResponse)
 };
 
+/**
+ * Controller to fetch ratings based on product id
+ *
+ * @author [Hiren Khant](hr266981@dal.ca)
+ */
+async function getRatingByProductID(req, res, next) {
+    try {
+      let comment = await COMMENTS.findOne({
+        where: {
+            product_id: +req.params.id
+        }
+      });
+      res.send(comment);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+
 module.exports = {
     getAllComments,
     createComment,
-    modifyComment
+    modifyComment,
+    getRatingByProductID
 }

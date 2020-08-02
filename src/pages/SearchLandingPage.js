@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import ProductListing from "../components/ProductListing";
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./SearchLandingPage.css";
 import { searchProduct } from "../services/SearchService";
-import { useParams, Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
 class SearchLandingPage extends Component {
