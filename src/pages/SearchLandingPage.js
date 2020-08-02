@@ -28,14 +28,10 @@ class SearchLandingPage extends Component {
       console.log("value changed");
       this.searchNow();
     } 
-    // else if (this.state.products.length < 1) {
-    //   console.log("No results found");
-    //   alert(
-    //     "No results found for " +
-    //       this.state.value +
-    //       ". Please try another search!"
-    //   );
-    // }
+    else if (this.state.products.length < 1) {
+      console.log("No results found");
+      // document.getElementById()
+    }//https://dummyimage.com/900x500/cccccc/000000.png&text=Oops!+We+did+not+find+any+products+for+that.+Try+something+else.+Perhaps,+apples??
   }
 
   searchNow() {
@@ -120,15 +116,6 @@ class SearchLandingPage extends Component {
                 Price - high to low
               </option>
             </select>
-            {/* <select className="filter" onChange={this.filter}>
-              <option value="none" selected disabled hidden>
-                Filters
-              </option>
-              <option value="Plants">Plants</option>
-              <option value="Seeds">Seeds</option>
-              <option value="Flowers">Flowers</option>
-              <option value="Tools">Tools</option>
-            </select> */}
             </div>
           </div>
           <div id="productListing" className="productListBody">
@@ -140,6 +127,7 @@ class SearchLandingPage extends Component {
                   productImage={product.image}
                   productId={product.productId}
                   category={product.category}
+                  rating={product.product_review}
                 ></ProductListing>
               ))}
             </div>

@@ -4,6 +4,7 @@
  * @author [Hiren Khant](hr266981@dal.ca)
  */
 const Product = require("../models/product");
+const Comment = require("../models/comments");
 const { Sequelize, Model, DataTypes } = require("sequelize");
 
 async function getAllProducts(req, res, next) {
@@ -18,7 +19,10 @@ async function getAllProducts(req, res, next) {
 async function searchProduct(req, res, next) {
   const queryterm = req.params.queryterm;
   const Op = Sequelize.Op;
-  try {
+  try { 
+    129
+    Product.hasOne(Comment, {foreignKey: 'product_id'})
+    Comment.belongsTo(Product, {foreignKey: 'product_id'})
     let products = await Product.findAll({
       where: {
         [Op.or]: [
@@ -37,6 +41,7 @@ async function searchProduct(req, res, next) {
           },
         ],
       },
+      include: [{ model: Comment, attributes: ['rating'] }]
     });
     res.send(products);
   } catch (error) {
