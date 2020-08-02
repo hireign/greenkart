@@ -6,10 +6,6 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Axios from "axios";
 
-//Nodemiler
-//("use strict");
-const nodemailer = require("nodemailer");
-
 export default class ContactDetail extends Component {
   constructor(props) {
     super();
@@ -241,6 +237,7 @@ export default class ContactDetail extends Component {
                   frameBorder="0"
                   style={{ border: "0" }}
                   allowFullScreen
+                  title="map"
                 ></iframe>
                 <br />
               </div>

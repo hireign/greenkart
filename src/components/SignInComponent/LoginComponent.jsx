@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./LoginComponent.scss";
-import ProfileComponent from "./ProfileComponent";
 import Axios from 'axios';
 import SignInFormComponent from "./SignInFormComponent";
 import { withRouter } from 'react-router-dom';
@@ -45,8 +44,11 @@ class LoginComponent extends Component {
       password: this.state.userPassword
     })
     .then(res => {
-      
-      if(res.data.user.loggedIn === true)
+      if(res.data.user.isAdmin === true){
+        this.props.userLoggedIn(res.data.user);
+          this.props.history.push(`/adminfaq`);
+      }
+      else if(res.data.user.loggedIn === true)
          {
           this.props.userLoggedIn(res.data.user);
           this.props.history.push(`/`);
@@ -89,8 +91,7 @@ logoutApi = (e) => {
 }
 
   render() {
-    const { userEmailId } = this.state;
-    
+   
     return (
       <div style={{margin:"80px auto"}}>
         <div className="row mb-4">

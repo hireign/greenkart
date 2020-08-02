@@ -3,34 +3,40 @@
  */
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import style from "./AdminFaqSec.css";
+import "./AdminFaqSec.css";
 import Axios from "axios";
+import { Card, CardContent, Typography } from '@material-ui/core';
 
 export default class AdminFaqSec extends Component {
+
   constructor() {
     super();
-    this.state = { question: "", answer: "", faqs: [] };
+    this.state = {
+      question: "",
+      answer: "",
+      faqs: []
+    };
   }
+
   submitHandler = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     Axios.post("/contact/submitfaq", this.state)
       .then((res) => {
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
     this.componentDidMount();
   };
+  
   componentDidMount = () => {
-    Axios.get("/contact")
+    Axios.get("/getContacts", this.state)
       .then((res) => {
-        console.log(res.data);
-        //faqs = res.data;
-        this.setState({ faqs: res.data });
+        this.setState({faqs: res.data})
       })
       .catch((err) => {
         console.log(err);
@@ -79,7 +85,7 @@ export default class AdminFaqSec extends Component {
                     </span>
                   </h2>
                 </div>
-
+                
                 <div class="card-body" style={{ backgroundColor: "white" }}>
                   Question:
                   <br />
@@ -111,36 +117,32 @@ export default class AdminFaqSec extends Component {
                 </div>
               </div>
             </form>
-            {this.state.faqs.map((faq) => (
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h2 class="mb-0">
-                    <button
-                      class="btn btn-link button_link"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#collapseOne"
-                      aria-expanded="true"
-                      aria-controls="collapseOne"
-                      id="button_link"
-                    >
-                      {faq.question}
-                    </button>
-                  </h2>
-                </div>
-                <div
-                  id="collapseOne"
-                  class="collapse show"
-                  aria-labelledby="headingOne"
-                  data-parent="#accordionExample"
-                >
-                  <div class="card-body text-justify">{faq.answer}</div>
-                </div>
-              </div>
-            ))}
+            {
+            this.state.faqs.map((faq) => 
+              this.createCard(faq)
+              )
+            }
           </div>
         </div>
       </div>
     );
+  }
+
+  createCard(data) {
+    return <Card >
+      <CardContent>
+        <Typography color="textSecondary" gutterBottom>
+         {data.name}
+         {data.message}
+         {data.complaint_id}
+        </Typography>
+        <Typography color="textSecondary" gutterBottom>
+         {data.message}
+        </Typography>
+        <Typography color="textSecondary" gutterBottom>
+         {data.complaint_id}
+        </Typography>
+        </CardContent>
+    </Card>
   }
 }

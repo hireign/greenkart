@@ -54,7 +54,7 @@ export default function () {
                 .catch(err => {
                     // TODO: popup error
                 });
-    }, [reviews])
+    }, [reviews, id])
 
     const createReview = () => {
         CommentService.createComment(id, values.comment, values.rating, 1)
@@ -91,7 +91,7 @@ export default function () {
             reviews && reviews.length > 0 ? reviews.map(ele => {
                 return reviewCard(classes, ele, handleClick, handleClose)
             }) :
-                (reviews && reviews.length == 0 ?
+                (reviews && reviews.length === 0 ?
                     <Typography variant="h6" color="primary">
                         no reviews available
             </Typography>

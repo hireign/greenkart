@@ -2,7 +2,6 @@ import React from 'react'
 import { Grid, Card, Typography, Hidden, List, ListItem, ListItemIcon, ListItemText, Divider, CardActionArea } from '@material-ui/core'
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import HomeIcon from "@material-ui/icons/Home";
-import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
 import PropTypes from 'prop-types'
 

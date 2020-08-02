@@ -93,9 +93,6 @@ export default function (props) {
   };
 
   const onBuy = () => {
-    console.log("Product Info")
-    console.log(productInfo)
-    console.log(id)
     if (!loggedIn.loggedIn) {
       setOpenText("Login to Buy")
       setOpen(true);
