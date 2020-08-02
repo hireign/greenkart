@@ -15,7 +15,7 @@ const complaint = sequelize.define(
     },
     name: { type: Sequelize.STRING, allowNull: false },
     email_id: { type: Sequelize.STRING, allowNull: false },
-    contact_no: { type: Sequelize.INTEGER, allowNull: false },
+    contact_no: { type: Sequelize.STRING, allowNull: false },
     message: { type: Sequelize.STRING, allowNull: false },
     state: { type: Sequelize.STRING, allowNull: false },
   },
