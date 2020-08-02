@@ -46,9 +46,9 @@ class Navbar extends Component {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
         <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span className="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Products
-          </a>
+          </span>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
             <a className="dropdown-item listItem" href="/search/plant">Plants</a>
             <a className="dropdown-item listItem" href="/search/seed">Seeds</a>
@@ -77,9 +77,9 @@ class Navbar extends Component {
         <li className="nav-item">
         </li>
         <li className="nav-item dropdown ml-4 mt-3" >
-          <a className="nav-link dropdown-toggle text-white" style={{marginTop: "-5px"}} href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span className="nav-link dropdown-toggle text-white" style={{marginTop: "-5px"}}  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             My Account
-            </a>
+            </span>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
           {this.props.isLoggedIn === true ? (
             <div className="dropdown-item ponter" onClick={this.logoutApi}>
