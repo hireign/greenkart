@@ -20,6 +20,7 @@ class SearchLandingPage extends Component {
   componentDidMount() {
     console.log("calling search");
     this.searchNow();
+    this.forceUpdate();
   }
 
   componentDidUpdate() {
@@ -128,6 +129,7 @@ class SearchLandingPage extends Component {
                   productId={product.productId}
                   category={product.category}
                   rating={product.product_review}
+                  searchterm={this.state.value}
                 ></ProductListing>
               ))}
             </div>

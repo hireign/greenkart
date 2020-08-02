@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./ProductListing.css";
 import Grid from "@material-ui/core/Grid";
 import { Button } from "@material-ui/core";
-import { getRatingByID } from "../services/CommentService";
 import { Link } from "react-router-dom";
+import { OrderContext } from '../contexts/OrderContext';
+import { useHistory, withRouter } from 'react-router-dom';
+
 
 function ProductListing(props) {
+  const { loggedIn } = useContext(OrderContext);
+  const history = useHistory();
   const productId = props.productId;
   let rating = 0;
   const productPage = "/product/" + productId + "";
@@ -16,6 +20,17 @@ function ProductListing(props) {
   } else {
     rating = parseInt(rating.rating);
   }
+
+  //Function to send user to payment created by Jatin Rana
+  const onBuy = () => {
+    if (!loggedIn.loggedIn) {
+      window.alert("To use the quick checkout, login first.")
+      window.location.href='/signin/'+props.searchterm;
+    } else {
+      history.push('/payment/'+productId+"/"+props.productPrice+"/"+props.productName);
+      history.go()
+    }
+  };
 
   return (
     <div className="col mb-4 productlisting">
@@ -47,10 +62,10 @@ function ProductListing(props) {
               : <span className="fa fa-star"></span>
             }
           <br />
-          <h3 className="">${props.productPrice}</h3>
+          <h3>${props.productPrice}</h3>
           <div className="hiddenCheckout" style={{ textAlign: "center" }}>
-            <Grid>
-              <Button variant="contained" color="primary" onClick="">
+            <Grid item>
+              <Button variant="contained" color="primary" onClick={onBuy}>
                 Quick Checkout
               </Button>
             </Grid>
@@ -61,4 +76,4 @@ function ProductListing(props) {
   );
 }
 
-export default ProductListing;
+export default withRouter(ProductListing);

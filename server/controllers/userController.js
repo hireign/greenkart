@@ -33,7 +33,7 @@ exports.loginUser = (req, res, next) => {
     }
   }).then( user=>{
     if (!user) {
-      return res.status(200).send("User With Given Email is not found");
+      return res.status(200).send("Invalid credentials");
     }
     //sets user object in the session.
       req.session.userSignIn = true;

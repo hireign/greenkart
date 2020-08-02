@@ -19,6 +19,7 @@ export default function (props) {
   return <Switch>
       <Route exact path='/' component={HomePage} />
       <Route exact path='/signin' render={()=> <LoginComponent userLoggedIn={props.userLoggedIn} />}/>
+      <Route exact path='/signin/:redirectedfrom' render={()=> <LoginComponent userLoggedIn={props.userLoggedIn} />}/>
       <Route exact path='/signup' render={()=> <SignUpComponent />}/>
       <Route exact path='/forgotpassword' render={()=> <ForgotPaswordComponent />}/>
       <Route path="/user">
