@@ -4,7 +4,6 @@ import './Navbar.css'
 import { Link, withRouter } from 'react-router-dom';
 import { ShoppingBasket } from '@material-ui/icons';
 import Axios from 'axios';
-import SearchLandingPage from '../pages/SearchLandingPage';
 
 class Navbar extends Component {
     constructor(props) {

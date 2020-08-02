@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./LoginComponent.scss";
-import ProfileComponent from "./ProfileComponent";
 import Axios from 'axios';
 import SignInFormComponent from "./SignInFormComponent";
 import { withRouter } from 'react-router-dom';
@@ -89,8 +88,7 @@ logoutApi = (e) => {
 }
 
   render() {
-    const { userEmailId } = this.state;
-    
+   
     return (
       <div style={{margin:"80px auto"}}>
         <div className="row mb-4">

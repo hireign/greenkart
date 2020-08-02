@@ -3,7 +3,6 @@
  */
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import styles from "./FAQ.css";
 import Axios from "axios";
 //import data from "./data";
 //const faqs = [];
