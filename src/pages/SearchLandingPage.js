@@ -120,15 +120,6 @@ class SearchLandingPage extends Component {
                 Price - high to low
               </option>
             </select>
-            {/* <select className="filter" onChange={this.filter}>
-              <option value="none" selected disabled hidden>
-                Filters
-              </option>
-              <option value="Plants">Plants</option>
-              <option value="Seeds">Seeds</option>
-              <option value="Flowers">Flowers</option>
-              <option value="Tools">Tools</option>
-            </select> */}
             </div>
           </div>
           <div id="productListing" className="productListBody">
@@ -139,6 +130,7 @@ class SearchLandingPage extends Component {
                   productPrice={product.salePrice}
                   productImage={product.image}
                   productId={product.productId}
+                  category={product.category}
                 ></ProductListing>
               ))}
             </div>

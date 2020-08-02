@@ -16,6 +16,7 @@ function ProductListing(props){
       </Link>
       <div className="card-body">
         <h5 className="card-title cardTitle">{props.productName}</h5>
+        <h6 className="cardCategory">{props.category}</h6>
         <span className="fa fa-star checked"></span>
         <span className="fa fa-star checked"></span>
         <span className="fa fa-star checked"></span>

@@ -24,3 +24,7 @@
     text-overflow: ellipsis; 
 }
  
+.cardCategory{
+  color: orange;
+  margin-top: -10px;
+}
