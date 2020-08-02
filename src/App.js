@@ -22,9 +22,10 @@ class App extends React.Component {
   componentDidMount(){
       Axios.get('/checkUser')
       .then(res => {
-           if(res.data === true)
+        if(res.data.loggedIn === true)
            {
-            this.setState({ loggedIn: "true" });
+            this.setState({ loggedIn: {userName:res.data.userName,
+              loggedIn: true} });  
            }
       })
       .catch(err => {
@@ -37,7 +38,10 @@ class App extends React.Component {
     super();
     //if (sessionStorage.getItem("loggedIn") == null || sessionStorage.getItem("loggedIn") === "false") {
       this.state = {
-        loggedIn: false,
+        loggedIn:{
+          userName:"",
+          loggedIn: false
+        },
         order: {}
       }
       sessionStorage.setItem("loggedIn", true);
@@ -55,8 +59,8 @@ class App extends React.Component {
     this.setState({ loggedIn: true });
   }
 
-  loggedInEvent = (userLoggedIn) => {
-    this.setState({ loggedIn: userLoggedIn });
+  loggedInEvent = (user) => {
+    this.setState({ loggedIn: user });
 }
 
   render() {
@@ -66,7 +70,7 @@ class App extends React.Component {
     return (<div>
       <OrderContext.Provider value={{ order, setOrder, loggedIn, setLoggedIn }}>
         <Grid row="true">
-          <NavBar userLoggedIn={this.loggedInEvent} isLoggedIn = {this.state.loggedIn} />
+        <NavBar userLoggedIn={this.loggedInEvent} isLoggedIn = {this.state.loggedIn.loggedIn} />
           <RouteTracker userLoggedIn={this.loggedInEvent} />
         </Grid>
       </OrderContext.Provider>

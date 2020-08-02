@@ -82,7 +82,7 @@ export default function (props) {
   }, [productInfo, similarProductInfo, id])
   
   const handleClick = () => {
-    if (!loggedIn) {
+    if (!loggedIn.loggedIn) {
       setOpenText("Login to add to cart")
       setOpen(true);
     } else {
@@ -91,6 +91,21 @@ export default function (props) {
       setOpen(true);
     }
   };
+
+  const onBuy = () => {
+    console.log("Product Info")
+    console.log(productInfo)
+    console.log(id)
+    if (!loggedIn.loggedIn) {
+      setOpenText("Login to Buy")
+      setOpen(true);
+    } else {
+      history.push('/payment/'+id+"/"+productInfo.salePrice+"/"+productInfo.title);
+      history.go()
+     // props.history.push(`/payment/${this.state.param2}/${this.state.param1}/${this.state.param3}/${this.state.userEmailId}`)
+    }
+  };
+
 
   function handleClose() {
     setOpen(false);
@@ -134,7 +149,7 @@ export default function (props) {
         <Grid container spacing={4}>
           <Grid item><Button variant="contained" color="primary" onClick={handleClick}>Add to cart</Button>
           </Grid>
-          <Grid item><Button variant="contained" color="primary" onClick={handleClick}>Buy</Button>
+          <Grid item><Button variant="contained" color="primary" onClick={onBuy}>Buy</Button>
           </Grid>
         </Grid>
       </Grid>

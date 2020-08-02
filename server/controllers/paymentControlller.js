@@ -42,6 +42,24 @@ if(payment){
 }
 };
   
+exports.quickCheckOutPayment = async (req, res, next) => {
+  const now = new Date();
+  const dd = date.format(now, "YYYY/MM/DD");
+  const userId= req.session.user.user_id;
+  const paymentAmount = parseInt(req.body.paymentAmount);
+  const cardNumber = req.body.cardNumber;
+  const productId = req.body.productId;
+
+  let address = await getAddress(userId);
+  let order = await insertIntoOrders(address === null ? 1 : address.id, "In Process", userId);
+  insertIntoOrderDetails(productId, order.id, parseInt("1"));
+  let payment = await insertIntoPayment(order.id, userId, paymentAmount, cardNumber, dd);
+if(payment){
+  res.status(200).send("Payment Mapped to order")
+}
+}
+
+
 
 /**
  * Mehtod to get address from the userId

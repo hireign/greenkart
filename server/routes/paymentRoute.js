@@ -8,6 +8,7 @@ const router = express.Router();
  * This is route file for payment route
  */
 router.post('/payment', paymentController.createPayment);
+router.post('/qucikCheckOutPayment', paymentController.quickCheckOutPayment);
 
 
 module.exports = router;

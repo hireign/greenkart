@@ -46,9 +46,9 @@ class LoginComponent extends Component {
     })
     .then(res => {
       
-         if(res.data === true)
+      if(res.data.user.loggedIn === true)
          {
-          this.props.userLoggedIn("true");
+          this.props.userLoggedIn(res.data.user);
           this.props.history.push(`/`);
          }
          else
@@ -73,7 +73,8 @@ logoutApi = (e) => {
     
        if(res.data === true)
        {
-        this.props.userLoggedIn("true");
+        const userObj = { userName:"",loggedIn: false}
+        this.props.userLoggedIn(userObj);
         this.props.history.push(`/`);
        }
        else
