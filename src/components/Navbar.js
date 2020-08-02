@@ -50,13 +50,13 @@ class Navbar extends Component {
           <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Products
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item listItem" href="/search/plant">Plants</a>
-            <a class="dropdown-item listItem" href="/search/seed">Seeds</a>
-            <a class="dropdown-item listItem" href="/search/tool">Tools</a>
-            <a class="dropdown-item listItem" href="/search/soil">Soil</a>
-            <a class="dropdown-item listItem" href="/search/hose">Hose</a>
-            <a class="dropdown-item listItem" href="/search/pest">Pest Control</a>
+          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a className="dropdown-item listItem" href="/search/plant">Plants</a>
+            <a className="dropdown-item listItem" href="/search/seed">Seeds</a>
+            <a className="dropdown-item listItem" href="/search/tool">Tools</a>
+            <a className="dropdown-item listItem" href="/search/soil">Soil</a>
+            <a className="dropdown-item listItem" href="/search/hose">Hose</a>
+            <a className="dropdown-item listItem" href="/search/pest">Pest Control</a>
           </div>
         </li>
       </ul>
