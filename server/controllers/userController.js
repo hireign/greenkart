@@ -38,7 +38,7 @@ exports.loginUser = (req, res, next) => {
     //sets user object in the session.
       req.session.userSignIn = true;
       req.session.user = user;
-      const userObj = {"userName":user.username, "loggedIn": true}
+      const userObj = {"userName":user.username, "loggedIn": true, "isAdmin": user.is_seller}
       req.session.save(err => {
         res.status(200).send({user: userObj});
       })

@@ -25,7 +25,7 @@ class App extends React.Component {
         if(res.data.loggedIn === true)
            {
             this.setState({ loggedIn: {userName:res.data.userName,
-              loggedIn: true} });  
+              loggedIn: true, isAdmin: res.data.isAdmin} });  
            }
       })
       .catch(err => {
@@ -40,7 +40,8 @@ class App extends React.Component {
       this.state = {
         loggedIn:{
           userName:"",
-          loggedIn: false
+          loggedIn: false,
+          isAdmin: 0,
         },
         order: {}
       }
@@ -64,13 +65,12 @@ class App extends React.Component {
 }
 
   render() {
-    let { order, loggedIn } = this.state;
+    let { order, loggedIn} = this.state;
     let { setOrder, setLoggedIn } = this;
-    
     return (<div>
       <OrderContext.Provider value={{ order, setOrder, loggedIn, setLoggedIn }}>
         <Grid row="true">
-        <NavBar userLoggedIn={this.loggedInEvent} isLoggedIn = {this.state.loggedIn.loggedIn} />
+        <NavBar userLoggedIn={this.loggedInEvent} isLoggedIn = {this.state.loggedIn.loggedIn} isAdmin = {this.state.loggedIn.isAdmin} />
           <RouteTracker userLoggedIn={this.loggedInEvent} />
         </Grid>
       </OrderContext.Provider>

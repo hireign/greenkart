@@ -44,8 +44,11 @@ class LoginComponent extends Component {
       password: this.state.userPassword
     })
     .then(res => {
-      
-      if(res.data.user.loggedIn === true)
+      if(res.data.user.isAdmin === true){
+        this.props.userLoggedIn(res.data.user);
+          this.props.history.push(`/adminfaq`);
+      }
+      else if(res.data.user.loggedIn === true)
          {
           this.props.userLoggedIn(res.data.user);
           this.props.history.push(`/`);

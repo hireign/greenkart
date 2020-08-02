@@ -10,8 +10,6 @@ import { useParams } from "react-router-dom";
 function Payment(props) {
     // const param=[props.match.params];
     let {productId, amount, productName} = useParams()
-    console.log('Amount')
-    console.log(amount)
     const { order } = useContext(OrderContext);
     const [address, setAddress] = useState({});
     const [activeStep, setActiveStep] = useState(0);

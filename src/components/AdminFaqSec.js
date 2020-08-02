@@ -22,7 +22,6 @@ export default class AdminFaqSec extends Component {
     e.preventDefault();
     Axios.post("/contact/submitfaq", this.state)
       .then((res) => {
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -130,7 +129,6 @@ export default class AdminFaqSec extends Component {
   }
 
   createCard(data) {
-    console.log(data)
     return <Card >
       <CardContent>
         <Typography color="textSecondary" gutterBottom>
