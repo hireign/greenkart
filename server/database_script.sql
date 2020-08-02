@@ -138,30 +138,6 @@ CREATE TABLE IF NOT EXISTS `product_review` (
   `user_id` INT NOT NULL REFERENCES user(`user_id`)
   PRIMARY KEY (`product_review_id`));
 
-
--- -----------------------------------------------------
--- Table `complaint`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `complaint` ;
-
-CREATE TABLE IF NOT EXISTS `complaint` (
-  `complaint_id` INT NOT NULL,
-  `email_id` VARCHAR(45) NULL,
-  `message` VARCHAR(45) NULL,
-  `country` VARCHAR(45) NULL,
-  PRIMARY KEY (`complaint_id`));
-
-
--- -----------------------------------------------------
--- Table `FAQ`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `FAQ` ;
-
-CREATE TABLE IF NOT EXISTS `FAQ` (
-  `faq_id` INT NOT NULL,
-  `description` VARCHAR(45) NULL,
-  PRIMARY KEY (`faq_id`));
-
 -- -----------------------------------------------------
 -- Table `user_address`
 -- -----------------------------------------------------
@@ -183,7 +159,7 @@ CREATE TABLE `complaint` (
   `complaint_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   `email_id` varchar(100) DEFAULT NULL,
-  `contact_no` int(10) DEFAULT NULL,
+  `contact_no` varchar(20) DEFAULT NULL,
   `message` varchar(2000) DEFAULT NULL,
   `state` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`complaint_id`)
