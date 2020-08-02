@@ -12,6 +12,7 @@ const complaintController = require("../controllers/complaintController");
 const router = express.Router();
 
 router.post("/contact/submitform", complaintController.submitContactForm);
+
 router.get("/getContacts", complaintController.getContacts);
 
 module.exports = router;
