@@ -49,7 +49,7 @@ export default class FAQ extends Component {
             </div>
           </div>
         </div>
-        <div class="container accordian_container">
+        <div style={{marginTop: "20px"}} class="container accordian_container">
           <div
             class="accordion "
             id="accordionExample"
@@ -79,7 +79,9 @@ export default class FAQ extends Component {
                   aria-labelledby="headingOne"
                   data-parent="#accordionExample"
                 >
-                  <div class="card-body">{faq.answer}</div>
+                  <div style={{color: "white"}} class="card-body">
+                    {faq.answer}
+                  </div>
                 </div>
               </div>
             ))}
