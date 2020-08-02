@@ -14,7 +14,15 @@ export default class ContactDetail extends Component {
   constructor(props) {
     super();
 
-    this.state = {
+    this.state = this.defaultState();
+  }
+
+  setDefaultState() {
+    this.setState(this.defaultState());
+  }
+
+  defaultState() {
+    return {
       name: "",
       email_id: "",
       contact_no: "",
@@ -22,14 +30,16 @@ export default class ContactDetail extends Component {
       state: "",
     };
   }
+
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
   submitHandler = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     Axios.post("/contact/submitform", this.state)
       .then((res) => {
-        console.log(res);
+        window.alert("Your request has been recieved successfully")
+        this.setDefaultState()
       })
       .catch((err) => {
         console.log(err);
@@ -118,12 +128,13 @@ export default class ContactDetail extends Component {
                 />
 
                 <input
-                  type="number"
+                  type="tel"
+                  pattern="[0-9]{10}"
                   class="mail"
                   title="Number"
                   required
                   class="from-control"
-                  placeholder="Cell No."
+                  placeholder="Ph. 9876543210"
                   name="contact_no"
                   value={contact_no}
                   onChange={this.changeHandler}
