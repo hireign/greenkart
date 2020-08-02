@@ -1,3 +1,8 @@
+/**
+ * Controller for search related REST API calls
+ *
+ * @author [Hiren Khant](hr266981@dal.ca)
+ */
 const Product = require("../models/product");
 const { Sequelize, Model, DataTypes } = require("sequelize");
 
