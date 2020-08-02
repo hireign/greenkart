@@ -38,8 +38,9 @@ exports.loginUser = (req, res, next) => {
     //sets user object in the session.
       req.session.userSignIn = true;
       req.session.user = user;
+      const userObj = {"userName":user.username, "loggedIn": true}
       req.session.save(err => {
-          res.status(200).send(req.session.userSignIn);
+        res.status(200).send({user: userObj});
       })
   }).catch(err => console.log(err));;
 };
@@ -98,10 +99,12 @@ exports.registerAccount = (req, res, next) => {
    */
   exports.checkUserLogin = (req, res, next) => {
     if(req.session.user){
-      res.status(200).send(true);
+      const userObj = {"userName":req.session.user.username, "loggedIn": true}
+      res.status(200).send(userObj);
     }
     else{
-      res.status(200).send(false);
+      const userObj = {"userName":req.session.user.username, "loggedIn": false}
+      res.status(200).send(userObj);
     }
   };
 

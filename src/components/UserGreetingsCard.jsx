@@ -1,8 +1,11 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { Grid, Card, Avatar, Typography } from '@material-ui/core'
 import PropTypes from 'prop-types'
+import { OrderContext } from '../contexts/OrderContext';
+
 
 function UserGreetingsCard(props) {
+    const { loggedIn } = useContext(OrderContext);
     return (
         <div>
             <Card>
@@ -12,7 +15,7 @@ function UserGreetingsCard(props) {
                     </Grid>
                     <Grid item md={1}></Grid>
                     <Grid item md={7} lg={8}>
-                        <Typography variant="subtitle2" align="left">Hello,</Typography>
+                    <Typography variant="subtitle2" align="left">Hello,{loggedIn.userName}</Typography>
                     </Grid>
                 </Grid>
             </Card>

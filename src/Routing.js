@@ -5,6 +5,7 @@ import SignUpComponent from "./components/SignInComponent/SignUpComponent";
 import ForgotPaswordComponent from "./components/SignInComponent/ForgotPaswordComponent";
 import Product from './pages/ProductComponent'
 import Payment from "./pages/Payment/Payment";
+import QucikCheckOutPayment from "./pages/Payment/QucikCheckOutPayment";
 import Review from './pages/ReviewsComponent'
 import UserProfile from "./pages/UserProfile/UserProfile";
 import Cart from "./pages/Cart/Cart";
@@ -23,6 +24,9 @@ export default function (props) {
       <Route path="/user">
         <UserProfile />
       </Route>
+      <Route path="/payment/:productId/:amount/:productName">
+      <QucikCheckOutPayment />
+    </Route>
       <Route path="/payment">
         <Payment />
       </Route>
