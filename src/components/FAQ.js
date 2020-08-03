@@ -54,17 +54,17 @@ export default class FAQ extends Component {
              style={{ paddingTop: "0px" }}
           >
             {this.state.faqs.map((faq, i) => (
-              <div class="card">
-              <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target={"#collapse"+i} aria-expanded="false" aria-controls={"collapse"+i}>
+              <div className="card" key={i}>
+              <div className="card-header" id="headingOne">
+                <h2 className="mb-0">
+                  <button className="btn btn-link" type="button" data-toggle="collapse" data-target={"#collapse"+i} aria-expanded="false" aria-controls={"collapse"+i}>
                     {faq.question}
                   </button>
                 </h2>
               </div>
           
-              <div id={"collapse"+i} class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="card-body">
+              <div id={"collapse"+i} className="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div className="card-body">
                   {faq.answer}
                 </div>
               </div>
