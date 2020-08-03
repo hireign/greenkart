@@ -1,163 +1,93 @@
+/**
+ * @author Mihir Patel
+ */
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import styles from "./FAQ.css";
-import { Grid, ExpansionPanelSummary, Typography, ExpansionPanel } from '@material-ui/core'
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Axios from "axios";
+//import data from "./data";
+//const faqs = [];
 
 export default class FAQ extends Component {
+  constructor() {
+    super();
+    this.state = { faqs: [] };
+  }
+
+  componentDidMount = () => {
+    Axios.get("/contact")
+      .then((res) => {
+        console.log(res.data);
+        //faqs = res.data;
+        this.setState({ faqs: res.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  //          <div class ="faqs">
+  //{} data.faqs.map(faq) =>(faq => )
+
   render() {
-    return < ExpansionPanel>
-    <ExpansionPanelSummary
-      expandIcon={<ExpandMoreIcon />}
-      aria-controls="order-content"
-    >
-      <Typography>Problem 1</Typography>
-    </ExpansionPanelSummary>
-    <ExpansionPanelDetails>
-        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</div>
-    </ExpansionPanelDetails>
-  </ExpansionPanel >
-    // return (
+    console.log("faqs:");
+    console.log(this.state.faqs);
+    return (
+      <div>
+        <hr style={{ marginBottom: "0px" }} />
 
-    //   <div>
-    //     <hr style={{ marginBottom: "0px" }} />
+        <div
+          class="container-fluid"
+          style={{
+            padding: " 30px",
+            backgroundColor: "#00979d",
+            color: "white",
+          }}
+        >
+          <div class="row">
+            <div class="col-sm-12 text-center">
+              <h3>Frequently Asked Questions</h3>
+            </div>
+          </div>
+        </div>
+        <div class="container accordian_container">
+          <div
+            class="accordion "
+            id="accordionExample"
+            style={{ paddingTop: "0px" }}
+          >
+            {this.state.faqs.map((faq) => (
+              <div class="card ">
+                <div class="card-header" id="headingOne">
+                  <h2 class="mb-0">
+                    <button
+                      class="btn btn-link button_link"
+                      type="button"
+                      data-toggle="collapse"
+                      data-target="#collapseOne"
+                      aria-expanded="false"
+                      aria-controls="collapseOne"
+                      id="button_link"
+                    >
+                      {faq.question}
+                    </button>
+                  </h2>
+                </div>
 
-    //     <div
-    //       class="container-fluid"
-    //       style={{
-    //         padding: " 30px",
-    //         backgroundColor: "#00979d",
-    //         color: "white",
-    //       }}
-    //     >
-    //       <div class="row">
-    //         <div class="col-sm-12 text-center">
-    //           <h3>Frequently Asked Questions</h3>
-    //         </div>
-    //       </div>
-    //     </div>
-    //     <div class="container accordian_container">
-    //       <div
-    //         class="accordion"
-    //         id="accordionExample"
-    //         style={{ paddingTop: "0px" }}
-    //       >
-    //         <div class="card">
-    //           <div class="card-header" id="headingOne">
-    //             <h2 class="mb-0">
-    //               <button
-    //                 class="btn btn-link button_link"
-    //                 type="button"
-    //                 data-toggle="collapse"
-    //                 data-target="#collapseOne"
-    //                 aria-expanded="true"
-    //                 aria-controls="collapseOne"
-    //                 id="button_link"
-    //               >
-    //                 FAQ - 1
-    //               </button>
-    //             </h2>
-    //           </div>
-
-    //           <div
-    //             id="collapseOne"
-    //             class="collapse show"
-    //             aria-labelledby="headingOne"
-    //             data-parent="#accordionExample"
-    //           >
-    //             <div class="card-body">
-    //               Anim pariatur cliche reprehenderit, enim eiusmod high life
-    //               accusamus terry richardson ad squid. 3 wolf moon officia aute,
-    //               non cupidatat skateboard dolor brunch. Food truck quinoa
-    //               nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
-    //               aliqua put a bird on it squid single-origin coffee nulla
-    //               assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-    //               beer labore wes anderson cred nesciunt sapiente ea proident.
-    //               Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
-    //               beer farm-to-table, raw denim aesthetic synth nesciunt you
-    //               probably haven't heard of them accusamus labore sustainable
-    //               VHS.
-    //             </div>
-    //           </div>
-    //         </div>
-    //         <div class="card">
-    //           <div class="card-header" id="headingTwo">
-    //             <h2 class="mb-0">
-    //               <button
-    //                 class="btn btn-link collapsed "
-    //                 type="button"
-    //                 data-toggle="collapse"
-    //                 data-target="#collapseTwo"
-    //                 aria-expanded="false"
-    //                 aria-controls="collapseTwo"
-    //                 id="button_link"
-    //               >
-    //                 FAQ -2
-    //               </button>
-    //             </h2>
-    //           </div>
-    //           <div
-    //             id="collapseTwo"
-    //             class="collapse"
-    //             aria-labelledby="headingTwo"
-    //             data-parent="#accordionExample"
-    //           >
-    //             <div class="card-body">
-    //               Anim pariatur cliche reprehenderit, enim eiusmod high life
-    //               accusamus terry richardson ad squid. 3 wolf moon officia aute,
-    //               non cupidatat skateboard dolor brunch. Food truck quinoa
-    //               nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
-    //               aliqua put a bird on it squid single-origin coffee nulla
-    //               assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-    //               beer labore wes anderson cred nesciunt sapiente ea proident.
-    //               Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
-    //               beer farm-to-table, raw denim aesthetic synth nesciunt you
-    //               probably haven't heard of them accusamus labore sustainable
-    //               VHS.
-    //             </div>
-    //           </div>
-    //         </div>
-    //         <div class="card">
-    //           <div class="card-header" id="headingThree">
-    //             <h2 class="mb-0">
-    //               <button
-    //                 class="btn btn-link collapsed "
-    //                 type="button"
-    //                 data-toggle="collapse"
-    //                 data-target="#collapseThree"
-    //                 aria-expanded="false"
-    //                 aria-controls="collapseThree"
-    //                 id="button_link"
-    //               >
-    //                 FAQ - 3
-    //               </button>
-    //             </h2>
-    //           </div>
-    //           <div
-    //             id="collapseThree"
-    //             class="collapse"
-    //             aria-labelledby="headingThree"
-    //             data-parent="#accordionExample"
-    //           >
-    //             <div class="card-body">
-    //               Anim pariatur cliche reprehenderit, enim eiusmod high life
-    //               accusamus terry richardson ad squid. 3 wolf moon officia aute,
-    //               non cupidatat skateboard dolor brunch. Food truck quinoa
-    //               nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
-    //               aliqua put a bird on it squid single-origin coffee nulla
-    //               assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-    //               beer labore wes anderson cred nesciunt sapiente ea proident.
-    //               Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
-    //               beer farm-to-table, raw denim aesthetic synth nesciunt you
-    //               probably haven't heard of them accusamus labore sustainable
-    //               VHS.
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // );
+                <div
+                  id="collapseOne"
+                  class="collapse show"
+                  aria-labelledby="headingOne"
+                  data-parent="#accordionExample"
+                >
+                  <div class="card-body">{faq.answer}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
   }
 }
+
+
