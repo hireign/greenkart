@@ -38,8 +38,7 @@ export default class FAQ extends Component {
           className="container-fluid"
           style={{
             padding: " 30px",
-            backgroundColor: "#00979d",
-            color: "white",
+          
           }}
         >
           <div className="row">

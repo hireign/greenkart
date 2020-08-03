@@ -52,12 +52,12 @@ export default class ContactDetail extends Component {
             paddingTop: " 10px",
 
             paddingBottom: "20px",
-            backgroundColor: "#00979d",
-            color: "white",
+            
           }}
         >
           <div className="row">
-            <div className="col-sm-12 text-center">
+            <div className="col-sm-12 text-center" >
+            <br></br>
               <h1>Contact Us</h1>
             </div>
           </div>
@@ -135,7 +135,7 @@ export default class ContactDetail extends Component {
                     width: "50%",
                     backgroundColor: "#f4f7f9",
                     borderRadius: "2px",
-                    padding: "10px",
+                    marginLeft: "5px",
                     textDecoration: "none",
                     border: "none",
                     outline: "none",
@@ -205,7 +205,7 @@ export default class ContactDetail extends Component {
                   className="bttn from-control"
                   value="Submit"
                   style={{
-                    backgroundColor: " #00979d",
+                    backgroundColor: "#32393f",
                     color: "white",
                     transition: "0.8s",
                     lineHeight: "50%",
