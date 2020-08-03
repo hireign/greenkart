@@ -45,11 +45,11 @@ class LoginComponent extends Component {
     })
       .then((res) => {
         console.log(res);
-        if (res.data == "Invalid credentials") {
+        if (res.data === "Invalid credentials") {
           alert("Invalid User");
         } else if (
           //this condition will take the user back to search landing page if they were redirected from there
-          (res.status == 200) &
+          (res.status === 200) &
           (this.state.redirectedFromListing != null)
         ) {
           this.props.userLoggedIn(res.data.user);

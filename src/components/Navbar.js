@@ -19,7 +19,7 @@ class Navbar extends Component {
   }
 
   passValue(){
-    console.log("passValue called")
+    // console.log("passValue called")
   }
 
   logoutApi = (e) => {

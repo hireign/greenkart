@@ -25,9 +25,9 @@ function ProductListing(props) {
   const onBuy = () => {
     if (!loggedIn.loggedIn) {
       window.alert("To use the quick checkout, login first.")
-      window.location.href='/signin/'+props.searchterm;
+      window.location.href = '/signin/' + props.searchterm;
     } else {
-      history.push('/payment/'+productId+"/"+props.productPrice+"/"+props.productName);
+      history.push('/payment/' + productId + "/" + props.productPrice + "/" + props.productName);
       history.go()
     }
   };
@@ -35,42 +35,43 @@ function ProductListing(props) {
   return (
     <div className="col mb-4 productlisting">
       <div className="card h-100">
-        <Link to={productPage}>
+        <Link to={productPage} style={{textDecoration: "none"}}>
           <img src={props.productImage} className="card-img-top" alt="..." />
-        </Link>
-        <div className="card-body">
-          <h5 className="card-title cardTitle">{props.productName}</h5>
-          <h6 className="cardCategory">{props.category}</h6>
-            {rating>0
+          <div className="card-body">
+            <h5 className="card-title cardTitle">{props.productName}</h5>
+            <h6 className="cardCategory">{props.category}</h6>
+            {rating > 0
               ? <span className="fa fa-star checked"></span>
               : <span className="fa fa-star"></span>
             }
-            {rating>1
+            {rating > 1
               ? <span className="fa fa-star checked"></span>
               : <span className="fa fa-star"></span>
             }
-            {rating>2
+            {rating > 2
               ? <span className="fa fa-star checked"></span>
               : <span className="fa fa-star"></span>
             }
-            {rating>3
+            {rating > 3
               ? <span className="fa fa-star checked"></span>
               : <span className="fa fa-star"></span>
             }
-            {rating>4
+            {rating > 4
               ? <span className="fa fa-star checked"></span>
               : <span className="fa fa-star"></span>
             }
-          <br />
-          <h3>${props.productPrice}</h3>
-          <div className="hiddenCheckout" style={{ textAlign: "center" }}>
-            <Grid item>
-              <Button variant="contained" color="primary" onClick={onBuy}>
-                Quick Checkout
+            <br />
+            <h3>${props.productPrice}</h3>
+
+            <div className="hiddenCheckout" style={{ textAlign: "center" }}>
+              <Grid item>
+                <Button variant="contained" color="primary" onClick={onBuy}>
+                  Quick Checkout
               </Button>
-            </Grid>
+              </Grid>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

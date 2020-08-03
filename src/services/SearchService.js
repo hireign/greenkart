@@ -11,7 +11,7 @@ async function getAllProducts() {
 }
 //returns products based on provided parameter
 export default async function searchProduct(args) {
-  console.log("called searchProduct api: " + args);
+  // console.log("called searchProduct api: " + args);
   let res = await Axios.get(`/searched/${args}`);
   return res.data;
 }
