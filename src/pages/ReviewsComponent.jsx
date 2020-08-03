@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Rating from '@material-ui/lab/Rating';
-import { Typography, Hidden, IconButton, Button, Snackbar, FormControl, Input, TextField } from '@material-ui/core';
+import { Typography, Hidden, IconButton, Button, Snackbar, FormControl, TextField } from '@material-ui/core';
 import { AccountCircle, ThumbDown, ThumbUp } from '@material-ui/icons'
 import { useParams } from 'react-router-dom';
 import CommentService from "../services/CommentService";
