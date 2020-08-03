@@ -10,7 +10,6 @@ import { Paper, Grid, Box, Typography, Button, Snackbar, CircularProgress } from
 import { Link } from 'react-router-dom';
 import MuiAlert from '@material-ui/lab/Alert';
 import Rating from '@material-ui/lab/Rating';
-// import Comment from '../components/Comment';
 import { OrderContext } from '../contexts/OrderContext';
 import ProductsService from "../services/ProductService"
 import { updateCart } from "../services/CartService"
@@ -132,8 +131,10 @@ export default function (props) {
         <Link to={"/rating/" + productInfo.productId} >
           <Box component="div" mb={2} borderColor="transparent">
             <Grid alignContent="center" container justify="flex-start">
-              <Rating name="read-only" value={4} readOnly />
-              <Typography variant="body1" component="span" className={classes.ratingText}>20 ratings and 12 reviews</Typography>
+              <Rating name="read-only" value={productInfo.reviews.average} readOnly />
+              <Typography variant="body1" component="span" className={classes.ratingText}>
+                {productInfo.reviews.count} reviews
+              </Typography>
             </Grid>
           </Box>
         </Link>
@@ -152,7 +153,7 @@ export default function (props) {
       </Grid>
       <Snackbar open={open} autoHideDuration={10000} onClose={handleClose}>
         <MuiAlert elevation={6} variant="filled" onClose={handleClose} severity="success">
-          {openText}
+          <div>{openText}</div>
         </MuiAlert>
       </Snackbar>
       {
@@ -163,7 +164,6 @@ export default function (props) {
         </React.Fragment>
       }
     </Grid>
-    {/* <Comment/> */}
   </div>
 }
 
@@ -188,7 +188,7 @@ function similarItem(classes, product, history) {
           <Box>{ product.title}</Box>
         </Grid>
         <Grid item>
-          <Box> {product.salePrice}</Box>
+          <Box> $ {product.salePrice}</Box>
         </Grid>
       </Grid>
     </Paper>

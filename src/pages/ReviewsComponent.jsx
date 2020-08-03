@@ -31,7 +31,6 @@ export default function () {
     const classes = useStyles()
     let { id } = useParams()
     const loggedIn = sessionStorage.getItem("loggedIn")
-    // TODO: loading
     const [reviews, setReviews] = useState(null);
     const [open, setOpen] = useState(false);
     const handleClick = (id, task) => {
@@ -57,7 +56,16 @@ export default function () {
     }, [reviews, id])
 
     const createReview = () => {
-        CommentService.createComment(id, values.comment, values.rating, 1)
+        CommentService.createComment(id, values.comment, values.rating, 1).then(data => {
+            setValues({
+                comment: '',
+                rating: 0
+              })
+              setOpen(true)
+        }).catch(err=> {
+            // todo: handle error
+
+        })
     }
     const [values, setValues] = React.useState({
         comment: '',
@@ -74,7 +82,7 @@ export default function () {
                     disabled={!loggedIn} hint={loggedIn ? "create review" : "Please login to write review"}>Create a review</Button>
             </Grid>
             <Grid item xs={12} md={6}>
-                <Rating name="rating"  onChange={handleChange('rating')}/>
+                <Rating name="rating"  value={+values.rating} onChange={handleChange('rating')}/>
                 <FormControl fullWidth >
                     <Input
                         id="standard-adornment-amount"
@@ -111,7 +119,6 @@ export default function () {
 
 function reviewCard(classes, data, handleClick, handleClose) {
 
-
     return <Grid container spacing={5} alignItems="center" key={data.product_review_id}>
         <Hidden xsDown>
             <Grid item xs={4} sm={2}>
@@ -134,7 +141,7 @@ function reviewCard(classes, data, handleClick, handleClose) {
         <Grid item xs={10} sm={10} >
             <Paper className={classes.paper}>
                 <Typography variant="h6" color="primary">
-                    <AccountCircle /> {"TODO"/*{name} */}
+                    <AccountCircle /> {data.user && data.user.username}
                 </Typography>
                 <Rating name="read-only" value={data.rating} readOnly />
                 <Typography variant="body2">

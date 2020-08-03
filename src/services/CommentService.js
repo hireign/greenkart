@@ -26,7 +26,7 @@ function createComment(productID, comment, rating, userID) {
             userID
         })
     };
-    fetch("/review", requestOptionsPost)
+    return fetch("/review", requestOptionsPost)
 }
 
 // type: "increase" || "decrease"
@@ -39,7 +39,7 @@ function rateComment(commentID, type) {
             type
         })
     };
-    fetch("/review", requestOptionsPut)
+    return fetch("/review", requestOptionsPut)
 }
 
 /**

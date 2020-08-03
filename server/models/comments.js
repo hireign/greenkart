@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
-
 const sequelize = require('../util/database');
+const User = require('./user')
 
-const COMMENTS = sequelize.define('product_review', {
+const Comments = sequelize.define('product_review', {
   product_review_id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -40,4 +40,6 @@ const COMMENTS = sequelize.define('product_review', {
   }
 );
 
-module.exports = COMMENTS;
+Comments.belongsTo(User, {foreignKey: 'user_id'})
+
+module.exports = Comments;
