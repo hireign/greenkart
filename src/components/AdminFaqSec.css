@@ -1,0 +1,12 @@
+.accordian_container {
+  margin-bottom: 20px;
+}
+#button_link {
+  color: black;
+}
+.faq-answer {
+  resize: none;
+}
+textarea {
+  resize: none;
+}
