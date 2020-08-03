@@ -10,6 +10,8 @@ const cartRoutes = require('./routes/cartRoute');
 const User = require('./models/user');
 const session = require('express-session');
 const searchRoute = require('./routes/searchRoute');
+const complaintRoute = require("./routes/complaintRoute");
+const faqRoute = require("./routes/faqRoute");
 
 
 
@@ -46,4 +48,6 @@ app.use(userRoute);
 app.use(addressRoute);
 app.use(paymentRoute);
 app.use(searchRoute);
+app.use(complaintRoute);
+app.use(faqRoute);
 module.exports = app
