@@ -50,39 +50,26 @@ export default class FAQ extends Component {
         </div>
         <div style={{marginTop: "20px"}} className="container accordian_container">
           <div
-            className="accordion "
+            className="accordion"
             id="accordionExample"
-            style={{ paddingTop: "0px" }}
+             style={{ paddingTop: "0px" }}
           >
-            {this.state.faqs.map((faq) => (
-              <div className="card " key={faq.faq_id}>
-                <div className="card-header" id="headingOne">
-                  <h2 className="mb-0">
-                    <button
-                      className="btn btn-link button_link"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#collapseOne"
-                      aria-expanded="false"
-                      aria-controls="collapseOne"
-                      id="button_link"
-                    >
-                      {faq.question}
-                    </button>
-                  </h2>
-                </div>
-
-                <div
-                  id="collapseOne"
-                  className="collapse show"
-                  aria-labelledby="headingOne"
-                  data-parent="#accordionExample"
-                >
-                  <div style={{color: "white"}} className="card-body">
-                    {faq.answer}
-                  </div>
+            {this.state.faqs.map((faq, i) => (
+              <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target={"#collapse"+i} aria-expanded="false" aria-controls={"collapse"+i}>
+                    {faq.question}
+                  </button>
+                </h2>
+              </div>
+          
+              <div id={"collapse"+i} class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  {faq.answer}
                 </div>
               </div>
+            </div>
             ))}
           </div>
         </div>
@@ -90,38 +77,3 @@ export default class FAQ extends Component {
     );
   }
 }
-
-/*
-            {faqs.map((faq) => (
-              
-                <div class="card ">
-                  <div class="card-header" id="headingOne">
-                    <h2 class="mb-0">
-                      <button
-                        class="btn btn-link button_link"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#collapseOne"
-                        aria-expanded="false"
-                        aria-controls="collapseOne"
-                        id="button_link"
-                      >
-                        {faq.question}
-                      </button>
-                    </h2>
-                  </div>
-
-                  <div
-                    id="collapseOne"
-                    class="collapse show"
-                    aria-labelledby="headingOne"
-                    data-parent="#accordionExample"
-                  >
-                    <div class="card-body">{faq.answer}</div>
-                  </div>
-                </div>
-             
-            ))}
-
-
-*/
