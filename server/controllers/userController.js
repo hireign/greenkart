@@ -103,7 +103,7 @@ exports.registerAccount = (req, res, next) => {
       res.status(200).send(userObj);
     }
     else{
-      const userObj = {"userName":req.session.user.username, "loggedIn": false}
+      const userObj = {"loggedIn": false}
       res.status(200).send(userObj);
     }
   };
