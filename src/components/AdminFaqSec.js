@@ -32,11 +32,11 @@ export default class AdminFaqSec extends Component {
     this.setState({ [e.target.name]: e.target.value });
     this.componentDidMount();
   };
-  
+
   componentDidMount = () => {
     Axios.get("/getContacts", this.state)
       .then((res) => {
-        this.setState({faqs: res.data})
+        this.setState({ faqs: res.data })
       })
       .catch((err) => {
         console.log(err);
@@ -85,7 +85,7 @@ export default class AdminFaqSec extends Component {
                     </span>
                   </h2>
                 </div>
-                
+
                 <div class="card-body" style={{ backgroundColor: "white" }}>
                   Question:
                   <br />
@@ -117,9 +117,10 @@ export default class AdminFaqSec extends Component {
                 </div>
               </div>
             </form>
+            <Typography variant="h3" style={{marginTop: "20px"}}>User Complaints</Typography>
             {
-            this.state.faqs.map((faq) => 
-              this.createCard(faq)
+              this.state.faqs.map((faq) =>
+                this.createCard(faq)
               )
             }
           </div>
@@ -129,20 +130,18 @@ export default class AdminFaqSec extends Component {
   }
 
   createCard(data) {
-    return <Card >
+    return <Card style={{marginTop: "10px"}}>
       <CardContent>
-        <Typography color="textSecondary" gutterBottom>
-         {data.name}
-         {data.message}
-         {data.complaint_id}
+        <Typography color="primary" variant="h5" gutterBottom>
+          Complaint ID: {data.complaint_id}
+        </Typography>
+        <Typography color="textSecondary" variant="h6" gutterBottom>
+          User: {data.name}
         </Typography>
         <Typography color="textSecondary" gutterBottom>
-         {data.message}
+          Description: {data.message}
         </Typography>
-        <Typography color="textSecondary" gutterBottom>
-         {data.complaint_id}
-        </Typography>
-        </CardContent>
+      </CardContent>
     </Card>
   }
 }
