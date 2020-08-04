@@ -1,24 +1,21 @@
 /**
  * @author Mihir Patel
  */
+/**
+ * @author Mihir Patel
+ */
 import React, { Component } from "react";
 
 import "bootstrap/dist/css/bootstrap.css";
 import Axios from "axios";
 
+const nodemailer = require("nodemailer");
+
 export default class ContactDetail extends Component {
   constructor(props) {
     super();
 
-    this.state = this.defaultState();
-  }
-
-  setDefaultState() {
-    this.setState(this.defaultState());
-  }
-
-  defaultState() {
-    return {
+    this.state = {
       name: "",
       email_id: "",
       contact_no: "",
@@ -26,16 +23,13 @@ export default class ContactDetail extends Component {
       state: "",
     };
   }
-
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
   submitHandler = (e) => {
-    e.preventDefault();
     Axios.post("/contact/submitform", this.state)
       .then((res) => {
-        window.alert("Your request has been recieved successfully")
-        this.setDefaultState()
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -47,26 +41,26 @@ export default class ContactDetail extends Component {
     return (
       <div>
         <div
-          className="container-fluid"
+          class="container-fluid"
           style={{
             paddingTop: " 10px",
 
             paddingBottom: "20px",
-            
+            backgroundColor: "#00979d",
+            color: "white",
           }}
         >
-          <div className="row">
-            <div className="col-sm-12 text-center" >
-            <br></br>
+          <div class="row">
+            <div class="col-sm-12 text-center">
               <h1>Contact Us</h1>
             </div>
           </div>
         </div>
 
-        <div className="container" style={{ padding: "10px" }}>
-          <div className="row text-center padding" style={{ padding: "20px" }}>
+        <div class="container" style={{ padding: "10px" }}>
+          <div class="row text-center padding" style={{ padding: "20px" }}>
             <div
-              className="col-lg-6 col-md-6 col-sm-12 col-xm-12"
+              class="col-lg-6 col-md-6 col-sm-12 col-xm-12"
               style={{ paddingBottom: "30px" }}
             >
               <form onSubmit={this.submitHandler}>
@@ -75,7 +69,8 @@ export default class ContactDetail extends Component {
                 <input
                   type="text"
                   title="Your Name"
-                  className="from-control"
+                  class="name"
+                  class="from-control"
                   placeholder="Your Name"
                   required
                   name="name"
@@ -100,7 +95,8 @@ export default class ContactDetail extends Component {
                 <input
                   type="email"
                   title="Email Address"
-                  className="mail from-control"
+                  class="mail"
+                  class="from-control"
                   required
                   placeholder="Email Address"
                   name="email_id"
@@ -122,12 +118,12 @@ export default class ContactDetail extends Component {
                 />
 
                 <input
-                  type="tel"
-                  pattern="[0-9]{10}"
+                  type="number"
+                  class="mail"
                   title="Number"
                   required
-                  className="mail from-control"
-                  placeholder="Ph. 9876543210"
+                  class="from-control"
+                  placeholder="Cell No."
                   name="contact_no"
                   value={contact_no}
                   onChange={this.changeHandler}
@@ -135,7 +131,7 @@ export default class ContactDetail extends Component {
                     width: "50%",
                     backgroundColor: "#f4f7f9",
                     borderRadius: "2px",
-                    marginLeft: "5px",
+                    padding: "10px",
                     textDecoration: "none",
                     border: "none",
                     outline: "none",
@@ -152,8 +148,9 @@ export default class ContactDetail extends Component {
                 <input
                   type="text"
                   placeholder="Message"
+                  class="message"
                   title="Message"
-                  className="message from-control"
+                  class="from-control"
                   name="message"
                   value={message}
                   onChange={this.changeHandler}
@@ -177,8 +174,9 @@ export default class ContactDetail extends Component {
                 <input
                   type="text"
                   placeholder="State"
+                  class="state"
                   title="state"
-                  className="state from-control"
+                  class="from-control"
                   name="state"
                   value={state}
                   onChange={this.changeHandler}
@@ -201,11 +199,12 @@ export default class ContactDetail extends Component {
                 <br />
                 <button
                   type="submit"
+                  class="bttn"
                   title="Submit Post"
-                  className="bttn from-control"
+                  class="from-control"
                   value="Submit"
                   style={{
-                    backgroundColor: "#32393f",
+                    backgroundColor: " #00979d",
                     color: "white",
                     transition: "0.8s",
                     lineHeight: "50%",
@@ -226,18 +225,17 @@ export default class ContactDetail extends Component {
               </form>
             </div>
 
-            <div className="col-lg-6 col-md-6 col-sm-12 col-xm-12">
-              <div className="responsive">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xm-12">
+              <div class="responsive">
                 <br />
 
                 <iframe
                   src="https://maps.google.com/maps?q=1645%20Barrington%20St%20Halifax%2C%20NS%20B3J%201Z9&t=&z=13&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="330px"
-                  frameBorder="0"
+                  frameborder="0"
                   style={{ border: "0" }}
-                  allowFullScreen
-                  title="map"
+                  allowfullscreen
                 ></iframe>
                 <br />
               </div>
@@ -248,32 +246,3 @@ export default class ContactDetail extends Component {
     );
   }
 }
-
-/*
- console.log("Contsct form submitted now trying to email");
-    // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: false, // true for 465, false for other ports
-      auth: {
-        user: "mihirpatel479@gmail.com", // generated ethereal user
-        pass: "Miluupatel_1996", // generated ethereal password
-      },
-    });
-    // send mail with defined transport object
-    let info = transporter.sendMail({
-      from: '"Greenkart" <mihirpatel479@gmail.com>', // sender address
-      to: "mihirpatel4798@gmail.com", // list of receivers
-      subject: "Conact request to GreenKart", // Subject line
-      text:
-        "Hi You have made request to our site, You will be given response soon.", // plain text body
-      html: "<b>Hello world?</b>", // html body
-    });
-
-    console.log("Message sent: %s", info.messageId);
-    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-
-    // Preview only available when sending through an Ethereal account
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    */
