@@ -6,10 +6,12 @@ const sequelize = require('../util/database');
 const { QueryTypes } = require('sequelize');
 const nodemailer= require('nodemailer');
 const sendGrid= require('nodemailer-sendgrid-transport');
+const sgApikey = process.env.SG_API_KEY
+const fromEmail = process.env.SG_EMAIL
 
 const sendMail = nodemailer.createTransport(sendGrid({
   auth:{
-    api_key: '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'
+    api_key: sgApikey
   }
 }));
 /**
@@ -84,7 +86,7 @@ exports.registerAccount = (req, res, next) => {
         }
         sendMail.sendMail({
           to: email,
-          from: 'jatin.rana.partap@gmail.com',
+          from: fromEmail,
           subject: 'GreenKart User Password',
           html: `<h3>Your password for GreenKart User Account is: ${user[0].password}</h3>`
         });
