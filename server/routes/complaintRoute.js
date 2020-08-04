@@ -13,6 +13,6 @@ const router = express.Router();
 
 router.post("/contact/submitform", complaintController.submitContactForm);
 
-router.get("/getContacts", complaintController.getContacts);
+router.get("/admin/contact/getcontacts", complaintController.getContacts);
 
 module.exports = router;
