@@ -45,7 +45,6 @@ forgotPasswordApi = (e) => {
        
   })
   .catch(err => {
-      console.log(err);
   })
 }
 

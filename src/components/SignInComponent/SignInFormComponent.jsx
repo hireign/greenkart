@@ -12,7 +12,7 @@ const SignInFormComponent = (props) =>{
         </div>
         <div  style={{"padding":"10px", "display": "flex", "justifyContent": "space-between"}}>
         <Link to='/forgotpassword'>
-        <span className="pull-left" onClick={props.onForgotPassword } style={{"color": "#e8226b",
+        <span className="pull-left"  style={{"color": "#e8226b",
         "outline": "medium none",
         "overflow": "hidden",
         "cursor": "pointer"}}>Forgot Password?</span>

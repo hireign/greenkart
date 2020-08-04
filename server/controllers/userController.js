@@ -79,6 +79,9 @@ exports.registerAccount = (req, res, next) => {
    */
   exports.forgotPassword = (req, res, next) => {
     const email = req.body.email;
+    if(!email){
+      return res.status(200).send("Password Send On your email address");
+    }
     sequelize.query("select * from users where email = ?", { replacements: [email], type: QueryTypes.SELECT }).then(
       user=>{
         if (!user) {
