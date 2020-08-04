@@ -10,7 +10,7 @@ const SignInFormComponent = (props) =>{
         <div className="d-flex flex-row mt-2 ml-2">
         <button type='submit' className="btn btn-light ">LOGIN</button>
         </div>
-        <div  style={{"padding":"10px", "display": "flex", "justify-content": "space-between"}}>
+        <div  style={{"padding":"10px", "display": "flex", "justifyContent": "space-between"}}>
         <Link to='/forgotpassword'>
         <span className="pull-left" onClick={props.onForgotPassword } style={{"color": "#e8226b",
         "outline": "medium none",
