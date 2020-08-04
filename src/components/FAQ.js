@@ -14,20 +14,17 @@ export default class FAQ extends Component {
   componentDidMount = () => {
     Axios.get("/contact")
       .then((res) => {
-        // console.log(res.data);
-        //faqs = res.data;
+
         this.setState({ faqs: res.data });
       })
       .catch((err) => {
-        // console.log(err);
+
       });
   };
-  //          <div class ="faqs">
-  //{} data.faqs.map(faq) =>(faq => )
+
 
   render() {
-    // console.log("faqs:");
-    // console.log(this.state.faqs);
+
     return (
       <div>
         <hr style={{ marginBottom: "0px" }} />
