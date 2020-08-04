@@ -53,15 +53,8 @@ export default class AdminFaqSec extends Component {
           class="container-fluid"
           style={{
             padding: "30px",
-            backgroundColor: "#00979d",
-            color: "white",
           }}
         >
-          <div class="row">
-            <div class="col-sm-12 text-center">
-              <h3>Frequently Asked Questions</h3>
-            </div>
-          </div>
         </div>
         <div class="container accordian_container">
           <div
@@ -73,7 +66,7 @@ export default class AdminFaqSec extends Component {
               <div class="card">
                 <div class="card-header">
                   <h2 class="mb-0">
-                    <label>Add Question</label>
+                    <label>Add FAQ Question</label>
                     <span class="float-right">
                       <button
                         id="add-quebtn"
@@ -117,7 +110,7 @@ export default class AdminFaqSec extends Component {
                 </div>
               </div>
             </form>
-            <Typography variant="h3" style={{marginTop: "20px"}}>User Complaints</Typography>
+            <Typography variant="h4" style={{marginTop: "20px"}}>User Complaints</Typography>
             {
               this.state.faqs.map((faq) =>
                 this.createCard(faq)
