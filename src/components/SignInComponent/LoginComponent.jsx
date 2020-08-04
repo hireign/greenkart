@@ -86,7 +86,6 @@ class LoginComponent extends Component {
         }
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 
