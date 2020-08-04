@@ -154,6 +154,7 @@ class SearchLandingPage extends Component {
                 marginRight: "auto",
                 width: "50%",
               }}
+              alt="error-message"
               src="https://dummyimage.com/900x500/cccccc/000000.png&text=Oops!+We+did+not+find+any+products+for+that.+Try+something+else.+Perhaps,+apples??"
             />
           )}

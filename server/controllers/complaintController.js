@@ -2,7 +2,7 @@
  * @author Mihir Patel
  */
 
-const Complaint = require("../models/Complaint");
+const Complaint = require("../models/complaint");
 
 exports.submitContactForm = (req, res, next) => {
  

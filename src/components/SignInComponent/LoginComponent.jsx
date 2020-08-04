@@ -44,7 +44,7 @@ class LoginComponent extends Component {
       password: this.state.userPassword,
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.data === "Invalid credentials") {
           alert("Invalid User");
         } else if (
