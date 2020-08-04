@@ -15,15 +15,14 @@ function getComments(id) {
     return fetch("/review?id=" + id)
 }
 
-function createComment(productID, comment, rating, userID) {
+function createComment(productID, comment, rating) {
     const requestOptionsPost = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             productID, 
             comment, 
-            rating, 
-            userID
+            rating
         })
     };
     return fetch("/review", requestOptionsPost)

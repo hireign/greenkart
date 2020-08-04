@@ -23,11 +23,12 @@ async function modifyComment(req, res, next) {
 };
 
 async function createComment(req, res, next) {
+    const userId = req.session.user.user_id;
     const commentResponse = COMMENTS.create({
         product_id: req.body.productID,
         rating: req.body.rating,
         comment: req.body.comment,
-        user_id: req.body.userID
+        user_id: userId
     });
     res.send(commentResponse)
 };

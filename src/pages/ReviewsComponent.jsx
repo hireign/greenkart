@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from 'react';
+import React, {  useEffect, useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -8,6 +8,7 @@ import { AccountCircle, ThumbDown, ThumbUp } from '@material-ui/icons'
 import { useParams } from 'react-router-dom';
 import CommentService from "../services/CommentService";
 import MuiAlert from '@material-ui/lab/Alert';
+import { OrderContext } from '../contexts/OrderContext';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 export default function () {
     const classes = useStyles()
     let { id } = useParams()
-    const loggedIn = sessionStorage.getItem("loggedIn")
+    const { loggedIn } = useContext(OrderContext);
     const [reviews, setReviews] = useState(null);
     const [open, setOpen] = useState(false);
     const handleClick = (id, task) => {
@@ -56,7 +57,7 @@ export default function () {
     }, [reviews, id])
 
     const createReview = () => {
-        CommentService.createComment(id, values.comment, values.rating, 1).then(data => {
+        CommentService.createComment(id, values.comment, values.rating).then(data => {
             setValues({
                 comment: '',
                 rating: 0
