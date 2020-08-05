@@ -25,7 +25,7 @@ class App extends React.Component {
         if(res.data.loggedIn === true)
            {
             this.setState({ loggedIn: {userName:res.data.userName,
-              loggedIn: true, isAdmin: res.data.isAdmin} });  
+              loggedIn: true, isAdmin: false} });  
            }
       })
       .catch(err => {
