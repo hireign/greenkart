@@ -3,7 +3,7 @@
  */
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import styles from "./FAQ.css";
+
 import Axios from "axios";
 
 export default class FAQ extends Component {
@@ -15,8 +15,6 @@ export default class FAQ extends Component {
   componentDidMount = () => {
     Axios.get("/contact")
       .then((res) => {
-        console.log(res.data);
-
         this.setState({ faqs: res.data });
       })
       .catch((err) => {
@@ -25,42 +23,41 @@ export default class FAQ extends Component {
   };
 
   render() {
-    console.log("faqs:");
-    console.log(this.state.faqs);
     return (
       <div>
         <hr style={{ marginBottom: "0px" }} />
 
         <div
-          class="container-fluid"
+          className="container-fluid"
           style={{
-            padding: " 30px",
-            backgroundColor: "#00979d",
+            padding: "20px",
+            backgroundColor: "#343A40",
+            marginBottom: "5px",
             color: "white",
           }}
         >
-          <div class="row">
-            <div class="col-sm-12 text-center">
+          <div className="row">
+            <div className="col-sm-12 text-center">
               <h3>Frequently Asked Questions</h3>
             </div>
           </div>
         </div>
-        <div class="container accordian_container">
+        <div className="container accordian_container">
           <div
-            class="accordion "
+            className="accordion "
             id="accordionExample"
             style={{ paddingTop: "0px" }}
           >
             {this.state.faqs.map((faq) => (
-              <div class="card ">
-                <div class="card-header" id="headingOne">
-                  <h2 class="mb-0">
+              <div className="card " key={faq.faq_id}>
+                <div className="card-header" id="headingOne">
+                  <h2 className="mb-0">
                     <button
-                      class="btn btn-link button_link"
+                      className="btn btn-link button_link"
                       type="button"
                       data-toggle="collapse"
                       data-target="#collapseOne"
-                      aria-expanded="false"
+                      aria-expanded="true"
                       aria-controls="collapseOne"
                       id="button_link"
                     >
@@ -71,11 +68,11 @@ export default class FAQ extends Component {
 
                 <div
                   id="collapseOne"
-                  class="collapse show"
+                  className="collapse show"
                   aria-labelledby="headingOne"
                   data-parent="#accordionExample"
                 >
-                  <div class="card-body">{faq.answer}</div>
+                  <div className="card-body">{faq.answer}</div>
                 </div>
               </div>
             ))}

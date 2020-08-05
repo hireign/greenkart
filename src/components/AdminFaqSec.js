@@ -3,7 +3,7 @@
  */
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import style from "./AdminFaqSec.css";
+
 import Axios from "axios";
 
 export default class AdminFaqSec extends Component {
@@ -12,10 +12,24 @@ export default class AdminFaqSec extends Component {
     this.state = { question: "", answer: "", faqs: [] };
   }
   submitHandler = (e) => {
-    // e.preventDefault();
-    Axios.post("/contact/submitfaq", this.state)
+    e.preventDefault();
+    Axios.post("/contact/submitfaq", {
+      question: this.state.question,
+      answer: this.state.answer,
+    })
       .then((res) => {
-        console.log(res);
+        alert("FAQ added successfully");
+
+        this.getFaqs();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  getFaqs = () => {
+    Axios.get("/contact")
+      .then((res) => {
+        this.setState({ faqs: res.data, question: "", answer: "" });
       })
       .catch((err) => {
         console.log(err);
@@ -23,55 +37,49 @@ export default class AdminFaqSec extends Component {
   };
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    this.componentDidMount();
   };
   componentDidMount = () => {
-    Axios.get("/contact")
-      .then((res) => {
-        console.log(res.data);
-        //faqs = res.data;
-        this.setState({ faqs: res.data });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.getFaqs();
   };
 
   render() {
     const { question, answer } = this.state;
-    //console.log("faqs:");
-    //console.log(this.state.faqs);
+
     return (
       <div>
         <div
-          class="container-fluid"
+          className="container-fluid"
           style={{
-            padding: "30px",
-            backgroundColor: "#00979d",
+            padding: "20px",
+            marginTop: "2px",
+            backgroundColor: "#343A40",
             color: "white",
           }}
         >
-          <div class="row">
-            <div class="col-sm-12 text-center">
+          <div className="row">
+            <div className="col-sm-12 text-center">
               <h3>Frequently Asked Questions</h3>
             </div>
           </div>
         </div>
-        <div class="container accordian_container">
+        <div className="container accordian_container">
           <div
-            class="accordion"
+            className="accordion"
             id="accordionExample"
             style={{ paddingTop: "20px" }}
           >
-            <form onSubmit={this.submitHandler}>
-              <div class="card">
-                <div class="card-header">
-                  <h2 class="mb-0">
+            <form
+              onSubmit={this.submitHandler}
+              style={{ paddingBottom: "20px" }}
+            >
+              <div className="card">
+                <div className="card-header">
+                  <h2 className="mb-0">
                     <label>Add Question</label>
-                    <span class="float-right">
+                    <span className="float-right">
                       <button
                         id="add-quebtn"
-                        class="btn btn-primary"
+                        className="btn btn-primary"
                         type="submit"
                       >
                         Add
@@ -80,11 +88,11 @@ export default class AdminFaqSec extends Component {
                   </h2>
                 </div>
 
-                <div class="card-body" style={{ backgroundColor: "white" }}>
+                <div className="card-body" style={{ backgroundColor: "white" }}>
                   Question:
                   <br />
                   <textarea
-                    class="bg-light bg-transparent mt-1 p-2 rounded"
+                    className="bg-light bg-transparent mt-1 p-2 rounded"
                     id="newText"
                     style={{ resize: "none", width: "100%" }}
                     rows="2"
@@ -98,8 +106,8 @@ export default class AdminFaqSec extends Component {
                   Answer:
                   <br />
                   <textarea
-                    class="bg-white bg-transparent mt-1 p-2 rounded"
-                    id="newText"
+                    className="bg-white bg-transparent mt-1 p-2 rounded"
+                    id="newText1"
                     style={{ resize: "none", width: "100%" }}
                     rows="3"
                     placeholder="Your question here..."
@@ -112,15 +120,15 @@ export default class AdminFaqSec extends Component {
               </div>
             </form>
             {this.state.faqs.map((faq) => (
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h2 class="mb-0">
+              <div className="card" key={faq.faq_id}>
+                <div className="card-header" id="headingOne">
+                  <h2 className="mb-0">
                     <button
-                      class="btn btn-link button_link"
+                      className="btn btn-link button_link"
                       type="button"
                       data-toggle="collapse"
                       data-target="#collapseOne"
-                      aria-expanded="true"
+                      aria-expanded="false"
                       aria-controls="collapseOne"
                       id="button_link"
                     >
@@ -130,11 +138,11 @@ export default class AdminFaqSec extends Component {
                 </div>
                 <div
                   id="collapseOne"
-                  class="collapse show"
+                  className="collapse show"
                   aria-labelledby="headingOne"
                   data-parent="#accordionExample"
                 >
-                  <div class="card-body text-justify">{faq.answer}</div>
+                  <div className="card-body text-justify">{faq.answer}</div>
                 </div>
               </div>
             ))}
