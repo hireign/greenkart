@@ -7,6 +7,7 @@ Greenkart is an e-commerce platform for Gardening Enthusiasts. The goal of this 
 ## Authors
 [Shubham Suri](sh385209@dal.ca) - Maintainer
 [Aman Vishnani](aman.vishnani@dal.ca)
+[Jatin Partap Rana][jt655878@dal.ca]
 
 ## Framework
 The webiste uses ReactJS for the frontend.
@@ -170,3 +171,35 @@ follows conventions.
 [medium article](https://medium.com/@matwankarmalay/create-react-app-ie11-script1002-syntax-error-how-to-get-rid-of-it-d70000c53ddf) for adding pollyfill to deliver intended experience in all browsers.
 
 ## Images
+
+
+
+## Acknowledgments
+[1]: Gardeners Supply. 2020. Garden Supplies, Planters, Soil, Tools + More | Free Shipping. [online] Available at: <https://www.gardeners.com/buy/gardening/> [Accessed 14 June 2020].
+
+[2]: React-bootstrap.netlify.app. 2020. [online] Available at: <https://react-bootstrap.netlify.app/components/table/#tables> [Accessed 14 June 2020].
+
+[3]: React-bootstrap.netlify.app. 2020. [online] Available at: <https://react-bootstrap.netlify.app/migrating/#navbar> [Accessed 14 June 2020].
+
+[4]: Fontawesome.com. 2020. Font Awesome. [online] Available at: <https://fontawesome.com/icons?d=gallery&q=user> [Accessed 14 June 2020].
+
+
+[5]: Mark Otto, a., 2020. Buttons. [online] Getbootstrap.com. Available at:<https://getbootstrap.com/docs/4.4/components/buttons/#sizes> [Accessed 14 June 2020].
+
+[6]: Mark Otto, a., 2020. Navbar. [online] Getbootstrap.com. Available at: <https://getbootstrap.com/docs/4.0/components/navbar/> [Accessed 14 June 2020].
+
+[7]: Mark Otto, a., 2020. Cards. [online] Getbootstrap.com. Available at: <https://getbootstrap.com/docs/4.0/components/card/#header-and-footer> [Accessed 14 June 2020].
+
+[8]:  Gandy, D., 2020. Fa-User: Font Awesome Icons. [online] Fontawesome.com. Available at: <https://fontawesome.com/v4.7.0/icon/user> [Accessed 14 June 2020].
+
+[9]: 2020. [online] Available at: <https://www.youtube.com/watch?v=nV7Mf77GiOc> [Accessed 14 June 2020].
+
+[10]: Gandy, D., 2020. Fa-Lock: Font Awesome Icons. [online] Fontawesome.com. Available at: <https://fontawesome.com/v4.7.0/icon/lock> [Accessed 14 June 2020].
+
+[11]: Mark Otto, a., 2020. Forms. [online] Getbootstrap.com. Available at: <https://getbootstrap.com/docs/4.0/components/forms/> [Accessed 14 June 2020].
+
+[12] "express-session", npm, 2020. [Online]. Available: https://www.npmjs.com/package/express-session. [Accessed: 04- Aug- 2020]
+
+[13] "nodemailer-sendgrid-transport", npm, 2020. [Online]. Available: https://www.npmjs.com/package/nodemailer-sendgrid-transport. [Accessed: 04- Aug- 2020]
+
+[14] "Manual | Sequelize", Sequelize.org, 2020. [Online]. Available: https://sequelize.org/master/manual/model-querying-basics.html. [Accessed: 04- Aug- 2020]
