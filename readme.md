@@ -25,7 +25,7 @@ Each member has built 2 Modules which include both front-end and back-end. Compo
 2. Shubham Suri - Product details, Review
 3. Mihir patel - Contact us, AdminFAQ
 4. Hirenkumar Khant - Search, Quick Checkout
-5. 
+5. Jatin Rana - Payment, User Management
 
 ## Getting Started
 
