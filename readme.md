@@ -1,13 +1,19 @@
 # Project 
+Greenkart is an e-commerce platform for Gardening Enthusiasts. The goal of this website is to provide this niche market a platform to buy and sell gardening products such as seeds, saplings, tools (like shovel), etc.
 
 * *Date Created*: 07 Aug 2020
 * *Last Modification Date*: 07 AUG 2020
 
 ## Authors
 [Shubham Suri](sh385209@dal.ca) - Maintainer
-[add]
+[Aman Vishnani](aman.vishnani@dal.ca)
 
 ## Getting Started
+
+### Color Schemes
+
+1. Primary - Green (#00CC66) - Representing Green in Greenkart
+2. Secondary - Orange (#F75C03) - Complimenting color
 
 ### Clone repository
  git clone https://github.com/Ssuri013/Group22-Assignments-And-Project.git
@@ -64,7 +70,7 @@ UI components are used throughout the application(almost all files in src folder
 * Hirarchy and combination of these components has been done independently.
 * Author attributes not available
   
-Following snippets of code was used from material-ui documentaion, these snippets are basic working of components and have been modified according to need in application.
+Following snippets of code was used from material-ui documentaion, these snippets are basic working of components and have been modified according to need in application, along with these there are other material components also used.
 ```
         <TextField
                         InputProps={{
