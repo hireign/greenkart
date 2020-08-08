@@ -149,7 +149,7 @@ This website has refered to implement router routes in "App.js" file.
 2. [Home](https://greenkart-csci5709.herokuapp.com/) - same URl after login is complete
 3. [Products](https://greenkart-csci5709.herokuapp.com/product)
 4. [Review](https://greenkart-csci5709.herokuapp.com/rating)
-S. [Search](https://greenkart-csci5709.herokuapp.com/search/a)
+5. [Search](https://greenkart-csci5709.herokuapp.com/search/apple)
 
 ## User Experience
 
