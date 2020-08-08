@@ -21,7 +21,7 @@ Each member has built 2 Modules which include both front-end and back-end. Compo
 1. Aman Vishnani- Cart management, order management
 2. Shubham Suri - Product details, Review
 3. Mihir patel - Contact us, AdminFAQ
-4. 
+4. Jatin Partap Rana - User management, Payment
 5. 
 
 ## Getting Started
@@ -207,12 +207,12 @@ follows conventions.
 
 [11]: Mark Otto, a., 2020. Forms. [online] Getbootstrap.com. Available at: <https://getbootstrap.com/docs/4.0/components/forms/> [Accessed 14 June 2020].
 
-[12] "express-session", npm, 2020. [Online]. Available: https://www.npmjs.com/package/express-session. [Accessed: 04- Aug- 2020]
+[12]: "express-session", npm, 2020. [Online]. Available: https://www.npmjs.com/package/express-session. [Accessed: 04- Aug- 2020]
 
-[13] "nodemailer-sendgrid-transport", npm, 2020. [Online]. Available: https://www.npmjs.com/package/nodemailer-sendgrid-transport. [Accessed: 04- Aug- 2020]
+[13]: "nodemailer-sendgrid-transport", npm, 2020. [Online]. Available: https://www.npmjs.com/package/nodemailer-sendgrid-transport. [Accessed: 04- Aug- 2020]
 
-[14] "Manual | Sequelize", Sequelize.org, 2020. [Online]. Available: https://sequelize.org/master/manual/model-querying-basics.html. [Accessed: 04- Aug- 2020]
+[14]: "Manual | Sequelize", Sequelize.org, 2020. [Online]. Available: https://sequelize.org/master/manual/model-querying-basics.html. [Accessed: 04- Aug- 2020]
 
-[15] Bootstrap. (2020). Bootstrap components user guide  [web document] Retrieved from https://getbootstrap.com/docs/4.0/components/alerts/
-[16] React js. (2020). User guide React js [web document] Retrieved from https://reactjs.org/tutorial/tutorial.html
-[17] Youtube. (2020). React js tutorials [video tutorial] Retrieved from https://www.youtube.com/watch?v=Ke90Tje7VS0&t=1257s
+[15]: Bootstrap. (2020). Bootstrap components user guide  [web document] Retrieved from https://getbootstrap.com/docs/4.0/components/alerts/
+[16]: React js. (2020). User guide React js [web document] Retrieved from https://reactjs.org/tutorial/tutorial.html
+[17]: Youtube. (2020). React js tutorials [video tutorial] Retrieved from https://www.youtube.com/watch?v=Ke90Tje7VS0&t=1257s
