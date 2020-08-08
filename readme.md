@@ -49,7 +49,7 @@ steps to deploy:
 4. Login in heroku.
 5. Run following commands
    ```
-   heroku create $APP_NAME --buildpack mars/create-react-app
+   heroku create $APP_NAME --buildpack heroku/nodejs
    git push heroku master
    heroku open
    ```
