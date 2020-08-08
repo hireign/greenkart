@@ -70,7 +70,6 @@ class SignUpComponent extends Component {
 
 
   render() {
-    const { userEmailId } = this.state;
     
     return (
       <div style={{margin:"80px auto"}}>

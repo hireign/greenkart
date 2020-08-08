@@ -9,4 +9,11 @@ router.put('/review', commentsController.modifyComment);
 
 router.get('/review', commentsController.getAllComments);
 
+/**
+ * Route to fetch ratings based on product id
+ *
+ * @author [Hiren Khant](hr266981@dal.ca)
+ */
+router.get('/productrating/:id', commentsController.getRatingByProductID);
+
 module.exports = router;

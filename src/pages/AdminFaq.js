@@ -1,6 +1,7 @@
 /**
  * @author Mihir Patel
  */
+
 import React, { Component } from "react";
 
 import AdminFaqSec from "../components/AdminFaqSec";

@@ -8,16 +8,16 @@ import Axios from 'axios';
 
 
 let addresses = {
-    
+
 }
 
 /**
  * Calling getAddress API.
  */
 async function getAllAddresses() {
-    
-   let res=  await Axios.get('/getAddress');
-   
+
+    let res = await Axios.get('/getAddress');
+
     return res.data
 }
 
@@ -25,43 +25,28 @@ async function getAddressById(id) {
     return addresses[id];
 }
 
-function getNewId() {
-    let max = -1;
-    for(let addr of Object.values(addresses)) {
-        if(max < addr.id) {
-            max = addr.id
-        }
-    }
-    return max + 1;
-}
-
 /**
  * Calling saveEditAddress API.
  */
 async function saveOrUpdateAddress(address) {
+    let res = await Axios.post('/saveEditAddress', {
+        id: address.id,
+        name: address.name,
+        mobile: address.mobile,
+        street: address.street
+    });
 
-    
-   let res=  await Axios.post('/saveEditAddress', {
-    id: address.id,
-    name: address.name,
-    mobile: address.mobile,
-    street: address.street
-  });
-   
     return res.data
-
 }
 /**
  * Calling deleteAddress API.
  */
 async function deleteAddressById(addressId) {
-    
-    
-    let res=  await Axios.post('/deleteAddress', {
-     id: addressId,
-   });
-    
-    return;
+    let res = await Axios.post('/deleteAddress', {
+        id: addressId,
+    });
+
+    return res.data;
 }
 
 export {

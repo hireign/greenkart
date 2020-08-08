@@ -135,31 +135,8 @@ CREATE TABLE IF NOT EXISTS `product_review` (
   `comment` VARCHAR(45) NOT NULL,
   `number_of_likes` INT DEFAULT 0,
   `number_of_dislikes` INT DEFAULT 0,
+  `user_id` INT NOT NULL REFERENCES user(`user_id`)
   PRIMARY KEY (`product_review_id`));
-
-
--- -----------------------------------------------------
--- Table `complaint`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `complaint` ;
-
-CREATE TABLE IF NOT EXISTS `complaint` (
-  `complaint_id` INT NOT NULL,
-  `email_id` VARCHAR(45) NULL,
-  `message` VARCHAR(45) NULL,
-  `country` VARCHAR(45) NULL,
-  PRIMARY KEY (`complaint_id`));
-
-
--- -----------------------------------------------------
--- Table `FAQ`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `FAQ` ;
-
-CREATE TABLE IF NOT EXISTS `FAQ` (
-  `faq_id` INT NOT NULL,
-  `description` VARCHAR(45) NULL,
-  PRIMARY KEY (`faq_id`));
 
 -- -----------------------------------------------------
 -- Table `user_address`
@@ -170,4 +147,33 @@ CREATE TABLE `user_address`(
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `user_id` INT NOT NULL REFERENCES user(`user_id`),
   `address_id` INT NOT NULL REFERENCES address(`address_id`)
+);
+
+-- -----------------------------------------------------
+-- Table `complaint`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `complaint`;
+
+CREATE TABLE `complaint` (
+  `complaint_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `email_id` varchar(100) DEFAULT NULL,
+  `contact_no` varchar(20) DEFAULT NULL,
+  `message` varchar(2000) DEFAULT NULL,
+  `state` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`complaint_id`)
+);
+
+-- -----------------------------------------------------
+-- Table `faq`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `faq`;
+
+CREATE TABLE `faq` (
+  `faq_id` int(11) NOT NULL AUTO_INCREMENT,
+  `question` varchar(1000) DEFAULT NULL,
+  `answer` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`faq_id`)
 );

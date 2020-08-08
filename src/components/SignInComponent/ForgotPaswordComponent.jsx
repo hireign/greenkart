@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./LoginComponent.scss";
-import ProfileComponent from "./ProfileComponent";
 import Axios from 'axios';
 import ForgotPasswordFormComponent from "./ForgotPasswordFormComponent";
 import { withRouter } from 'react-router-dom';
@@ -27,29 +26,6 @@ class ForgotPaswordComponent extends Component {
       this.onForgotPassword();
   };
 
-  loginApi = (e) => {
-    Axios.post('/login', {
-      email: this.state.userEmailId,
-      password: this.state.userPassword
-    })
-    .then(res => {
-      
-         if(res.data === true)
-         {
-          this.props.userLoggedIn("true");
-          this.props.history.push(`/`);
-         }
-         else
-         {
-           alert("Invalid User")
-           this.props.history.push(`/`);
-         }
-    })
-    .catch(err => {
-        console.log(err);
-    })
-}
-
 onForgotPassword = e => {
   
   this.forgotPasswordApi();
@@ -69,12 +45,10 @@ forgotPasswordApi = (e) => {
        
   })
   .catch(err => {
-      console.log(err);
   })
 }
 
   render() {
-    const { userEmailId } = this.state;
     
     return (
       <div style={{margin:"80px auto"}}>

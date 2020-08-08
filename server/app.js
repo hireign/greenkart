@@ -13,8 +13,6 @@ const searchRoute = require('./routes/searchRoute');
 const complaintRoute = require("./routes/complaintRoute");
 const faqRoute = require("./routes/faqRoute");
 
-
-
 const app = express();
 app.use(express.json());
 
@@ -48,6 +46,6 @@ app.use(userRoute);
 app.use(addressRoute);
 app.use(paymentRoute);
 app.use(searchRoute);
-app.use(complaintRoute);
+app.use(complaintRoute)
 app.use(faqRoute);
 module.exports = app

@@ -6,10 +6,12 @@ const sequelize = require('../util/database');
 const { QueryTypes } = require('sequelize');
 const nodemailer= require('nodemailer');
 const sendGrid= require('nodemailer-sendgrid-transport');
+const sgApikey = process.env.SG_API_KEY
+const fromEmail = process.env.SG_EMAIL
 
 const sendMail = nodemailer.createTransport(sendGrid({
   auth:{
-    api_key: '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'
+    api_key: sgApikey
   }
 }));
 /**
@@ -33,13 +35,14 @@ exports.loginUser = (req, res, next) => {
     }
   }).then( user=>{
     if (!user) {
-      return res.status(200).send("User With Given Email is not found");
+      return res.status(200).send("Invalid credentials");
     }
     //sets user object in the session.
       req.session.userSignIn = true;
       req.session.user = user;
+      const userObj = {"userName":user.username, "loggedIn": true, "isAdmin": user.is_seller}
       req.session.save(err => {
-          res.status(200).send(req.session.userSignIn);
+        res.status(200).send({user: userObj});
       })
   }).catch(err => console.log(err));;
 };
@@ -76,6 +79,9 @@ exports.registerAccount = (req, res, next) => {
    */
   exports.forgotPassword = (req, res, next) => {
     const email = req.body.email;
+    if(!email){
+      return res.status(200).send("Password Send On your email address");
+    }
     sequelize.query("select * from users where email = ?", { replacements: [email], type: QueryTypes.SELECT }).then(
       user=>{
         if (!user) {
@@ -83,7 +89,7 @@ exports.registerAccount = (req, res, next) => {
         }
         sendMail.sendMail({
           to: email,
-          from: 'jatin.rana.partap@gmail.com',
+          from: fromEmail,
           subject: 'GreenKart User Password',
           html: `<h3>Your password for GreenKart User Account is: ${user[0].password}</h3>`
         });
@@ -98,10 +104,12 @@ exports.registerAccount = (req, res, next) => {
    */
   exports.checkUserLogin = (req, res, next) => {
     if(req.session.user){
-      res.status(200).send(true);
+      const userObj = {"userName":req.session.user.username, "loggedIn": true}
+      res.status(200).send(userObj);
     }
     else{
-      res.status(200).send(false);
+      const userObj = {"loggedIn": false}
+      res.status(200).send(userObj);
     }
   };
 

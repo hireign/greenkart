@@ -74,7 +74,8 @@ function ManageAddress(props) {
                 <Grid item xs={12} style={{
                     borderStyle: "dashed",
                     marginBottom:"20px",
-                    cursor: "pointer"
+                    cursor: "pointer",
+                    textAlign: "center"
                 }} onClick={()=>{handleEdit({})}}>
                     Add new Address
                 </Grid>

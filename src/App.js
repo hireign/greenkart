@@ -22,9 +22,10 @@ class App extends React.Component {
   componentDidMount(){
       Axios.get('/checkUser')
       .then(res => {
-           if(res.data === true)
+        if(res.data.loggedIn === true)
            {
-            this.setState({ loggedIn: "true" });
+            this.setState({ loggedIn: {userName:res.data.userName,
+              loggedIn: true, isAdmin: false} });  
            }
       })
       .catch(err => {
@@ -37,7 +38,11 @@ class App extends React.Component {
     super();
     //if (sessionStorage.getItem("loggedIn") == null || sessionStorage.getItem("loggedIn") === "false") {
       this.state = {
-        loggedIn: false,
+        loggedIn:{
+          userName:"",
+          loggedIn: false,
+          isAdmin: 0,
+        },
         order: {}
       }
       sessionStorage.setItem("loggedIn", true);
@@ -55,18 +60,17 @@ class App extends React.Component {
     this.setState({ loggedIn: true });
   }
 
-  loggedInEvent = (userLoggedIn) => {
-    this.setState({ loggedIn: userLoggedIn });
+  loggedInEvent = (user) => {
+    this.setState({ loggedIn: user });
 }
 
   render() {
-    let { order, loggedIn } = this.state;
+    let { order, loggedIn} = this.state;
     let { setOrder, setLoggedIn } = this;
-    
     return (<div>
       <OrderContext.Provider value={{ order, setOrder, loggedIn, setLoggedIn }}>
-        <Grid row>
-          <NavBar userLoggedIn={this.loggedInEvent} isLoggedIn = {this.state.loggedIn} />
+        <Grid row="true">
+        <NavBar userLoggedIn={this.loggedInEvent} isLoggedIn = {this.state.loggedIn.loggedIn} isAdmin = {this.state.loggedIn.isAdmin} />
           <RouteTracker userLoggedIn={this.loggedInEvent} />
         </Grid>
       </OrderContext.Provider>

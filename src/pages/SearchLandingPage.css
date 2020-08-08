@@ -17,9 +17,12 @@
     padding-top: 4px;
     padding-bottom: 4px;
 }
-.productListing{
+.productListBody{
     background-color: #eeeeee;
-    padding: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 30px;
 }
 
 .filter{

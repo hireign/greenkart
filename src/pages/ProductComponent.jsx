@@ -10,7 +10,6 @@ import { Paper, Grid, Box, Typography, Button, Snackbar, CircularProgress } from
 import { Link } from 'react-router-dom';
 import MuiAlert from '@material-ui/lab/Alert';
 import Rating from '@material-ui/lab/Rating';
-// import Comment from '../components/Comment';
 import { OrderContext } from '../contexts/OrderContext';
 import ProductsService from "../services/ProductService"
 import { updateCart } from "../services/CartService"
@@ -82,7 +81,7 @@ export default function (props) {
   }, [productInfo, similarProductInfo, id])
   
   const handleClick = () => {
-    if (!loggedIn) {
+    if (!loggedIn.loggedIn) {
       setOpenText("Login to add to cart")
       setOpen(true);
     } else {
@@ -91,6 +90,18 @@ export default function (props) {
       setOpen(true);
     }
   };
+
+  const onBuy = () => {
+    if (!loggedIn.loggedIn) {
+      setOpenText("Login to Buy")
+      setOpen(true);
+    } else {
+      history.push('/payment/'+id+"/"+productInfo.salePrice+"/"+productInfo.title);
+      history.go()
+     // props.history.push(`/payment/${this.state.param2}/${this.state.param1}/${this.state.param3}/${this.state.userEmailId}`)
+    }
+  };
+
 
   function handleClose() {
     setOpen(false);
@@ -117,11 +128,13 @@ export default function (props) {
       </Grid>
       <Grid item xs={12} md={7}>
         <Typography variant="h4" color="primary"> {productInfo && productInfo.title} </Typography>
-        <Link to="/rating">
+        <Link to={"/rating/" + productInfo.productId} >
           <Box component="div" mb={2} borderColor="transparent">
             <Grid alignContent="center" container justify="flex-start">
-              <Rating name="read-only" value={4} readOnly />
-              <Typography variant="body1" component="span" className={classes.ratingText}>20 ratings and 12 reviews</Typography>
+              <Rating name="read-only" value={productInfo.reviews.average} readOnly />
+              <Typography variant="body1" component="span" className={classes.ratingText}>
+                {productInfo.reviews.count} reviews
+              </Typography>
             </Grid>
           </Box>
         </Link>
@@ -134,13 +147,13 @@ export default function (props) {
         <Grid container spacing={4}>
           <Grid item><Button variant="contained" color="primary" onClick={handleClick}>Add to cart</Button>
           </Grid>
-          <Grid item><Button variant="contained" color="primary" onClick={handleClick}>Buy</Button>
+          <Grid item><Button variant="contained" color="primary" onClick={onBuy}>Buy</Button>
           </Grid>
         </Grid>
       </Grid>
       <Snackbar open={open} autoHideDuration={10000} onClose={handleClose}>
         <MuiAlert elevation={6} variant="filled" onClose={handleClose} severity="success">
-          {openText}
+          <div>{openText}</div>
         </MuiAlert>
       </Snackbar>
       {
@@ -151,7 +164,6 @@ export default function (props) {
         </React.Fragment>
       }
     </Grid>
-    {/* <Comment/> */}
   </div>
 }
 
@@ -166,18 +178,17 @@ function similarItem(classes, product, history) {
     history.push("/product/" + product.productId);
     history.go()
   }
-  return <Grid item xs={8} sm={5} md={3} onClick={handleClick}>
+  return <Grid item xs={8} sm={5} md={3} onClick={handleClick} key={product.productId}>
     <Paper classes={{ root: classes.subPaper }}>
       <Grid container justify="center" direction="column" alignItems="center" spacing={2}>
         <Grid item>
-          <img className={classes.image} src={(product && product.image) ||
-             "https://photos.imageevent.com/livingartreptiles/livingartreptilesballpythonsmorphs/No%20image%20available%20Living%20Art%20Reptiles_34.jpeg"} alt="Plant"></img>
+          <img className={classes.image} src={(product && product.image)} alt="Plant"></img>
         </Grid>
         <Grid item>
           <Box>{ product.title}</Box>
         </Grid>
         <Grid item>
-          <Box> {product.salePrice}</Box>
+          <Box> $ {product.salePrice}</Box>
         </Grid>
       </Grid>
     </Paper>

@@ -13,9 +13,9 @@ const useStyles = makeStyles({
         top: "0", left: "0",
     },
     backDropButtons: {
-        marginTop: "50px",
-        height: "40px",
-        marginLeft: "25%"
+        display: "grid",
+        placeItems: "center",
+        height: "100%"
     }
 })
 
@@ -49,8 +49,10 @@ function AddressCard(props) {
                     showHover &&
                     <div className={classes.backDrop}>
                         <div className={classes.backDropButtons}>
-                            <Button color="primary" onClick={()=> {props.onEdit && props.onEdit(props.address)}} variant="contained" style={{marginRight: "5px"}}>Edit</Button>
-                            <Button color="secondary" onClick={() => {props.onDelete && props.onDelete(props.address)}} variant="contained">Delete</Button>
+                            <div>
+                                <Button color="primary" onClick={() => { props.onEdit && props.onEdit(props.address) }} variant="contained" style={{ marginRight: "5px" }}>Edit</Button>
+                                <Button color="secondary" onClick={() => { props.onDelete && props.onDelete(props.address) }} variant="contained">Delete</Button>
+                            </div>
                         </div>
                     </div>
                 }

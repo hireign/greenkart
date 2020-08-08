@@ -8,9 +8,13 @@ const Products = require('../models/product');
  */
 
 async function getAllOrders(req, res, next) {
+    let userId = req.session.user.user_id || -1;
     try {
         let resp = await Order.findAll({
-            include: [Products]
+            include: [Products],
+            where: {
+                userId
+            }
         })
         res.send(resp)
     } catch (error) {
@@ -19,6 +23,7 @@ async function getAllOrders(req, res, next) {
 }
 
 async function getOrderByOrderId(req, res, next) {
+    let userId = req.session.user.user_id || -1;
     try {
         let orderId = req.params['orderId']
         let existingOrder = await Order.findByPk(orderId, {
@@ -30,7 +35,14 @@ async function getOrderByOrderId(req, res, next) {
                 message: "Order Not Found"
             })
         } else {
-           res.send(existingOrder);
+            let orderData = existingOrder.get()
+            if(orderData.userId !== userId) {
+                res.status(401)
+                res.send();
+            } else {
+                res.status(200)
+                res.send(existingOrder);
+            }
         }
     } catch (error) {
         next(error)
@@ -38,6 +50,7 @@ async function getOrderByOrderId(req, res, next) {
 }
 
 async function deleteByOrderId(req, res, next) {
+    let userId = req.session.user.user_id || -1;
     try {
         let orderId = req.params['orderId']
         let existingOrder = await Order.findByPk(orderId)
@@ -48,9 +61,13 @@ async function deleteByOrderId(req, res, next) {
             })
         } else {
             let od = existingOrder.get();
-            if(od.deliveryStatus === "ORDERED") {
+            if(od.userId !== userId) {
+                res.status(401)
+                res.send();
+            }
+            if(od.deliveryStatus === "In Process") {
                 await existingOrder.update({
-                    deliveryStatus: "CANCELED"
+                    deliveryStatus: "Canceled"
                 })
             }
             res.send(existingOrder);

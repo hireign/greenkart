@@ -1,10 +1,7 @@
 /**
  * @author Mihir Patel
  */
-const Sequelize = require("sequelize");
-const Faq = require("../models/Faq");
-
-const sequelize = require("../util/database");
+const Faq = require("../models/faq");
 
 exports.getFaqs = (req, res, next) => {
   Faq.findAll()
