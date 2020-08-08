@@ -8,6 +8,12 @@ Greenkart is an e-commerce platform for Gardening Enthusiasts. The goal of this 
 [Shubham Suri](sh385209@dal.ca) - Maintainer
 [Aman Vishnani](aman.vishnani@dal.ca)
 
+## Framework
+The webiste uses ReactJS for the frontend.
+Backend utilizes Expressjs, Sequalize on top of Nodejs. 
+Project uses MySQL for structured and related data.
+
+
 ## Getting Started
 
 ### Color Schemes
@@ -54,12 +60,6 @@ steps to deploy:
    heroku open
    ```
 
-## Built With
-
-1. [Create-react-app](https://create-react-app.dev/) - Boilerplate code for react application.
-2. [Materi-UI](https://material-ui.com/)
-3. [React-router-dom](https://github.com/ReactTraining/react-router#readme)
-   
 ## Sources Used
 
 ### [Materi-UI](https://material-ui.com/)
@@ -155,6 +155,16 @@ follows conventions.
 7. Typography plays a powerfull role, "Roboto" by google is used as font due to its clarity.
 8. Invalid routes are taken to HomePage.
 9. Whole website can be navigated using only keyboard (tab to shift focus).
+
+## Sources Used
+1. [Sequelize](https://sequelize.org/)
+2. [Express](https://expressjs.com/)
+3. Assignment 2 by Shubham Suri
+4. Assignment 4 by Shubham Suri
+5. [Create-react-app](https://create-react-app.dev/) - Boilerplate code for react application.
+6. [Materi-UI](https://material-ui.com/)
+7. [React-router-dom](https://github.com/ReactTraining/react-router#readme)
+   
 
 ## W3c compliant
 [medium article](https://medium.com/@matwankarmalay/create-react-app-ie11-script1002-syntax-error-how-to-get-rid-of-it-d70000c53ddf) for adding pollyfill to deliver intended experience in all browsers.
