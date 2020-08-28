@@ -7,11 +7,15 @@ Greenkart is an e-commerce platform for Gardening Enthusiasts. The goal of this 
 Deployed Link: https://greenkart-csci5709.herokuapp.com/
 
 ## Authors
-[Shubham Suri](sh385209@dal.ca) - Maintainer
-[Aman Vishnani](aman.vishnani@dal.ca)
-[Jatin Partap Rana][jt655878@dal.ca]
 [Hirenkumar Khant](hr266981@dal.ca)
-[Mihir Patel]()
+
+[Shubham Suri](sh385209@dal.ca)
+
+[Aman Vishnani](aman.vishnani@dal.ca)
+
+[Jatin Partap Rana](jt655878@dal.ca)
+
+Mihir Patel
 
 ## Framework
 The webiste uses ReactJS for the frontend.
